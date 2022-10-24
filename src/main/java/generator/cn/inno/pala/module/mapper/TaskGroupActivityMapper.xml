@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.inno.pala.module.mapper.TaskGroupActivityMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.inno.pala.module.model.TaskGroupActivityDO">
+        <id column="id" property="id" />
+        <result column="creator" property="creator" />
+        <result column="create_time" property="createTime" />
+        <result column="updater" property="updater" />
+        <result column="update_time" property="updateTime" />
+        <result column="deleted" property="deleted" />
+        <result column="tenant_id" property="tenantId" />
+        <result column="tittle" property="tittle" />
+        <result column="need_apply" property="needApply" />
+        <result column="begin_time" property="beginTime" />
+        <result column="end_time" property="endTime" />
+        <result column="apply_end_time" property="applyEndTime" />
+        <result column="state" property="state" />
+        <result column="activity_type" property="activityType" />
+        <result column="address" property="address" />
+        <result column="longitude" property="longitude" />
+        <result column="latitude" property="latitude" />
+        <result column="need_pay" property="needPay" />
+        <result column="amount" property="amount" />
+        <result column="pay_type" property="payType" />
+        <result column="remark" property="remark" />
+        <result column="used_apply" property="usedApply" />
+        <result column="get_reward" property="getReward" />
+        <result column="audit_state" property="auditState" />
+        <result column="audit_remark" property="auditRemark" />
+        <result column="enabled" property="enabled" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        creator,
+        create_time,
+        updater,
+        update_time,
+        deleted,
+        tenant_id,
+        id, tittle, need_apply, begin_time, end_time, apply_end_time, state, activity_type, address, longitude, latitude, need_pay, amount, pay_type, remark, used_apply, get_reward, audit_state, audit_remark, enabled
+    </sql>
+
+</mapper>
