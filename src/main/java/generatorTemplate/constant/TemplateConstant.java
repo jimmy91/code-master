@@ -3,9 +3,9 @@ package generatorTemplate.constant;
 
 /**
  * @Package: com.study.generator
- * @Description: <模版位置配置类>
- * @Author: milla
- * @CreateDate: 2020/11/12 18:09
+ * @description: <模版位置配置类>
+ * @author: milla
+ * @date: 2020/11/12 18:09
  * @UpdateUser: milla
  * @UpdateDate: 2020/11/12 18:09
  * @UpdateRemark: <>

@@ -8,10 +8,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * @Description: <$!{table.comment}实体>
- * @Author: ${author}
- * @CreateDate: ${date}
- * @Remark:
+ * @description: <$!{table.comment}实体>
+ * @author: ${author}
+ * @date: ${date}
+ * @remark:
  */
 @Data
 #if(${cfg.customerTableName})
@@ -25,9 +25,7 @@ public class ${entity} extends ${superEntityClass}#if(${activeRecord})<${entity}
 #else
 public class ${entity} implements Serializable{
 #end
-    /**
-     * 序列化时候使用
-     */
+
     private static final long serialVersionUID = ${cfg.get(${table.name})}L;
 
 ## ----------  BEGIN 字段循环遍历  ----------

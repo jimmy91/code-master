@@ -14,9 +14,9 @@ import java.util.List;
 
 /**
  * @Package: ${cfg.controllerPackage}
- * @Description: <自由团活动信息表前端控制器>
- * @Author: Jimmy
- * @CreateDate: 2022-10-24
+ * @description: <自由团活动信息表前端控制器>
+ * @author: Jimmy
+ * @date: 2022-10-24
  * @UpdateUser: Jimmy
  * @UpdateDate: 2022-10-24
  * @UpdateRemark: <>

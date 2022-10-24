@@ -5,9 +5,9 @@ import com.baomidou.mybatisplus.annotation.DbType;
 
 /**
  * @Package: com.study.generator
- * @Description: <表格和数据源配置项>
- * @Author: milla
- * @CreateDate: 2020/11/12 17:48
+ * @description: <表格和数据源配置项>
+ * @author: milla
+ * @date: 2020/11/12 17:48
  * @UpdateUser: milla
  * @UpdateDate: 2020/11/12 17:48
  * @UpdateRemark: <>
@@ -17,7 +17,7 @@ public final class BasicConstant {
     /**
      * 作者
      */
-    public static String AUTHOR = "Jimmy" ;
+    public static String author = "Jimmy" ;
     /**
      * 生成的实体类忽略表前缀: 不需要则置空
      */
