@@ -4,14 +4,10 @@ import ${package.Entity}.${entity};
 import ${superMapperClassPackage};
 
 /**
- * @Package: ${package.Mapper}
- * @Description: <$!{table.comment}Mapper接口>
- * @Author: ${author}
- * @CreateDate: ${date}
- * @UpdateUser: ${author}
- * @UpdateDate: ${date}
- * @UpdateRemark: <>
- * @Version: 1.0
+ * @description: <$!{table.comment}Mapper接口>
+ * @author: ${author}
+ * @date: ${date}
+ * @remark:
  */
 #if(${kotlin})
 interface ${table.mapperName} : ${superMapperClass}<${entity}>

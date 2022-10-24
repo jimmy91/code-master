@@ -7,14 +7,10 @@ import ${superServiceImplClassPackage};
 import org.springframework.stereotype.Service;
 
 /**
- * @Package: ${package.ServiceImpl}
- * @Description: <$!{table.comment}服务实现类>
- * @Author: ${author}
- * @CreateDate: ${date}
- * @UpdateUser: ${author}
- * @UpdateDate: ${date}
- * @UpdateRemark: <>
- * @Version: 1.0
+ * @description: <$!{table.comment}服务实现类>
+ * @author: ${author}
+ * @date: ${date}
+ * @remark: <>
  */
 ##@Service
 #if(${kotlin})

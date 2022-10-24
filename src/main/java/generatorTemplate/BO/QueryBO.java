@@ -9,9 +9,9 @@ import lombok.Data;
 
 /**
  * @Package: com.study.common.entity.bo
- * @Description: <查询实体类>
- * @Author: milla
- * @CreateDate: 2020/11/06 14:56
+ * @description: <查询实体类>
+ * @author: milla
+ * @date: 2020/11/06 14:56
  * @UpdateUser: milla
  * @UpdateDate: 2020/11/06 14:56
  * @UpdateRemark: <>

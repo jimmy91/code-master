@@ -28,7 +28,13 @@ import static generatorTemplate.constant.TemplateConstant.*;
  */
 @Slf4j
 public class MyBatisPlusTemplateGenerator {
-
+    public static String[] TABLES = {
+            "task_group_activity",
+            "task_group_activity_apply_record",
+            "task_group_activity_collect_record",
+            "task_group_activity_like_record",
+            "task_group_activity_statistical",
+    };
     public static void main(String[] args) {
         boolean isCreateExt = false;
         builder(isCreateExt);
@@ -57,7 +63,7 @@ public class MyBatisPlusTemplateGenerator {
                 // swagger注解; 须添加swagger依赖
                 .setSwagger2(true)
                 // 作者
-                .setAuthor(AUTHOR)
+                .setAuthor(author)
                 // 设置实体类名称
                 .setEntityName("%sDO")
                 //设置服务类名称

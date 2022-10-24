@@ -14,14 +14,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @Package: ${cfg.controllerPackage}
- * @Description: <$!{table.comment}前端控制器>
- * @Author: ${author}
- * @CreateDate: ${date}
- * @UpdateUser: ${author}
- * @UpdateDate: ${date}
- * @UpdateRemark: <>
- * @Version: 1.0
+ * @description: <$!{table.comment}前端控制器>
+ * @author: ${author}
+ * @date: ${date}
+ * @remark:
  */
 #set($path=${table.name})
 #set($path=$path.concat("path"))

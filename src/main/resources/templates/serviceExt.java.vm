@@ -3,14 +3,10 @@ package ${cfg.extPackagePre}.${cfg.service};
 import ${package.Service}.${table.serviceName};
 
 /**
- * @Package: ${cfg.extPackagePre}.${cfg.service}
- * @Description: <$!{table.comment}扩展服务类>
- * @Author: ${author}
- * @CreateDate: ${date}
- * @UpdateUser: ${author}
- * @UpdateDate: ${date}
- * @UpdateRemark: <>
- * @Version: 1.0
+ * @description: <$!{table.comment}扩展服务类>
+ * @author: ${author}
+ * @date: ${date}
+ * @remark:
  */
 #if(${kotlin})
 interface ${table.serviceName}${cfg.classNameExt} : ${table.serviceName}

@@ -5,9 +5,9 @@ import java.io.File;
 
 /**
  * @Package: com.study.generator
- * @Description: <自定义生成的文件路径和包路径>
- * @Author: milla
- * @CreateDate: 2020/11/12 17:47
+ * @description: <自定义生成的文件路径和包路径>
+ * @author: milla
+ * @date: 2020/11/12 17:47
  * @UpdateUser: milla
  * @UpdateDate: 2020/11/12 17:47
  * @UpdateRemark: <>
