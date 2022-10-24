@@ -8,14 +8,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * @Package: ${package.Entity}
  * @Description: <$!{table.comment}实体>
  * @Author: ${author}
  * @CreateDate: ${date}
- * @UpdateUser: ${author}
- * @UpdateDate: ${date}
- * @UpdateRemark: <>
- * @Version: 1.0
+ * @Remark:
  */
 @Data
 #if(${cfg.customerTableName})
@@ -60,17 +56,18 @@ public class ${entity} implements Serializable{
 #if(${logicDeleteFieldName}==${field.name})
     @TableLogic
 #end
-##    生成swagg实体描述
+##    生成swagger实体描述
+##    @ApiModelProperty(value = "$comment.substring(0,$blankIndex)", notes = "$comment.substring($blankIndex).trim()")
 #if(${swagger2})
     #set($comment=${field.comment})
     #set($blankIndex=$comment.indexOf(" "))
     #set($hasBlank=$comment.indexOf(" ")!=-1)
-    #if($hasBlank)
-    @ApiModelProperty(value = "$comment.substring(0,$blankIndex)", notes = "$comment.substring($blankIndex).trim()")
-    #end
-    #if(!$hasBlank)
-    @ApiModelProperty(value = "$comment", notes = "")
-    #end
+    @ApiModelProperty(value = "$comment")
+#else
+    #set($comment=${field.comment})
+    /**
+     * $comment
+     */
 #end
     private ${field.propertyType} ${field.propertyName};
 
