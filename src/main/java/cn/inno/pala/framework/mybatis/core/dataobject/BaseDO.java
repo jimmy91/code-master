@@ -46,4 +46,9 @@ public abstract class BaseDO implements Serializable {
     @TableLogic
     private Boolean deleted;
 
+    /**
+     * 租户ID
+     */
+    private Integer tenantId;
+
 }

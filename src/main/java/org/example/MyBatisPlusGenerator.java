@@ -37,7 +37,7 @@ public class MyBatisPlusGenerator {
                 .setIdType(IdType.AUTO)
                 .setDateType(DateType.ONLY_DATE)
                 // 实体属性 Swagger2 注解
-                .setSwagger2(true)
+                //.setSwagger2(true)
                 // 设置生成的service接口的名字的首字母是否为I，默认Service是以I开头的
                 .setServiceName("%sService")
                 //实体类结尾名称
@@ -72,7 +72,7 @@ public class MyBatisPlusGenerator {
                 //使用restcontroller注解
                 .setRestControllerStyle(true)
                 // 生成实体类字段注解
-                .setEntityTableFieldAnnotationEnable(true)
+                //.setEntityTableFieldAnnotationEnable(true)
                 // 逻辑删除、
                 .setLogicDeleteFieldName("deleted")
                 // 生成类的时候排除的字符串(因为这些字段已经在父类中，子类无需再生成)

@@ -69,7 +69,7 @@ public final class PackageInfoConstant {
     /**
      * 扩展的实体名称
      */
-    public static String EXT_ClASS_NAME = "Ext" ;
+    public static String EXT_ClASS_NAME = "" ;
     /**
      * 扩展实现类名称
      */
