@@ -6,8 +6,10 @@ import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
 import com.baomidou.mybatisplus.generator.config.po.TableFill;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.google.common.base.CaseFormat;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +27,7 @@ import static generatorTemplate.constant.TemplateConstant.*;
 /**
  * @author Jimmy
  * https://www.pudn.com/news/62d140bc864d5c73acb23af8.html
+ * https://www.jb51.net/article/248856.htm
  */
 @Slf4j
 public class MyBatisPlusTemplateGenerator {
@@ -83,7 +86,19 @@ public class MyBatisPlusTemplateGenerator {
                 // 用户名
                 .setUsername(username)
                 // 密码
-                .setPassword(password);
+                .setPassword(password)
+                .setTypeConvert(new MySqlTypeConvert(){
+                    // 数据库字段类型与java类型映射关系
+                    public DbColumnType processTypeConvert(GlobalConfig globalConfig, String fieldType){
+                        if (fieldType.toLowerCase().contains("tinyint(1)")) {
+                            return DbColumnType.INTEGER;
+                        }
+                        if (fieldType.toLowerCase().contains("datetime")) {
+                            return DbColumnType.DATE;
+                        }
+                        return (DbColumnType) super.processTypeConvert(globalConfig, fieldType);
+                    }
+                });
 
         //3. 策略配置globalConfiguration中
         StrategyConfig stConfig = new StrategyConfig();
