@@ -2,6 +2,9 @@ package ${package.Mapper};
 
 import ${package.Entity}.${entity};
 import ${superMapperClassPackage};
+import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @description: <$!{table.comment}Mapper接口>
@@ -9,10 +12,15 @@ import ${superMapperClassPackage};
  * @date: ${date}
  * @remark:
  */
+@Mapper
 #if(${kotlin})
 interface ${table.mapperName} : ${superMapperClass}<${entity}>
 #else
 public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
+
+    default Map<Long, List<${entity}>> listMapByIds(List<Long> ids){
+        return null;
+    }
 
 }
 #end
