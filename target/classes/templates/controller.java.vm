@@ -2,17 +2,18 @@ package ${package.Controller};
 
 import ${package.Entity}.${entity};
 ##import ${package.Service}.${table.serviceName};
-import generatorTemplate.BO.QueryBO;
+import utils.generator.common.dao.vo.CommonResult;
+import utils.generator.common.dao.vo.PageResult;
+import utils.generator.common.dao.req.QueryBO;
 import ${package.Service}.${table.serviceName};
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiImplicitParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
-
 import java.util.List;
 
 /**
@@ -34,37 +35,38 @@ public class ${table.controllerName} {
     private ${table.serviceName} i${table.serviceName};
 
     @PostMapping("list")
-    @ApiOperation(value = "$!{table.comment}分页查询", note="")
+    @ApiOperation(value = "$!{table.comment}分页查询", notes="")
     public CommonResult<PageResult<${entity}>> list${table.serviceName}ByPage(@Valid @RequestBody QueryBO<${entity}> query) {
-        return i${table.serviceName}.page(query.getPage() == null ? new Page() : query.getPage(), query.initQueryWrapper());
+         return CommonResult.success(PageResult.getResult(i${table.serviceName}.page(query.getPage() == null ? new Page() : query.getPage(), query.initQueryWrapper())));
     }
 
     @GetMapping("{id}")
-    @ApiOperation(value = "$!{table.comment}获取详情", note="")
+    @ApiOperation(value = "$!{table.comment}获取详情", notes="")
     @ApiImplicitParam(name = "id", value = "业务主键ID", required = true, dataTypeClass = Long.class)
     public CommonResult<${entity}> get${table.serviceName}Details(@PathVariable Long id) {
-        return i${table.serviceName}.getById(id);
+        return CommonResult.success(i${table.serviceName}.getById(id));
     }
 
     @PostMapping("save")
-    @ApiOperation(value = "$!{table.comment}新增数据", note="")
+    @ApiOperation(value = "$!{table.comment}新增数据", notes="")
     public CommonResult<Long> save${table.serviceName}(@Valid @RequestBody ${entity} req) {
-        return i${table.serviceName}.save(dto);
+        i${table.serviceName}.save(req);
+        return CommonResult.success(req.getId());
     }
 
     @PostMapping("update/{id}")
-    @ApiOperation(value = "$!{table.comment}修改数据", note="")
+    @ApiOperation(value = "$!{table.comment}修改数据", notes="")
     @ApiImplicitParam(name = "id", value = "业务主键ID", required = true, dataTypeClass = Long.class)
-    public CommonResult<Long> modify${table.serviceName}(@Valid @RequestBody ${entity} req, @PathVariable Long id) {
-        dto.setId(id);
-        return i${table.serviceName}.updateById(dto);
+    public CommonResult<Boolean> modify${table.serviceName}(@Valid @RequestBody ${entity} req, @PathVariable Long id) {
+        req.setId(id);
+        return CommonResult.success(i${table.serviceName}.updateById(req));
     }
 
     @PostMapping("delete")
-    @ApiOperation(value = "$!{table.comment}批量删除", note="")
+    @ApiOperation(value = "$!{table.comment}批量删除", notes="")
     @ApiImplicitParam(name = "ids", value = "业务主键ID,多个用逗号分隔.请求参数组装在url后发送", required = true, dataTypeClass = String.class)
     public CommonResult<Boolean>batchRemove${table.serviceName}(@RequestParam(value = "ids") List<Long> ids) {
-        return i${table.serviceName}.removeByIds(ids);
+        return CommonResult.success(i${table.serviceName}.removeByIds(ids));
     }
 
 }

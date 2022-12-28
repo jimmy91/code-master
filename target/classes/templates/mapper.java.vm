@@ -4,6 +4,7 @@ import ${package.Entity}.${entity};
 import ${superMapperClassPackage};
 import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @description: <$!{table.comment}Mapper接口>

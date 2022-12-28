@@ -26,7 +26,7 @@ public class ${entity} extends ${superEntityClass}#if(${activeRecord})<${entity}
 public class ${entity} implements Serializable{
 #end
 
-    private static final long serialVersionUID = ${cfg.get(${table.name})}L;
+    private static final long serialVersionUID = 1L;
 
 ## ----------  BEGIN 字段循环遍历  ----------
 #foreach($field in ${table.fields})
