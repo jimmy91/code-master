@@ -27,7 +27,7 @@ public final class PackageInfoConstant {
     /**
      * 包路径(基础包路径)
      */
-    public static String PACKAGE_ROOT = "utils.generator.cn.inno.pala" ;
+    public static String PACKAGE_ROOT = "utils.generator.cn.tool.mybatis" ;
     /**
      * Controller模块(笔者的controller和service,dao,entity不在同一个项目中)
      */
@@ -89,7 +89,7 @@ public final class PackageInfoConstant {
     public static String CONTROLLER_PATH = "/controller/" ;
 
     public static String MAIN_ROOT = "/utils/generator/" ;
-    public static String JAVA_ROOT = MAIN_ROOT + "/cn/inno/pala/" ;
+    public static String JAVA_ROOT = MAIN_ROOT + "/cn/tool/mybatis/" ;
 
 
     /**

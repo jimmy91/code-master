@@ -3,14 +3,26 @@ package utils.generator;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
+import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
 import com.baomidou.mybatisplus.generator.config.GlobalConfig;
 import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+import com.google.common.base.CaseFormat;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import utils.generator.generatorTemplate.constant.BasicConstant;
 
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import static com.baomidou.mybatisplus.core.toolkit.StringPool.SLASH;
+import static com.baomidou.mybatisplus.core.toolkit.StringPool.UNDERSCORE;
+import static utils.generator.generatorTemplate.constant.PackageInfoConstant.*;
 
 
 /**
@@ -19,6 +31,10 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class MyBatisPlusGenerator {
+
+    public static String[] TABLES = {
+            "task_group_activity"
+    };
 
     public static void main(String[] args) {
         //1. 全局配置
@@ -80,15 +96,15 @@ public class MyBatisPlusGenerator {
                 )
                 // TODO 生成的表, 支持多表一起生成，以数组形式填写
                 // .setInclude("table01", "table02");  // .setInclude(scanner("表名，多个英文逗号分割").split(","));
-                .setInclude("task_group_activity");
+                .setInclude(TABLES);
 
         // TODO 包名策略配置
         PackageConfig pkConfig = new PackageConfig();
-        pkConfig.setParent("utils.generator.cn.inno.pala.module")
+        pkConfig.setParent("utils.generator.cn.tool.mybatis.module")
                 .setMapper("mapper")
                 .setService("service")
                 .setController("controller")
-                .setEntity("model")
+                .setEntity("entity")
                 .setXml("mapper");
 
         //5. 整合配置
@@ -96,11 +112,48 @@ public class MyBatisPlusGenerator {
         ag.setGlobalConfig(config)
                 .setDataSource(dsConfig)
                 .setStrategy(stConfig)
+                .setCfg(injectionConfig())
                 .setPackageInfo(pkConfig);
 
         //6. 执行操作
         ag.execute();
         System.out.println("=======  Done 相关代码生成完毕  ========");
+    }
+
+
+    /**
+     * 自定义配置
+     *
+     */
+    private static InjectionConfig injectionConfig() {
+        return new InjectionConfig() {
+            @Override
+            public void initMap() {
+                // 注入配置
+                Map<String, Object> map = new HashMap<>(16);
+                //指定表格的名称
+                map.put("customerTableName", true);
+
+                for (String tableName : TABLES) {
+                    //指定每个类的serialVersionUID
+                    long serialVersionUID = UUID.nameUUIDFromBytes(tableName.getBytes()).getLeastSignificantBits();
+                    map.put(tableName, Math.abs(serialVersionUID));
+                    //计算controller的路径
+                    StringBuilder sb = new StringBuilder();
+                    if (StringUtils.contains(tableName, UNDERSCORE)) {
+                        sb.append(SLASH + tableName.substring(0, tableName.indexOf(UNDERSCORE)));
+                        String url = tableName.substring(tableName.indexOf(UNDERSCORE) + 1);
+                        sb.append(SLASH + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, url));
+                        map.put(tableName + "path", sb.toString());
+                        continue;
+                    }
+                    sb.append(SLASH + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, BasicConstant.url));
+                    map.put(tableName + "path", sb.toString());
+                }
+                this.setMap(map);
+            }
+        };
+
     }
 
     /**
