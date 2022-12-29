@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="utils.generator.cn.tool.mybatis.module.mapper.SystemDictDataMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="utils.generator.cn.tool.mybatis.module.entity.SystemDictDataDO">
+        <id column="id" property="id"/>
+        <result column="creator" property="creator"/>
+        <result column="create_time" property="createTime"/>
+        <result column="updater" property="updater"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="deleted" property="deleted"/>
+        <result column="sort" property="sort"/>
+        <result column="label" property="label"/>
+        <result column="value" property="value"/>
+        <result column="dict_type" property="dictType"/>
+        <result column="status" property="status"/>
+        <result column="color_type" property="colorType"/>
+        <result column="css_class" property="cssClass"/>
+        <result column="remark" property="remark"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        creator,
+        create_time,
+        updater,
+        update_time,
+        deleted,
+        id, sort, label, value, dict_type, status, color_type, css_class, remark
+    </sql>
+
+</mapper>

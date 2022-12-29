@@ -49,6 +49,6 @@ public abstract class BaseDO implements Serializable {
     /**
      * 租户ID
      */
-    private Integer tenantId;
+    //private Integer tenantId;
 
 }

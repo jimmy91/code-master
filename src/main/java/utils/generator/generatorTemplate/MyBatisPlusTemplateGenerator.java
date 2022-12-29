@@ -34,7 +34,7 @@ import static utils.generator.generatorTemplate.constant.TemplateConstant.*;
 public class MyBatisPlusTemplateGenerator {
 
     public static String[] TABLES = {
-            "task_group_activity_statistical"
+            "system_dict_data"
     };
 
 
