@@ -1,5 +1,6 @@
 package utils.generator.generatorTemplate;
 
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
@@ -13,7 +14,7 @@ import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.google.common.base.CaseFormat;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.tomcat.util.codec.binary.StringUtils;
 import utils.generator.generatorTemplate.constant.BasicConstant;
 
 import java.io.File;
@@ -188,7 +189,7 @@ public class MyBatisPlusTemplateGenerator {
                     map.put(tableName, Math.abs(serialVersionUID));
                     //计算controller的路径
                     StringBuilder sb = new StringBuilder();
-                    if (StringUtils.contains(tableName, UNDERSCORE)) {
+                    if (StrUtil.contains(tableName, UNDERSCORE)) {
                         sb.append(SLASH + tableName.substring(0, tableName.indexOf(UNDERSCORE)));
                         String url = tableName.substring(tableName.indexOf(UNDERSCORE) + 1);
                         sb.append(SLASH + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, url));

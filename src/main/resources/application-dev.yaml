@@ -1,0 +1,32 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8 # 访问路径编码
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 8080 # 端口号
+  connection-timeout: 5000ms
+  servlet:
+    context-path: /tools # 访问路径的起始
+
+
+# mysql访问配置
+spring:
+  datasource:
+    url: jdbc:mysql://10.0.99.191:3306/pala-planet?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: inno@2021
+
+
+
+# mybatis配置
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true # 虽然默认为 true ，但是还是显示去指定下。
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  global-config:
+    db-config:
+      id-type: AUTO # 自增 ID
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+  type-aliases-package: app.mapper.*
