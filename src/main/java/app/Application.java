@@ -10,12 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @Slf4j
 @SpringBootApplication
-@MapperScan("app.mapper")
+@MapperScan("app.*.mapper")
 public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
-
     }
 
 }

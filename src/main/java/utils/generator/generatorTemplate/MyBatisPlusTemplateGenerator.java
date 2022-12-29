@@ -14,13 +14,13 @@ import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.google.common.base.CaseFormat;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.util.codec.binary.StringUtils;
 import utils.generator.generatorTemplate.constant.BasicConstant;
 
 import java.io.File;
 import java.util.*;
 
-import static com.baomidou.mybatisplus.core.toolkit.StringPool.*;
+import static com.baomidou.mybatisplus.core.toolkit.StringPool.SLASH;
+import static com.baomidou.mybatisplus.core.toolkit.StringPool.UNDERSCORE;
 import static utils.generator.generatorTemplate.constant.PackageInfoConstant.*;
 import static utils.generator.generatorTemplate.constant.TemplateConstant.*;
 

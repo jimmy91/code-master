@@ -6,7 +6,9 @@
 ### 目录结构描述
 ```
 ├── app                         // 应用服务
-│   ├── Application             // 应用启动类
+│   ├── generator               // 自动生成代码
+│   ├── project                 // 应用服务代码
+│   ├── Application             // 应用服务启动类
 ├── code                        // 业务代码设计
 │   ├── design                  // 设计模式
 │   ├── reusability             // 可复用代码

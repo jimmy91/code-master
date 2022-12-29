@@ -3,7 +3,7 @@ server:
     uri-encoding: UTF-8 # 访问路径编码
     max-threads: 1000
     min-spare-threads: 30
-  port: 8080 # 端口号
+  port: 8089 # 端口号
   connection-timeout: 5000ms
   servlet:
     context-path: /tools # 访问路径的起始
@@ -18,7 +18,6 @@ spring:
     password: inno@2021
 
 
-
 # mybatis配置
 mybatis-plus:
   configuration:
@@ -29,4 +28,4 @@ mybatis-plus:
       id-type: AUTO # 自增 ID
       logic-delete-value: 1 # 逻辑已删除值(默认为 1)
       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
-  type-aliases-package: app.mapper.*
+  type-aliases-package: app.*.mapper.*
