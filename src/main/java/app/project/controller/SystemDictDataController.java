@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import utils.generator.common.dao.req.PageParam;
 import utils.generator.common.dao.req.QueryBO;
 import utils.generator.common.dao.vo.CommonResult;
 import utils.generator.common.dao.vo.PageResult;
@@ -33,7 +34,7 @@ public class SystemDictDataController {
     @PostMapping("list")
     @ApiOperation(value = "字典数据表分页查询", notes="")
     public CommonResult<PageResult<SystemDictDataDO>> listSystemDictDataServiceByPage(@Valid @RequestBody QueryBO<SystemDictDataDO> query) {
-         return CommonResult.success(PageResult.getResult(iSystemDictDataService.page(query.getPage() == null ? new Page() : query.getPage(), query.initQueryWrapper())));
+         return CommonResult.success(PageResult.getResult(iSystemDictDataService.page(query.getPage(), query.initQueryWrapper())));
     }
 
     @GetMapping("{id}")

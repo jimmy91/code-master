@@ -37,7 +37,7 @@ public class ${table.controllerName} {
     @PostMapping("list")
     @ApiOperation(value = "$!{table.comment}分页查询", notes="")
     public CommonResult<PageResult<${entity}>> list${table.serviceName}ByPage(@Valid @RequestBody QueryBO<${entity}> query) {
-         return CommonResult.success(PageResult.getResult(i${table.serviceName}.page(query.getPage() == null ? new Page() : query.getPage(), query.initQueryWrapper())));
+         return CommonResult.success(PageResult.getResult(i${table.serviceName}.page(query.getPage(), query.initQueryWrapper())));
     }
 
     @GetMapping("{id}")

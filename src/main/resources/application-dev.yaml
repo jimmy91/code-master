@@ -22,10 +22,16 @@ spring:
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true # 虽然默认为 true ，但是还是显示去指定下。
-    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    #log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl # 默认输出到日志文件
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 默认输出到控制台
   global-config:
     db-config:
       id-type: AUTO # 自增 ID
       logic-delete-value: 1 # 逻辑已删除值(默认为 1)
       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
   type-aliases-package: app.*.mapper.*
+
+
+
+
+

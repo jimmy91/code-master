@@ -17,7 +17,7 @@
     </properties>
 
     <dependencies>
-
+        <!--框架基础功能包 START-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -45,6 +45,13 @@
             <artifactId>hutool-all</artifactId>
             <version>5.7.22</version>
         </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.11</version>
+        </dependency>
+        <!--框架基础功能包 END-->
 
         <!--<dependency>
             <groupId>io.swagger</groupId>

@@ -30,8 +30,8 @@ public class SwaggerAutoConfiguration {
      */
     private static ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("标题")
-                .description("描述")
+                .title("工具项目")
+                .description("快速开始项目")
                 .contact(new Contact("Jimmy", null, null))
                 .version("1.0.0")
                 .build();

@@ -1,4 +1,4 @@
-package utils.generator.common.dao.vo;
+package utils.generator.common.dao.req;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
