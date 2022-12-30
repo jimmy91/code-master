@@ -1,4 +1,4 @@
-package ratelimter;
+package utils.ratelimter;
 
 import com.alibaba.csp.sentinel.Entry;
 import com.alibaba.csp.sentinel.SphO;

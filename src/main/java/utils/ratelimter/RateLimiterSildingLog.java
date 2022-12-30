@@ -1,4 +1,4 @@
-package ratelimter;
+package utils.ratelimter;
 
 import java.time.LocalTime;
 import java.util.HashSet;

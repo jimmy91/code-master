@@ -11,17 +11,21 @@
 │   ├── project                 // 应用服务API
 │   ├── Application             // 应用服务启动类
 ├── code                        // 业务代码设计
-│   ├── design                  // 设计模式
-│   ├── reusability             // 可复用代码
-├── config                      // 配置
-├── ratelimter                  // 限流
+│   ├── algorithm.*             // 算法 
+│   ├── design.*                // 设计模式 
+│   ├── reusability.*           // 可复用代码
+├── config                      // 常用配置
 ├── utils                       // 工具包
+│   ├── ratelimter              // 限流工具类
 │   ├── generator               // mybaits-plus自动生成工具
 │   ├── tools.*                 // 工具类
 ├── readme.md                   // 说明文档
 
 ```
 ###  好用的技术文档
+* 「Good Good Study. Day Day Up」
+    > 我们看过很多技术文章，却依然不知道架构代码该咋整。
+  > 
 |       标题        | 参考文档地址                                                                                        | 描述                      |
 |:---------------:|-----------------------------------------------------------------------------------------------|-------------------------|
 | SpringBoot 多模块  | https://gitee.com/zhijiantianya/ruoyi-vue-pro <br/>   https://github.com/YunaiV/ruoyi-vue-pro | 芋道源码-最强的后台管理系统  -mini分支 |
@@ -34,8 +38,9 @@
 |     Knife4j     | https://doc.xiaominfo.com/                                                                    | 集成Swagger生成Api文档的增强解决方案 |
 |                 |                                                                                               |                         |
 
-###  更新内容
-```
-1. mybaits-plus自动生成工具
-2. 限流工具类
-```
+###  内置功能
+ 
+* mybaits-plus自动生成工具
+* 限流工具类
+* swagger
+ 

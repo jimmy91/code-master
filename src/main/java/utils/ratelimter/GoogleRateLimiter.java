@@ -1,4 +1,4 @@
-package ratelimter;
+package utils.ratelimter;
 
 import com.google.common.util.concurrent.RateLimiter;
 

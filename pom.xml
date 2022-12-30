@@ -34,7 +34,6 @@
             <version>${spring.boot.version}</version>
         </dependency>
 
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -52,6 +51,7 @@
             <artifactId>swagger-annotations</artifactId>
             <version>1.5.22</version>
         </dependency>-->
+        <!--swagger接口文档-->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
