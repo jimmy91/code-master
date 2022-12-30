@@ -3,6 +3,8 @@ package ${package.Mapper};
 import ${package.Entity}.${entity};
 import ${superMapperClassPackage};
 import org.apache.ibatis.annotations.Mapper;
+import utils.tools.coll.CollectionUtils;
+import utils.tools.mybatis.LambdaQueryWrapperX;
 import java.util.List;
 import java.util.Map;
 
@@ -17,9 +19,14 @@ import java.util.Map;
 interface ${table.mapperName} : ${superMapperClass}<${entity}>
 #else
 public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
-
-    default Map<Long, List<${entity}>> listMapByIds(List<Long> ids){
-        return null;
+    
+    /**
+     * 通过ID批量查询
+     * @param ids
+     * @return
+     */
+    default Map<Long, ${entity}> listMapByIds(List<Long> ids) {
+        return CollectionUtils.convertMap(selectBatchIds(ids), ${entity}::getId);
     }
 
 }

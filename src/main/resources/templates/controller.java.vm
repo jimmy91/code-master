@@ -35,27 +35,27 @@ public class ${table.controllerName} {
     private ${table.serviceName} i${table.serviceName};
 
     @PostMapping("list")
-    @ApiOperation(value = "$!{table.comment}分页查询", notes="")
+    @ApiOperation(value = "分页查询", notes="$!{table.comment}")
     public CommonResult<PageResult<${entity}>> list${table.serviceName}ByPage(@Valid @RequestBody QueryBO<${entity}> query) {
          return CommonResult.success(PageResult.getResult(i${table.serviceName}.page(query.getPage(), query.initQueryWrapper())));
     }
 
     @GetMapping("{id}")
-    @ApiOperation(value = "$!{table.comment}获取详情", notes="")
+    @ApiOperation(value = "获取详情", notes="")
     @ApiImplicitParam(name = "id", value = "业务主键ID", required = true, dataTypeClass = Long.class)
     public CommonResult<${entity}> get${table.serviceName}Details(@PathVariable Long id) {
         return CommonResult.success(i${table.serviceName}.getById(id));
     }
 
     @PostMapping("save")
-    @ApiOperation(value = "$!{table.comment}新增数据", notes="")
+    @ApiOperation(value = "新增数据", notes="")
     public CommonResult<Long> save${table.serviceName}(@Valid @RequestBody ${entity} req) {
         i${table.serviceName}.save(req);
         return CommonResult.success(req.getId());
     }
 
     @PostMapping("update/{id}")
-    @ApiOperation(value = "$!{table.comment}修改数据", notes="")
+    @ApiOperation(value = "修改数据", notes="")
     @ApiImplicitParam(name = "id", value = "业务主键ID", required = true, dataTypeClass = Long.class)
     public CommonResult<Boolean> modify${table.serviceName}(@Valid @RequestBody ${entity} req, @PathVariable Long id) {
         req.setId(id);
@@ -63,9 +63,9 @@ public class ${table.controllerName} {
     }
 
     @PostMapping("delete")
-    @ApiOperation(value = "$!{table.comment}批量删除", notes="")
+    @ApiOperation(value = "批量删除", notes="")
     @ApiImplicitParam(name = "ids", value = "业务主键ID,多个用逗号分隔.请求参数组装在url后发送", required = true, dataTypeClass = String.class)
-    public CommonResult<Boolean>batchRemove${table.serviceName}(@RequestParam(value = "ids") List<Long> ids) {
+    public CommonResult<Boolean> batchRemove${table.serviceName}(@RequestParam(value = "ids") List<Long> ids) {
         return CommonResult.success(i${table.serviceName}.removeByIds(ids));
     }
 

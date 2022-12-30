@@ -11,7 +11,7 @@ import utils.generator.common.entity.BaseDO;
 /**
  * @description: <字典数据表实体>
  * @author: Jimmy
- * @date: 2022-12-29
+ * @date: 2022-12-30
  * @remark:
  */
 @Data

@@ -8,6 +8,9 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
 
+/**
+ * @author Jimmy
+ */
 @ApiModel("分页参数")
 @Data
 public class PageParam implements Serializable {

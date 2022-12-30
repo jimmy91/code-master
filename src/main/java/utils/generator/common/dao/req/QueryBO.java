@@ -14,12 +14,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * @Package: com.study.common.entity.bo
- * @description: <查询实体类>
- * @author: milla
- * @date: 2020/11/06 14:56
- * @UpdateUser: milla
- * @UpdateDate: 2020/11/06 14:56
+ *
+ * @description: <查询业务类>
  * @UpdateRemark: <>
  * @Version: 1.0
  */
