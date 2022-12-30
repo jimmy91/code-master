@@ -24,7 +24,7 @@ import java.util.List;
  */
 #set($path=${table.name})
 #set($path=$path.concat("path"))
-@Api(tags = "用户APP - $!{table.comment}")
+@Api(tags = "API模块 - $!{table.comment}")
 @RestController
 @RequestMapping(value = "${cfg.get($path)}")
 @Validated

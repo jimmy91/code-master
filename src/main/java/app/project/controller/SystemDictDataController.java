@@ -22,7 +22,7 @@ import java.util.List;
  * @date: 2022-12-29
  * @remark:
  */
-@Api(tags = "用户APP - 字典数据表")
+@Api(tags = "基础服务 - 字典数据表")
 @RestController
 @RequestMapping(value = "/system/dictData")
 @Validated
