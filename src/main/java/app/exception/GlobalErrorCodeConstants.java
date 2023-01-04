@@ -1,12 +1,12 @@
-package utils.generator.common.dao.vo;
+package app.exception;
 
 /**
  * 全局错误码枚举
- * 0-999 系统异常编码保留
  * <p>
  * 一般情况下，使用 HTTP 响应状态码 https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status
  * 虽然说，HTTP 响应状态码作为业务使用表达能力偏弱，但是使用在系统层面还是非常不错的
  * 比较特殊的是，因为之前一直使用 0 作为成功，就不使用 200 啦。
+ * @author Jimmy
  */
 public interface GlobalErrorCodeConstants {
 
@@ -19,7 +19,7 @@ public interface GlobalErrorCodeConstants {
     ErrorCode FORBIDDEN = new ErrorCode(403, "没有该操作权限");
     ErrorCode NOT_FOUND = new ErrorCode(404, "请求未找到");
     ErrorCode METHOD_NOT_ALLOWED = new ErrorCode(405, "请求方法不正确");
-    ErrorCode LOCKED = new ErrorCode(423, "请求失败，请稍后重试"); // 并发请求，不允许
+    ErrorCode LOCKED = new ErrorCode(423, "请求失败，请稍后重试");
     ErrorCode TOO_MANY_REQUESTS = new ErrorCode(429, "请求过于频繁，请稍后重试");
 
     ErrorCode ILLEGAL_OPT = new ErrorCode(444, "违规操作");
@@ -34,7 +34,7 @@ public interface GlobalErrorCodeConstants {
     ErrorCode SERVER_ERROR = new ErrorCode(510, "服务异常:{}");
 
     // ========== 自定义错误段 ==========
-    ErrorCode REPEATED_REQUESTS = new ErrorCode(900, "重复请求，请稍后重试"); // 重复请求
+    ErrorCode REPEATED_REQUESTS = new ErrorCode(900, "重复请求，请稍后重试");
     ErrorCode DEMO_DENY = new ErrorCode(901, "演示模式，禁止写操作");
 
     ErrorCode UNKNOWN = new ErrorCode(999, "未知错误");

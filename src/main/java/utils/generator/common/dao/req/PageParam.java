@@ -2,7 +2,9 @@ package utils.generator.common.dao.req;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -13,6 +15,8 @@ import java.io.Serializable;
  */
 @ApiModel("分页参数")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PageParam implements Serializable {
 
     private static final Integer PAGE_NO = 1;

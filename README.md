@@ -6,14 +6,18 @@
 ### 目录结构描述
 ```
 ├── app                         // 应用服务
+│   ├── annotation              // 注释类
+│   ├── aop                     // 切面类
 │   ├── config                  // 应用服务配置
+│   ├── exception               // 异常处理类
 │   ├── generator               // 自动生成API
-│   ├── project                 // 应用服务API
+│   ├── handler                 // 应用框架处理类
+│   ├── project                 // （通用）应用服务API
 │   ├── Application             // 应用服务启动类
 ├── code                        // 业务代码设计
 │   ├── algorithm.*             // 算法 
 │   ├── design.*                // 设计模式 
-│   ├── reusability.*           // 可复用代码
+│   ├── reusability.*           // 可复用（模仿）业务代码
 ├── config                      // 常用配置
 ├── utils                       // 工具包
 │   ├── ratelimter              // 限流工具类
@@ -42,5 +46,5 @@
  
 * mybaits-plus自动生成工具
 * 限流工具类
-* swagger
+* swagger接口文档
  

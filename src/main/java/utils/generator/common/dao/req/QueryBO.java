@@ -15,16 +15,14 @@ import java.util.stream.Collectors;
 
 /**
  *
+ * @author Jimmy
  * @description: <查询业务类>
  * @UpdateRemark: <>
  * @Version: 1.0
  */
 @Data
 @ApiModel(value = "查询实体类")
-public class QueryBO<T> {
-
-    @ApiModelProperty(value = "分页实体", notes = "包含分页参数")
-    private PageParam page;
+public class QueryBO<T> extends PageParam{
 
     @ApiModelProperty(value = "实体参数", notes = "查询条件")
     private T entity;
@@ -36,7 +34,7 @@ public class QueryBO<T> {
     }
 
     public Page<T> getPage(){
-        return buildPage(this.page);
+        return buildPage(new PageParam(this.getPageNo(), this.getPageNo()));
     }
 
     public static <T> Page<T> buildPage(PageParam pageParam) {

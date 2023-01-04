@@ -17,6 +17,14 @@ spring:
     username: root
     password: inno@2021
 
+  # Redis 配置。Redisson 默认的配置足够使用，一般不需要进行调优
+  redis:
+    host: 10.0.99.191 # 地址
+    port: 6379 # 端口
+    database: 8 # 数据库索引
+    password: '6b22a2119f824bffdcfda3280d931dba'
+
+
 
 # mybatis配置
 mybatis-plus:

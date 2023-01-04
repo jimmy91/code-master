@@ -1,5 +1,6 @@
 package app.project.controller;
 
+import app.annotation.Idempotent;
 import app.project.entity.SystemDictDataDO;
 import app.project.mapper.SystemDictDataMapper;
 import app.project.service.SystemDictDataService;
@@ -34,6 +35,7 @@ public class SystemDictDataController {
 
     @PostMapping("list")
     @ApiOperation(value = "分页查询", notes="字典数据表")
+    @Idempotent
     public CommonResult<PageResult<SystemDictDataDO>> listSystemDictDataServiceByPage(@Valid @RequestBody QueryBO<SystemDictDataDO> query) {
          return CommonResult.success(PageResult.getResult(iSystemDictDataService.page(query.getPage(), query.initQueryWrapper())));
     }

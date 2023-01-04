@@ -1,5 +1,7 @@
 package utils.generator.common.dao.vo;
 
+import app.exception.ErrorCode;
+import app.exception.GlobalErrorCodeConstants;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.util.Assert;
@@ -10,6 +12,7 @@ import java.util.Objects;
 /**
  * 通用返回
  *
+ * @author Jimmy
  * @param <T> 数据泛型
  */
 @Data
@@ -64,7 +67,6 @@ public class CommonResult<T> implements Serializable {
     public static boolean isSuccess(Integer code) {
         return Objects.equals(code, GlobalErrorCodeConstants.SUCCESS.getCode());
     }
-
 
     @JsonIgnore // 避免 jackson 序列化
     public boolean isSuccess() {
