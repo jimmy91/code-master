@@ -34,7 +34,7 @@ public class QueryBO<T> extends PageParam{
     }
 
     public Page<T> getPage(){
-        return buildPage(new PageParam(this.getPageNo(), this.getPageNo()));
+        return buildPage(new PageParam(this.getPageNo(), this.getPageSize()));
     }
 
     public static <T> Page<T> buildPage(PageParam pageParam) {
