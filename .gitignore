@@ -1,4 +1,5 @@
 /target/
 /src/main/java/utils/generator/cn/tool/mybatis/module/*
 /src/main/java/app/generator/*/*
-/logs/
+/doc/logs/
+/tools/src/main/java/utils/generator/cn/tool/mybatis/module/

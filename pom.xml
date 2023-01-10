@@ -6,7 +6,13 @@
 
     <groupId>org.example</groupId>
     <artifactId>tools_project</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>tools</module>
+        <module>t_core</module>
+        <module>project</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -145,9 +151,14 @@
             <artifactId>guava</artifactId>
             <version>30.1.1-jre</version>
         </dependency>
-
         <!--限流-sentinel-->
 
+        <!--sa-token 权限认证框架-->
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-spring-boot-starter</artifactId>
+            <version>1.33.0</version>
+        </dependency>
 
 
     </dependencies>
