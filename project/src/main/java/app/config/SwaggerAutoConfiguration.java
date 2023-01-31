@@ -100,6 +100,7 @@ public class SwaggerAutoConfiguration {
                 .securityContexts(securityContexts());
     }
 
+/*
     @Bean
     public Docket createGeneratorApi() {
         // 创建 Docket 对象
@@ -115,6 +116,7 @@ public class SwaggerAutoConfiguration {
                 .globalRequestParameters(globalRequestParameters())
                 .securityContexts(securityContexts());
     }
+*/
 
 
 

@@ -1,9 +1,20 @@
 
 ## 工具集成类项目
 
-记录不错的工具类及优秀的代码片段，提供研发过程是简化重复工作
+记录不错的工具类及优秀的代码片段，提供便捷研发过程，简化重复工作流程 <br/>
+作者：杨 * 玉(Jimmy)
 
-### 目录结构描述
+
+### 1.项目入口地址
+|     标题      | 入口地址                                     | 描述  |
+|:-----------:|------------------------------------------|-----|
+| swagger接口文档 | http://localhost:8089/app/doc.html#/home |     |
+|    web首页    | http://localhost:8089/app/view/index     |     |
+|  IM Web聊天   | http://localhost:8089/app/view/im        |     |
+|             |                                          |     |
+
+
+### 2.目录结构描述
 ```
 tools_project
 ├── project.app                 // 应用服务
@@ -19,6 +30,7 @@ tools_project
 │   ├── code                    // 应用服务启动类
 │   │   ├── algorithm.*         // 算法 
 │   │   ├── design.*            // 设计模式 
+│   │   ├── netty.*             // netty websocket 
 │   │   ├── reusability.*       // 可复用（模仿）业务代码
 ├── tools.utils                 // 工具包
 │   ├── ratelimter              // 限流工具类
@@ -27,7 +39,7 @@ tools_project
 ├── readme.md                   // 说明文档
 
 ```
-###  好用的技术文档
+###  3.好用的技术文档
 * 「Good Good Study. Day Day Up」
     > 我们看过很多技术文章，却依然不知道架构代码该咋整。
   > 
@@ -43,11 +55,12 @@ tools_project
 |     Knife4j     | https://doc.xiaominfo.com/                                                                    | 集成Swagger生成Api文档的增强解决方案 |
 |                 |                                                                                               |                         |
 
-###  内置功能
+###  4.内置功能
  
 * mybaits-plus自动生成工具
 * 限流工具类
 * swagger接口文档
 * 幂等防重复请求
+* IM WEB聊天
 * 链路跟踪
  

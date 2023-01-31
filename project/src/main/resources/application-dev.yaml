@@ -6,7 +6,7 @@ server:
   port: 8089 # 端口号
   connection-timeout: 5000ms
   servlet:
-    context-path: /tools # 访问路径的起始
+    context-path: /app # 访问路径的起始
 
 
 # mysql访问配置
