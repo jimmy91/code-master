@@ -29,8 +29,9 @@ public class WebSocketListenerClient {
                 @Override
                 public void onOpen(ServerHandshake handshakedata) {
                     log.info("[websocket] 连接成功");
-                    Map<String, Object> map = new HashMap<>();
+                    Map<String, Object> map = new HashMap<>(16);
                     map.put("typeId", "netty_msg_first");
+                    map.put("msg", "客户端建立连接");
                     String jsonMsg = JSONObject.toJSONString(map);
                     this.send(jsonMsg);
                     log.info("[websocket] 回发连接成功消息!");
@@ -46,7 +47,7 @@ public class WebSocketListenerClient {
                     Map<String, Object> map = JSONObject.parseObject(message, Map.class);
                     String typeId = String.valueOf(map.get("typeId"));
                     switch (typeId) {
-                        case "netty_client_20220204":
+                        case "netty_client_push":
                             log.info("[websocket] 收到类型ID为={},消息={}", typeId, message);
                             break;
                     }
@@ -70,5 +71,6 @@ public class WebSocketListenerClient {
         }
         return null;
     }
+
 
 }

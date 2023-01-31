@@ -24,6 +24,14 @@ spring:
     database: 8 # 数据库索引
     password: '6b22a2119f824bffdcfda3280d931dba'
 
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false
 
 
 # mybatis配置

@@ -57,7 +57,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
         try {
             TextWebSocketFrame msg = (TextWebSocketFrame) msgObj;
             if (!ObjectUtils.isEmpty(msg.text())) {
-                Map<String, Object> map = new HashMap<>();
+                Map<String, Object> map = new HashMap<>(16);
                 map = com.alibaba.fastjson.JSONObject.parseObject(msg.text(), Map.class);
                 String typeId = String.valueOf(map.get("typeId"));
                 switch (typeId) {
@@ -71,17 +71,18 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
                         ctx.channel().attr(key).setIfAbsent(CHANNEL_TYPE);
                         break;
 
-                    //netty_web_20220204类型ID:接收前端发送的消息类型
-                    case "netty_web_20220204":
-                        log.info("(类型ID:netty_web_20220204)服务器收到前端发送消息：{}", msg.text());
+                    //netty_web_push类型ID:接收前端发送的消息类型
+                    case "netty_web_push":
+                        log.info("(类型ID:netty_web_push)服务器收到前端发送消息：{}", msg.text());
 
                         break;
 
-                    //netty_web_20220204类型ID:接收客户端发送的消息类型
-                    case "netty_client_20220204":
-                        log.info("(类型ID:netty_client_20220204)服务器收到前端发送消息：{}", msg.text());
+                    //netty_client_push类型ID:接收客户端发送的消息类型
+                    case "netty_client_push":
+                        log.info("(类型ID:netty_client_push)服务器收到商户端发送消息：{}", msg.text());
 
                         break;
+                    default:
                 }
             }
 
@@ -93,11 +94,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, TextWebSocketFrame textWebSocketFrame) throws Exception {
-        try {
-            System.out.println("接收到的信息：" + textWebSocketFrame.toString());
-        } finally {
-            ReferenceCountUtil.release(textWebSocketFrame);
-        }
+
     }
 
 

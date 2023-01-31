@@ -74,7 +74,7 @@ public class NettyServer {
                 // 以块的方式来写的处理器
                 ch.pipeline().addLast(new ChunkedWriteHandler());
 
-                log.info("Netty服务正在启动中......");
+                log.info("Netty服务通道创建中......");
 
                 /**
                  说明：
