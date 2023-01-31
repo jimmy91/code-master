@@ -53,7 +53,9 @@ tools_project
 |     Easypoi     | http://easypoi.mydoc.io/ <br/> https://gitee.com/lemur/easypoi                                | 文档处理工具                  |
 |    JustAuth     | https://github.com/justauth/JustAuth <br/> https://justauth.wiki/guide/                       | 第三方授权登录的工具类库            |
 |     Knife4j     | https://doc.xiaominfo.com/                                                                    | 集成Swagger生成Api文档的增强解决方案 |
+|    Nacos注册中心    | https://nacos.io/zh-cn/docs/v2/quickstart/quick-start.html                                    |                         |
 |                 |                                                                                               |                         |
+
 
 ###  4.内置功能
  
