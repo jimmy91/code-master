@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import utils.generator.common.dao.vo.CommonResult;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,7 +38,7 @@ public class ImPushController {
      */
     @ApiOperation(value = "推送给所有", notes="")
     @PostMapping("/sendMsgToAll")
-    public void sendMsgToAll(@RequestParam("msg") String msg) {
+    public CommonResult<Boolean> sendMsgToAll(@RequestParam("msg") String msg) {
         MessageDto messageDto = new MessageDto();
         String uuid = String.valueOf(UUID.randomUUID()).replace("-", "");
         messageDto.setNettyId(uuid);
@@ -52,6 +53,7 @@ public class ImPushController {
         map.put("number", "A-1257564246");
         messageDto.setObjectMap(map);
         pushService.sendMsgToAll(messageDto);
+        return CommonResult.success(true);
     }
 
 
@@ -63,7 +65,7 @@ public class ImPushController {
      */
     @ApiOperation(value = "推送给指定", notes="")
     @PostMapping("/sendMsgToOne")
-    public void sendMsgToOne(@RequestParam("name") String name, @RequestParam("msg") String msg, @RequestParam("typeId") String typeId) {
+    public CommonResult<Boolean> sendMsgToOne(@RequestParam("name") String name, @RequestParam("msg") String msg, @RequestParam("typeId") String typeId) {
         MessageDto messageDto = new MessageDto();
         String uuid = String.valueOf(UUID.randomUUID()).replace("-", "");
         messageDto.setNettyId(uuid);
@@ -78,6 +80,7 @@ public class ImPushController {
         map.put("number", "1257564246");
         messageDto.setObjectMap(map);
         pushService.sendMsgToOne(messageDto.getType(), messageDto);
+        return CommonResult.success(true);
     }
 }
 

@@ -2,6 +2,9 @@ package utils.tools.distance;
 
 import java.util.Objects;
 
+/**
+ * @author Jimmy
+ */
 public class DistanceUtil {
 
     /**
