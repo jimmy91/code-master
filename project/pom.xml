@@ -39,6 +39,7 @@
         </dependency>
         <!--netty websocket-->
 
+        <!--spring thymeleaf模块解析-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -46,6 +47,14 @@
             <classifier>sources</classifier>
             <type>java-source</type>
         </dependency>
+
+        <!--阿里链路追踪 Tracing Analysis-->
+        <dependency>
+            <groupId>io.jaegertracing</groupId>
+            <artifactId>jaeger-client</artifactId>
+            <version>1.8.1</version>
+        </dependency>
+
 
     </dependencies>
 
