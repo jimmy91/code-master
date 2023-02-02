@@ -31,7 +31,7 @@ import static com.baomidou.mybatisplus.core.toolkit.StringPool.UNDERSCORE;
 public class MyBatisPlusGenerator {
 
     public static String[] TABLES = {
-            "coupon_product_info", "coupon_order_record"
+            "seckill", "success_killed"
     };
 
     public static void main(String[] args) {
@@ -54,7 +54,7 @@ public class MyBatisPlusGenerator {
                 // 设置生成的service接口的名字的首字母是否为I，默认Service是以I开头的
                 .setServiceName("%sService")
                 //实体类结尾名称
-                .setEntityName("%sDO")
+                .setEntityName("%sEntity")
                 //生成基本的resultMap
                 .setBaseResultMap(true)
                 //不使用AR模式
@@ -67,7 +67,7 @@ public class MyBatisPlusGenerator {
         // TODO 设置数据库类型
         dsConfig.setDbType(DbType.MYSQL)
                 .setDriverName("com.mysql.jdbc.Driver")
-                .setUrl("jdbc:mysql://10.0.99.191:3306/pala-planet?useSSL=false")
+                .setUrl("jdbc:mysql://10.0.99.191:3306/test?useSSL=false")
                 .setUsername("root")
                 .setPassword("inno@2021");
 

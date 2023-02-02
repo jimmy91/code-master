@@ -31,6 +31,7 @@ tools_project
 │   │   ├── algorithm.*         // 算法 
 │   │   ├── design.*            // 设计模式 
 │   │   ├── netty.*             // netty websocket 
+│   │   ├── queue               // 消息队列
 │   │   ├── reusability.*       // 可复用（模仿）业务代码
 ├── tools.utils                 // 工具包
 │   ├── ratelimter              // 限流工具类
@@ -67,5 +68,5 @@ tools_project
 * swagger接口文档
 * 幂等防重复请求
 * IM WEB聊天
-* 阿里云链路追踪
+* 阿里云链路追踪+SkyWalking
  

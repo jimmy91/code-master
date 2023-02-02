@@ -15,7 +15,7 @@ import utils.generator.common.entity.BaseDO;
 @Data
 @TableName("system_dict_data")
 @ApiModel(value = "字典数据表实体")
-public class SystemDictDataDO extends BaseDO {
+public class SystemDictDataEntity extends BaseDO {
 
     private static final long serialVersionUID = 8113240514468936733L;
 

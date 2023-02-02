@@ -1,6 +1,6 @@
 package app.project.service;
 
-import app.project.entity.SystemDictDataDO;
+import app.project.entity.SystemDictDataEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,6 +9,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @date: 2022-12-30
  * @remark: <>
  */
-public interface SystemDictDataService extends IService<SystemDictDataDO> {
+public interface SystemDictDataService extends IService<SystemDictDataEntity> {
 
 }

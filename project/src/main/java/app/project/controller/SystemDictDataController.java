@@ -1,7 +1,7 @@
 package app.project.controller;
 
 import app.annotation.Idempotent;
-import app.project.entity.SystemDictDataDO;
+import app.project.entity.SystemDictDataEntity;
 import app.project.mapper.SystemDictDataMapper;
 import app.project.service.SystemDictDataService;
 import io.swagger.annotations.Api;
@@ -36,20 +36,20 @@ public class SystemDictDataController {
     @PostMapping("list")
     @ApiOperation(value = "分页查询", notes="字典数据表")
     @Idempotent
-    public CommonResult<PageResult<SystemDictDataDO>> listSystemDictDataServiceByPage(@Valid @RequestBody QueryBO<SystemDictDataDO> query) {
+    public CommonResult<PageResult<SystemDictDataEntity>> listSystemDictDataServiceByPage(@Valid @RequestBody QueryBO<SystemDictDataEntity> query) {
          return CommonResult.success(PageResult.getResult(iSystemDictDataService.page(query.getPage(), query.initQueryWrapper())));
     }
 
     @GetMapping("{id}")
     @ApiOperation(value = "获取详情", notes="")
     @ApiImplicitParam(name = "id", value = "业务主键ID", required = true, dataTypeClass = Long.class)
-    public CommonResult<SystemDictDataDO> getSystemDictDataServiceDetails(@PathVariable Long id) {
+    public CommonResult<SystemDictDataEntity> getSystemDictDataServiceDetails(@PathVariable Long id) {
         return CommonResult.success(iSystemDictDataService.getById(id));
     }
 
     @PostMapping("save")
     @ApiOperation(value = "新增数据", notes="")
-    public CommonResult<Long> saveSystemDictDataService(@Valid @RequestBody SystemDictDataDO req) {
+    public CommonResult<Long> saveSystemDictDataService(@Valid @RequestBody SystemDictDataEntity req) {
         iSystemDictDataService.save(req);
         return CommonResult.success(req.getId());
     }
@@ -57,7 +57,7 @@ public class SystemDictDataController {
     @PostMapping("update/{id}")
     @ApiOperation(value = "修改数据", notes="")
     @ApiImplicitParam(name = "id", value = "业务主键ID", required = true, dataTypeClass = Long.class)
-    public CommonResult<Boolean> modifySystemDictDataService(@Valid @RequestBody SystemDictDataDO req, @PathVariable Long id) {
+    public CommonResult<Boolean> modifySystemDictDataService(@Valid @RequestBody SystemDictDataEntity req, @PathVariable Long id) {
         req.setId(id);
         return CommonResult.success(iSystemDictDataService.updateById(req));
     }
@@ -75,7 +75,7 @@ public class SystemDictDataController {
     @PostMapping("query")
     @ApiOperation(value = "批量查询", notes="")
     @ApiImplicitParam(name = "ids", value = "业务主键ID,多个用逗号分隔.请求参数组装在url后发送", required = true, dataTypeClass = String.class)
-    public CommonResult<Map<Long, SystemDictDataDO>> batchQuerySystemDictDataService(@RequestParam(value = "ids") List<Long> ids) {
+    public CommonResult<Map<Long, SystemDictDataEntity>> batchQuerySystemDictDataService(@RequestParam(value = "ids") List<Long> ids) {
         return CommonResult.success(mapper.listMapByIds(ids));
     }
 
