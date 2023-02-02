@@ -1,13 +1,12 @@
 package app.project.service.impl;
 
+import app.annotation.ServiceLock;
 import app.project.entity.SeckillEntity;
 import app.project.entity.SuccessKilledEntity;
 import app.project.mapper.SeckillMapper;
 import app.project.mapper.SuccessKilledMapper;
 import app.project.service.ISeckillService;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -117,7 +116,7 @@ public class SeckillServiceImpl extends ServiceImpl<SeckillMapper, SeckillEntity
 		return CommonResult.success(true);
 	}
 	@Override
-	//@Servicelock
+	@ServiceLock
 	@Transactional
 	public CommonResult startSeckilAopLock(long seckillId, long userId) {
 		//来自码云码友<马丁的早晨>的建议 使用AOP + 锁实现
