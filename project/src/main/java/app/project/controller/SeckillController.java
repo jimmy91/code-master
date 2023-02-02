@@ -40,7 +40,7 @@ public class SeckillController {
     /**
      * 休眠时间
      */
-    private static final int SLEEP = 6 * 1000;
+    private static final int SLEEP = 5 * 1000;
 
     @Autowired
     private ISeckillService seckillService;
