@@ -79,7 +79,7 @@ public class SystemDictDataController {
     }
 
     @PostMapping("batchQuery")
-    @ApiOperation(value = "批量查询", notes = "")
+    @ApiOperation(value = "批量查询(@Cacheable缓存)", notes = "")
     @ApiImplicitParam(name = "ids", value = "业务主键ID,多个用逗号分隔.请求参数组装在url后发送", required = true, dataTypeClass = String.class)
     public CommonResult<Map<Long, SystemDictDataEntity>> batchQuerySystemDictDataService(@RequestParam(value = "ids") List<Long> ids) {
         return CommonResult.success(iSystemDictDataService.listMapByIds(ids));
