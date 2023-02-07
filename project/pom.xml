@@ -26,6 +26,13 @@
             <scope>compile</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.12.6.1</version>
+            <scope>compile</scope>
+        </dependency>
+
         <!--netty websocket-->
         <dependency>
             <groupId>io.netty</groupId>
@@ -55,12 +62,10 @@
             <version>1.8.1</version>
         </dependency>
 
-
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.12.6.1</version>
-            <scope>compile</scope>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>3.15.1</version>
         </dependency>
 
     </dependencies>

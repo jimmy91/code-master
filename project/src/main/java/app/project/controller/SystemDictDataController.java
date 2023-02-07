@@ -25,7 +25,7 @@ import java.util.Map;
  * @date: 2022-12-30
  * @remark:
  */
-@Api(tags = "API模块-字典数据表")
+@Api(tags = "API模块")
 @RestController
 @RequestMapping(value = "/system/dictData")
 @Validated

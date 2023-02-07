@@ -21,7 +21,7 @@ import java.util.Map;
  * @author
  * @date 2020-01-13-20:15
  */
-@Api(tags = "IM模块-消息发送")
+@Api(tags = "IM模块")
 @RestController
 @RequestMapping("/push")
 @Validated
