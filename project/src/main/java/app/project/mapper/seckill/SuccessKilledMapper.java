@@ -1,6 +1,6 @@
-package app.project.mapper;
+package app.project.mapper.seckill;
 
-import app.project.entity.SuccessKilledEntity;
+import app.project.entity.seckill.SuccessKilledEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

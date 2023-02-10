@@ -4,6 +4,9 @@
 记录不错的工具类及优秀的代码片段，提供便捷研发过程，简化重复工作流程 <br/>
 作者：杨 * 玉(Jimmy)
 
+### 代码库：
+https://gitee.com/core.jimmy/projects
+https://github.com/jimmy91
 
 ### 1.项目入口地址
 |     标题      | 入口地址                                     | 描述  |

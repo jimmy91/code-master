@@ -1,6 +1,6 @@
-package app.project.mapper;
+package app.project.mapper.seckill;
 
-import app.project.entity.SeckillEntity;
+import app.project.entity.seckill.SeckillEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

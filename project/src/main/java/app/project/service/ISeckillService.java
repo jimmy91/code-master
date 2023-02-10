@@ -1,6 +1,6 @@
 package app.project.service;
 
-import app.project.entity.SeckillEntity;
+import app.project.entity.seckill.SeckillEntity;
 import utils.generator.common.dao.vo.CommonResult;
 import java.util.List;
 

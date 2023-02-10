@@ -73,3 +73,59 @@ CREATE TABLE `success_killed` (
   KEY `idx_create_time` (`create_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='秒杀成功明细表';
 -- 商品秒杀 --
+
+
+DROP TABLE IF EXISTS `table_test`;
+CREATE TABLE `table_test`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '测试字符串',
+  `birthday` datetime(0) NULL DEFAULT NULL COMMENT '测试日期值',
+  `sal` decimal(10, 2) NULL DEFAULT NULL COMMENT '测试double 值',
+  `status` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '测试枚举值',
+  `success` bit(1) NULL DEFAULT NULL COMMENT '测试bool 值',
+  `phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机号',
+  `email` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮件',
+  `idcard` char(18) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '身份证',
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '家庭住址',
+  `job` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '职业',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '测试表' ROW_FORMAT = Compact;
+
+
+-- 事务  --
+
+DROP TABLE IF EXISTS `trx_dept`;
+CREATE TABLE `trx_dept`  (
+  `deptno` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '部门编号',
+  `dname` varchar(14) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '部门名称',
+  `loc` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '位置',
+   PRIMARY KEY (`deptno`)
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '部门信息表' ROW_FORMAT = Compact;
+
+
+-- ----------------------------
+-- Table structure for emp
+-- ----------------------------
+DROP TABLE IF EXISTS `trx_emp`;
+CREATE TABLE `trx_emp` (
+  `empno` int NOT NULL COMMENT '员工编号',
+  `ename` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '员工姓名',
+  `job` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '职业',
+  `mgr` int DEFAULT NULL COMMENT '上级编号',
+  `hiredate` datetime DEFAULT NULL COMMENT '雇佣日期',
+  `sal` decimal(10,2) DEFAULT NULL COMMENT '薪水',
+  `comm` decimal(10,2) DEFAULT NULL COMMENT '奖金',
+  `deptno` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '部门编号',
+  PRIMARY KEY (`empno`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=COMPACT COMMENT='员工信息表';
+
+-- 事务  --
+
+
+
+
+
+
+
+
+

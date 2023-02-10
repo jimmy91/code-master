@@ -3,7 +3,7 @@ package app.project.controller;
 import app.annotation.Idempotent;
 import app.contanst.CacheSpaceConstant;
 import app.project.entity.SystemDictDataEntity;
-import app.project.service.SystemDictDataService;
+import app.project.service.SystemApiService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -28,12 +28,12 @@ import java.util.Map;
  */
 @Api(tags = "API模块")
 @RestController
-@RequestMapping(value = "/system/dictData")
+@RequestMapping(value = "/system/api")
 @Validated
-public class SystemDictDataController {
+public class SystemApiController {
 
     @Autowired
-    private SystemDictDataService iSystemDictDataService;
+    private SystemApiService iSystemDictDataService;
 
     @PostMapping("list")
     @ApiOperation(value = "分页查询", notes = "字典数据表")

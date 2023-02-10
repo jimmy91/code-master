@@ -126,6 +126,13 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.5.2</version>
         </dependency>
+
+        <!--mybatis增强工具，不兼容plus-->
+        <!--<dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>2.1.5</version>
+        </dependency>-->
         <!--mysql + mybatis-plus  end -->
 
     </dependencies>
@@ -145,5 +152,6 @@
             </snapshots>
         </repository>
     </repositories>
+
 
 </project>

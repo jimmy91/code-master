@@ -1,8 +1,8 @@
 package app.project.service.impl;
 
 import app.project.entity.SystemDictDataEntity;
-import app.project.mapper.SystemDictDataMapper;
-import app.project.service.SystemDictDataService;
+import app.project.mapper.SystemApiMapper;
+import app.project.service.SystemApiService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import java.util.Map;
  * @remark: <>
  */
 @Service
-public class SystemDictDataServiceImpl extends ServiceImpl<SystemDictDataMapper, SystemDictDataEntity> implements SystemDictDataService {
+public class SystemApiServiceImpl extends ServiceImpl<SystemApiMapper, SystemDictDataEntity> implements SystemApiService {
 
     @Override
     public Map<Long, SystemDictDataEntity> listMapByIds(List<Long> ids) {

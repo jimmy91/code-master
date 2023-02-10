@@ -12,7 +12,7 @@ import java.util.Map;
  * @date: 2022-12-30
  * @remark: <>
  */
-public interface SystemDictDataService extends IService<SystemDictDataEntity> {
+public interface SystemApiService extends IService<SystemDictDataEntity> {
 
     Map<Long, SystemDictDataEntity> listMapByIds(List<Long> ids);
 

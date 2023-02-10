@@ -1375,8 +1375,8 @@ Caused by: java.lang.NullPointerException: null
 2023-01-30 14:48:34.645 INFO  12712 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/tools] - Initializing Spring embedded WebApplicationContext
 2023-01-30 14:48:34.645 INFO  12712 --- [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1520 ms
 2023-01-30 14:48:35.508 INFO  12712 --- [Thread-2] app.netty.NettyServer - Netty Server started and listen on:/0:0:0:0:0:0:0:0:8788
-2023-01-30 14:48:35.761 ERROR 12712 --- [main] org.mybatis.spring.mapper.MapperFactoryBean - Error while adding the mapper 'interface app.project.mapper.SystemDictDataMapper' to configuration.
-org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'app/project/mapper/SystemDictDataMapper.xml'. Cause: org.apache.ibatis.builder.BuilderException: Wrong namespace. Expected 'app.project.mapper.SystemDictDataMapper' but found 'utils.generator.cn.tool.mybatis.module.mapper.SystemDictDataMapper'.
+2023-01-30 14:48:35.761 ERROR 12712 --- [main] org.mybatis.spring.mapper.MapperFactoryBean - Error while adding the mapper 'interface app.project.mapper.SystemApiMapper' to configuration.
+org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'app/project/mapper/SystemDictDataMapper.xml'. Cause: org.apache.ibatis.builder.BuilderException: Wrong namespace. Expected 'app.project.mapper.SystemApiMapper' but found 'utils.generator.cn.tool.mybatis.module.mapper.SystemDictDataMapper'.
 	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:123)
 	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:95)
 	at com.baomidou.mybatisplus.core.MybatisMapperAnnotationBuilder.loadXmlResource(MybatisMapperAnnotationBuilder.java:174)
@@ -1419,17 +1419,17 @@ org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML lo
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
 	at app.Application.main(Application.java:17)
-Caused by: org.apache.ibatis.builder.BuilderException: Wrong namespace. Expected 'app.project.mapper.SystemDictDataMapper' but found 'utils.generator.cn.tool.mybatis.module.mapper.SystemDictDataMapper'.
+Caused by: org.apache.ibatis.builder.BuilderException: Wrong namespace. Expected 'app.project.mapper.SystemApiMapper' but found 'utils.generator.cn.tool.mybatis.module.mapper.SystemDictDataMapper'.
 	at org.apache.ibatis.builder.MapperBuilderAssistant.setCurrentNamespace(MapperBuilderAssistant.java:78)
 	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:115)
 	... 41 common frames omitted
-2023-01-30 14:48:35.762 WARN  12712 --- [main] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'systemDictDataController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'systemDictDataMapper' defined in file [E:\jimmy\tools_project\project\target\classes\app\project\mapper\SystemDictDataMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'app/project/mapper/SystemDictDataMapper.xml'. Cause: org.apache.ibatis.builder.BuilderException: Wrong namespace. Expected 'app.project.mapper.SystemDictDataMapper' but found 'utils.generator.cn.tool.mybatis.module.mapper.SystemDictDataMapper'.
+2023-01-30 14:48:35.762 WARN  12712 --- [main] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'systemDictDataController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'systemDictDataMapper' defined in file [E:\jimmy\tools_project\project\target\classes\app\project\mapper\SystemDictDataMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'app/project/mapper/SystemDictDataMapper.xml'. Cause: org.apache.ibatis.builder.BuilderException: Wrong namespace. Expected 'app.project.mapper.SystemApiMapper' but found 'utils.generator.cn.tool.mybatis.module.mapper.SystemDictDataMapper'.
 2023-01-30 14:48:39.918 INFO  12712 --- [main] org.apache.catalina.core.StandardService - Stopping service [Tomcat]
 2023-01-30 14:48:39.926 INFO  12712 --- [main] o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 2023-01-30 14:48:39.955 ERROR 12712 --- [main] org.springframework.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'systemDictDataController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'systemDictDataMapper' defined in file [E:\jimmy\tools_project\project\target\classes\app\project\mapper\SystemDictDataMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'app/project/mapper/SystemDictDataMapper.xml'. Cause: org.apache.ibatis.builder.BuilderException: Wrong namespace. Expected 'app.project.mapper.SystemDictDataMapper' but found 'utils.generator.cn.tool.mybatis.module.mapper.SystemDictDataMapper'.
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'systemDictDataController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'systemDictDataMapper' defined in file [E:\jimmy\tools_project\project\target\classes\app\project\mapper\SystemDictDataMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'app/project/mapper/SystemDictDataMapper.xml'. Cause: org.apache.ibatis.builder.BuilderException: Wrong namespace. Expected 'app.project.mapper.SystemApiMapper' but found 'utils.generator.cn.tool.mybatis.module.mapper.SystemDictDataMapper'.
 	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:332)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
@@ -1448,7 +1448,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
 	at app.Application.main(Application.java:17)
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'systemDictDataMapper' defined in file [E:\jimmy\tools_project\project\target\classes\app\project\mapper\SystemDictDataMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'app/project/mapper/SystemDictDataMapper.xml'. Cause: org.apache.ibatis.builder.BuilderException: Wrong namespace. Expected 'app.project.mapper.SystemDictDataMapper' but found 'utils.generator.cn.tool.mybatis.module.mapper.SystemDictDataMapper'.
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'systemDictDataMapper' defined in file [E:\jimmy\tools_project\project\target\classes\app\project\mapper\SystemDictDataMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'app/project/mapper/SystemDictDataMapper.xml'. Cause: org.apache.ibatis.builder.BuilderException: Wrong namespace. Expected 'app.project.mapper.SystemApiMapper' but found 'utils.generator.cn.tool.mybatis.module.mapper.SystemDictDataMapper'.
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
@@ -1466,13 +1466,13 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
 	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:329)
 	... 17 common frames omitted
-Caused by: java.lang.IllegalArgumentException: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'app/project/mapper/SystemDictDataMapper.xml'. Cause: org.apache.ibatis.builder.BuilderException: Wrong namespace. Expected 'app.project.mapper.SystemDictDataMapper' but found 'utils.generator.cn.tool.mybatis.module.mapper.SystemDictDataMapper'.
+Caused by: java.lang.IllegalArgumentException: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'app/project/mapper/SystemDictDataMapper.xml'. Cause: org.apache.ibatis.builder.BuilderException: Wrong namespace. Expected 'app.project.mapper.SystemApiMapper' but found 'utils.generator.cn.tool.mybatis.module.mapper.SystemDictDataMapper'.
 	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:83)
 	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:44)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
 	... 32 common frames omitted
-Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'app/project/mapper/SystemDictDataMapper.xml'. Cause: org.apache.ibatis.builder.BuilderException: Wrong namespace. Expected 'app.project.mapper.SystemDictDataMapper' but found 'utils.generator.cn.tool.mybatis.module.mapper.SystemDictDataMapper'.
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'app/project/mapper/SystemDictDataMapper.xml'. Cause: org.apache.ibatis.builder.BuilderException: Wrong namespace. Expected 'app.project.mapper.SystemApiMapper' but found 'utils.generator.cn.tool.mybatis.module.mapper.SystemDictDataMapper'.
 	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:123)
 	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:95)
 	at com.baomidou.mybatisplus.core.MybatisMapperAnnotationBuilder.loadXmlResource(MybatisMapperAnnotationBuilder.java:174)
@@ -1481,7 +1481,7 @@ Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML.
 	at com.baomidou.mybatisplus.core.MybatisConfiguration.addMapper(MybatisConfiguration.java:152)
 	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:80)
 	... 35 common frames omitted
-Caused by: org.apache.ibatis.builder.BuilderException: Wrong namespace. Expected 'app.project.mapper.SystemDictDataMapper' but found 'utils.generator.cn.tool.mybatis.module.mapper.SystemDictDataMapper'.
+Caused by: org.apache.ibatis.builder.BuilderException: Wrong namespace. Expected 'app.project.mapper.SystemApiMapper' but found 'utils.generator.cn.tool.mybatis.module.mapper.SystemDictDataMapper'.
 	at org.apache.ibatis.builder.MapperBuilderAssistant.setCurrentNamespace(MapperBuilderAssistant.java:78)
 	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:115)
 	... 41 common frames omitted

@@ -17,7 +17,7 @@ import java.util.Map;
  * @remark:
  */
 @Mapper
-public interface SystemDictDataMapper extends BaseMapper<SystemDictDataEntity> {
+public interface SystemApiMapper extends BaseMapper<SystemDictDataEntity> {
 
     /**
      * 通过ID批量查询

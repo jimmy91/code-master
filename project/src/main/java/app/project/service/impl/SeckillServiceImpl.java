@@ -1,10 +1,10 @@
 package app.project.service.impl;
 
 import app.annotation.ServiceLock;
-import app.project.entity.SeckillEntity;
-import app.project.entity.SuccessKilledEntity;
-import app.project.mapper.SeckillMapper;
-import app.project.mapper.SuccessKilledMapper;
+import app.project.entity.seckill.SeckillEntity;
+import app.project.entity.seckill.SuccessKilledEntity;
+import app.project.mapper.seckill.SeckillMapper;
+import app.project.mapper.seckill.SuccessKilledMapper;
 import app.project.service.ISeckillService;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

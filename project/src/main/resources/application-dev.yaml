@@ -36,7 +36,7 @@ spring:
 
 # mybatis配置
 mybatis-plus:
-  mapper-locations: classpath:mapper/*.xml
+  mapper-locations: classpath:mapper/*.xml,mapper/*/*.xml
   configuration:
     map-underscore-to-camel-case: true # 虽然默认为 true ，但是还是显示去指定下。
     #log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl # 默认输出到日志文件

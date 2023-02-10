@@ -31,7 +31,7 @@ import static com.baomidou.mybatisplus.core.toolkit.StringPool.UNDERSCORE;
 public class MyBatisPlusGenerator {
 
     public static String[] TABLES = {
-            "seckill", "success_killed"
+            "trx_emp", "trx_dept", "trx_batch"
     };
 
     public static void main(String[] args) {
@@ -87,11 +87,10 @@ public class MyBatisPlusGenerator {
                 // 逻辑删除、
                 .setLogicDeleteFieldName("deleted")
                 // TODO 你自己的父类实体
-                .setSuperEntityClass("utils.generator.common.entity.BaseDO")
+                // .setSuperEntityClass("utils.generator.common.entity.BaseDO")
                 // TODO 生成类的时候排除的字符串(因为这些字段已经在父类中，子类无需再生成)
-                .setSuperEntityColumns(
-                        "creator","create_time","updater","update_time","deleted","tenant_id"
-                )
+                // .setSuperEntityColumns(
+                //       "creator","create_time","updater","update_time","deleted","tenant_id"  )
                 // TODO 生成的表, 支持多表一起生成，以数组形式填写
                 // .setInclude("table01", "table02");  // .setInclude(scanner("表名，多个英文逗号分割").split(","));
                 .setInclude(TABLES);
