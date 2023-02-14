@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface TrxEmpMapper extends BaseMapper<TrxEmpEntity> {
 
-    TrxEmpEntity selectEmpByNo(Long no);
+    TrxEmpEntity selectEmpByNo(Integer no);
 
 }

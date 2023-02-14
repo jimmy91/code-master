@@ -5,6 +5,7 @@ import app.project.entity.trx.TrxEmpEntity;
 import app.project.mapper.trx.TrxDeptMapper;
 import app.project.mapper.trx.TrxEmpMapper;
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.thread.ThreadUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomUtils;
@@ -26,6 +27,7 @@ import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.*;
 
@@ -58,7 +60,7 @@ public class TrxServiceImpl extends ServiceImpl<TrxEmpMapper, TrxEmpEntity> {
     ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1,5,0, TimeUnit.MILLISECONDS,new ArrayBlockingQueue<>(5));
 
 
-    public TrxEmpEntity getEmp(Long no) {
+    public TrxEmpEntity getEmp(Integer no) {
         return empMapper.selectEmpByNo(no);
     }
 
@@ -214,42 +216,60 @@ public class TrxServiceImpl extends ServiceImpl<TrxEmpMapper, TrxEmpEntity> {
     @Transactional(rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED)
     public String trx10() throws ExecutionException, InterruptedException, TimeoutException {
         String deptNo = randomDeptNo();
-        List<TrxEmpEntity> empEntities = empMapper.selectList(new LambdaQueryWrapperX<TrxEmpEntity>()
-                .between(TrxEmpEntity::getEmpno, 51600, 59031));
-        log.info(">>>>>> 初始范围条数 count={}", empEntities.size());
+        List<TrxEmpEntity> empEntities = Collections.emptyList();
+        // 读已提交情况下，如果不预先进行范围查询，那后续就可以获取到最新数据，没有加间隙锁
+        empEntities = empMapper.selectList(new LambdaQueryWrapperX<TrxEmpEntity>()
+              .between(TrxEmpEntity::getEmpno, 50600, 59031));
+       // log.info(">>>>>> 初始范围条数 count={}", empEntities.size());
+        final Integer updateEmpNo = 7104;
+        // 新事务插入数据
+        final Integer innerEmpNo = 51658;
         // 启动一个新的线程添加数据
         Callable<TrxEmpEntity> callable = () -> {
+            // 添加一个事务范围内的数据
             TrxEmpEntity emp = new TrxEmpEntity();
             emp.setDeptno(deptNo);
             emp.setEname(RandomUtil.username());
-            emp.setEmpno(RandomUtils.nextInt(10, 100000));
-            emp.setEmpno(51621);
+            emp.setEmpno(innerEmpNo);
             empMapper.insert(emp);
+            // 更新一条数据
+            String rName = RandomUtil.username();
+            TrxEmpEntity updateEmp = new TrxEmpEntity();
+            updateEmp.setEmpno(updateEmpNo);
+            updateEmp.setEname(rName);
+            empMapper.updateById(updateEmp);
 
             List<TrxEmpEntity> newEmps = empMapper.selectList(new LambdaQueryWrapperX<TrxEmpEntity>()
-                    .between(TrxEmpEntity::getEmpno, 51600, 59031));
-            log.info(">>>>>> count={}", newEmps.size());
-
+                    .between(TrxEmpEntity::getEmpno, 50600, 59031));
+            log.info(">>>>>> 异步线程获取到新添加的数据 count={}, 更新某用户名称 rName={}", newEmps.size(), rName);
             return emp;
         };
         Future<TrxEmpEntity> future = threadPoolExecutor.submit(callable);
         TrxEmpEntity addEmp = future.get(5, TimeUnit.SECONDS);
         log.info(">>>>>> 添加成功 {}", addEmp);
+        ThreadUtil.sleep(100);
 
+        String rName = empMapper.selectEmpByNo(updateEmpNo).getEname();
+        TrxEmpEntity insertInnerEntity = empMapper.selectEmpByNo(innerEmpNo);
         empEntities = empMapper.selectList(new LambdaQueryWrapperX<TrxEmpEntity>()
-                .between(TrxEmpEntity::getEmpno, 51600, 59031));
-        log.info(">>>>>> 无法获取到新添加的数据 count={}", empEntities.size());
+                .between(TrxEmpEntity::getEmpno, 50600, 59031));
+        List<TrxEmpEntity> empEntitiesV2 = empMapper.selectList(new LambdaQueryWrapperX<TrxEmpEntity>()
+                .between(TrxEmpEntity::getEmpno, 50600 - 5, 59031 + 5));
+        log.info(">>>>>> (读已提交隔离级别下)能够查询到更新的数据，可重复读隔离级别不可查询到更新后的数据。 rName = {}", rName);
+        log.info(">>>>>> (读已提交隔离级别下)能够通过ID查询到数据，可重复读隔离级别查询结果为空。insertInnerEntity = {}", insertInnerEntity);
+        log.info(">>>>>> (读已提交隔离级别下)无法通过相同的范围查询获取到新添加的数据，但改范围可以查询到新添加数据(count不等于countV2)" +
+                "。可重复读隔离级别都读不到添加数据 count=countV2， count = {} countV2 = {} ", empEntities.size(), empEntitiesV2.size());
 
+        // 事务内添加数据
         TrxEmpEntity emp = new TrxEmpEntity();
         emp.setDeptno(deptNo);
         emp.setEname(RandomUtil.username());
-        emp.setEmpno(RandomUtils.nextInt(10, 100000));
-        emp.setEmpno(51622);
+        emp.setEmpno(innerEmpNo+1);
         empMapper.insert(emp);
 
         empEntities = empMapper.selectList(new LambdaQueryWrapperX<TrxEmpEntity>()
-                .between(TrxEmpEntity::getEmpno, 51600, 59031));
-        log.info(">>>>>> 新添加的数据被获取成功 count={}", empEntities.size());
+                .between(TrxEmpEntity::getEmpno, 50600, 59031));
+        log.info(">>>>>> 内部进行一次insert后，(读已提交隔离级别下)相同的范围查询能获取其它事务新添加的数据，可重复读隔离级别还是获取不到 count={} ", empEntities.size());
         return deptNo;
     }
 
