@@ -13,7 +13,7 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 @Slf4j
-public class TestMybatis {
+public class MybatisDemo {
 
     @Resource
     TableTestMapper tableMapper;

@@ -19,6 +19,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>4.0.0.RELEASE</spring.version>
+        <netty.version>4.1.77.Final</netty.version>
         <spring.boot.version>2.5.12</spring.boot.version>
     </properties>
 
@@ -40,19 +41,6 @@
             <version>${spring.boot.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.11</version>
-        </dependency>
-
-
         <!--整合springboot与junit测试依赖,此包自带junit包，无需重复导junit的包-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -67,28 +55,37 @@
             <scope>test</scope>
         </dependency>
 
-        <!--框架基础功能包 END-->
-
-        <!--框架扩展包 START-->
-        <!--切面-->
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>1.9.7</version>
-        </dependency>
-
-        <!--redis-->
+        <!--前端页面-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-            <version>${spring.boot.version}</version>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>2.2.2.RELEASE</version>
+            <classifier>sources</classifier>
+            <type>java-source</type>
         </dependency>
-<!--        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-redis</artifactId>
-            <version>2.5.10</version>
-        </dependency>-->
-        <!--框架扩展包 END-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.12.6.1</version>
+            <scope>compile</scope>
+        </dependency>
+
+
+        <!--框架基础功能包 END-->
+
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.11</version>
+        </dependency>
+
 
         <!--<dependency>
             <groupId>io.swagger</groupId>
@@ -101,6 +98,7 @@
             <artifactId>knife4j-spring-boot-starter</artifactId>
             <version>3.0.3</version>
         </dependency>
+
 
         <!-- 代码自动生成依赖 begin -->
         <dependency>
@@ -134,6 +132,22 @@
             <version>2.1.5</version>
         </dependency>-->
         <!--mysql + mybatis-plus  end -->
+
+        <!--redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+        <!--        <dependency>
+                    <groupId>org.springframework.data</groupId>
+                    <artifactId>spring-data-redis</artifactId>
+                    <version>2.5.10</version>
+                </dependency>-->
+        <!--框架扩展包 END-->
+
+        <!--spring thymeleaf模块解析-->
+
 
     </dependencies>
 

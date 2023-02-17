@@ -15,10 +15,10 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <netty.version>4.1.77.Final</netty.version>
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>tools</artifactId>
@@ -26,12 +26,14 @@
             <scope>compile</scope>
         </dependency>
 
+        <!--框架扩展包 START-->
+        <!--切面-->
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.12.6.1</version>
-            <scope>compile</scope>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.7</version>
         </dependency>
+
 
         <!--netty websocket-->
         <dependency>
@@ -45,15 +47,6 @@
             <version>1.5.1</version>
         </dependency>
         <!--netty websocket-->
-
-        <!--spring thymeleaf模块解析-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <version>2.2.2.RELEASE</version>
-            <classifier>sources</classifier>
-            <type>java-source</type>
-        </dependency>
 
         <!--阿里链路追踪 Tracing Analysis-->
         <dependency>
@@ -73,6 +66,7 @@
 
     <!--maven package-->
     <build>
+        <finalName>app</finalName>
         <resources>
             <resource>
                 <directory>src/main/java</directory>

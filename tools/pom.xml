@@ -50,6 +50,13 @@
             <version>2.11.5</version>
         </dependency>
 
+        <!--rabbitMQ-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+            <version>2.5.12</version>
+        </dependency>
+
     </dependencies>
 
 </project>

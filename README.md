@@ -47,20 +47,20 @@ tools_project
 * 「Good Good Study. Day Day Up」
     > 我们看过很多技术文章，却依然不知道架构代码该咋整。
   > 
-|       标题        | 参考文档地址                                                                                                  | 描述                      |
-|:---------------:|---------------------------------------------------------------------------------------------------------|-------------------------|
-| SpringBoot 多模块  | https://gitee.com/zhijiantianya/ruoyi-vue-pro <br/>   https://github.com/YunaiV/ruoyi-vue-pro           | 芋道源码-最强的后台管理系统  -mini分支 |
-| SpringCloud 微服务 | https://gitee.com/zhijiantianya/yudao-cloud <br/>   https://github.com/YunaiV/yudao-cloud               | 芋道源码-最强的后台管理系统          |
-|  Mybatis-Plus   | https://baomidou.com/pages/24112f/                                                                      | MyBatis的增强工具            |
-|     XXL-Job     | https://www.xuxueli.com/xxl-job/                                                                        | 分布式任务调度平台               |
-|    Sa-Token     | https://sa-token.cc/doc.html#/up/mutex-login                                                            | 轻量级 Java 权限认证框架         |
-|     Easypoi     | http://easypoi.mydoc.io/ <br/> https://gitee.com/lemur/easypoi                                          | 文档处理工具                  |
-|    JustAuth     | https://github.com/justauth/JustAuth <br/> https://justauth.wiki/guide/                                 | 第三方授权登录的工具类库            |
-|     Knife4j     | https://doc.xiaominfo.com/                                                                              | 集成Swagger生成Api文档的增强解决方案 |
-|    Nacos注册中心    | https://nacos.io/zh-cn/docs/v2/quickstart/quick-start.html                                              |                         |
-|     阿里云链路追踪     | https://help.aliyun.com/document_detail/104185.html <br> https://arms.console.aliyun.com/#/integrations |                         |
-|                 |                                                                                                         |                         |
-|                 |                                                                                                         |                         |
+|       标题        | 参考文档地址                                                                                                                 | 描述                      |
+|:---------------:|------------------------------------------------------------------------------------------------------------------------|-------------------------|
+| SpringBoot 多模块  | https://gitee.com/zhijiantianya/ruoyi-vue-pro <br/>   https://github.com/YunaiV/ruoyi-vue-pro                          | 芋道源码-最强的后台管理系统  -mini分支 |
+| SpringCloud 微服务 | https://gitee.com/zhijiantianya/yudao-cloud <br/>   https://github.com/YunaiV/yudao-cloud                              | 芋道源码-最强的后台管理系统          |
+|  Mybatis-Plus   | https://baomidou.com/pages/24112f/                                                                                     | MyBatis的增强工具            |
+|     XXL-Job     | https://www.xuxueli.com/xxl-job/                                                                                       | 分布式任务调度平台               |
+|    Sa-Token     | https://sa-token.cc/doc.html#/up/mutex-login                                                                           | 轻量级 Java 权限认证框架         |
+|     Easypoi     | http://easypoi.mydoc.io/ <br/> https://gitee.com/lemur/easypoi                                                         | 文档处理工具                  |
+|    JustAuth     | https://github.com/justauth/JustAuth <br/> https://justauth.wiki/guide/                                                | 第三方授权登录的工具类库            |
+|     Knife4j     | https://doc.xiaominfo.com/                                                                                             | 集成Swagger生成Api文档的增强解决方案 |
+|    Nacos注册中心    | https://nacos.io/zh-cn/docs/v2/quickstart/quick-start.html                                                             |                         |
+|     阿里云链路追踪     | https://help.aliyun.com/document_detail/104185.html <br> https://arms.console.aliyun.com/#/integrations                |                         |
+|    省市区GEO采集     | https://github.com/xiangyuecn/AreaCity-JsSpider-StatsGov                                                               |                         |
+|   RabbitMQ安装    | https://blog.csdn.net/senir/article/details/122952669  <br> https://blog.csdn.net/Milogenius/article/details/125224527 | RabbitMQ                |
 
 
 
