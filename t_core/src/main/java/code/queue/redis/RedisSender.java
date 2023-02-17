@@ -9,10 +9,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class RedisSender {
+
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
-    //向通道发送消息的方法
-    public void sendChannelMess(String channel, String message) {
-        stringRedisTemplate.convertAndSend(channel, message);
+    /**
+     * 向通道发送消息的方法
+     */
+    public void sendChannelMess(String topic, String message) {
+        stringRedisTemplate.convertAndSend(RedisSubListenerConfig.TOPIC, message);
     }
 }

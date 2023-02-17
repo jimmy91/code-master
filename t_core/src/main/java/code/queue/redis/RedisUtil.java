@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RedisUtil {
 	
-   private static final Logger logger = LoggerFactory.getLogger(RedisUtil.class);
+    private static final Logger logger = LoggerFactory.getLogger(RedisUtil.class);
 	
     @Resource
 	private RedisTemplate<Serializable, Serializable> redisTemplate;
@@ -25,7 +25,7 @@ public class RedisUtil {
 	/**
      * 前缀
      */
-    public static final String KEY_PREFIX_VALUE = "itstyle:seckill:value:";
+    public static final String KEY_PREFIX_VALUE = "tool:core:";
 
 	
 	/**

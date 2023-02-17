@@ -14,6 +14,8 @@ import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 @Configuration
 public class RedisSubListenerConfig {
 
+    public static final String TOPIC = "TEST";
+
     /**
      * 初始化监听器
      * @param connectionFactory
@@ -25,7 +27,8 @@ public class RedisSubListenerConfig {
             MessageListenerAdapter listenerAdapter) {
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
-        container.addMessageListener(listenerAdapter, new PatternTopic("seckill"));
+        // 监听topic
+        container.addMessageListener(listenerAdapter, new PatternTopic(TOPIC));
         return container;
     }
 
