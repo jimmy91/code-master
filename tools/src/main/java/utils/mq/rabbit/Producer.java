@@ -46,7 +46,7 @@ public class Producer {
              * 4、autoDelete 自动删除，队列不再使用时是否自动删除此队列，如果将此参数和exclusive参数设置为true就可以实现临时队列（队列不用了就自动删除）
              * 5、arguments 参数，可以设置一个队列的扩展参数，比如：可设置存活时间
              */
-            channel.queueDeclare(QUEUE,true,false,false,null);
+            channel.queueDeclare(QUEUE, true, false, false, null);
             //发送消息
             //参数：String exchange, String routingKey, BasicProperties props, byte[] body
             /**
@@ -58,8 +58,8 @@ public class Producer {
              */
             //消息内容
             String message = "hello world 我是消息内容";
-            channel.basicPublish("",QUEUE,null,message.getBytes());
-            System.out.println("send to mq "+message);
+            channel.basicPublish("", QUEUE, null, message.getBytes());
+            System.out.println("send to mq " + message);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

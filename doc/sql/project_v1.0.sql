@@ -121,6 +121,16 @@ CREATE TABLE `trx_emp` (
 
 -- 事务  --
 
+CREATE TABLE `ok_geo` (
+  `id` varchar(255) DEFAULT NULL,
+  `pid` varchar(255) DEFAULT NULL,
+  `deep` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `ext_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `geo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `polygon` longblob
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 
 

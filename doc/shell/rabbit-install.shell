@@ -1,5 +1,6 @@
 #!/usr/bin/sh
 
+echo "---------rabbitmq 自动化shell安装脚本----------------------"
 sudo apt-get install curl gnupg apt-transport-https -y
 
 ## Team RabbitMQ's main signing key

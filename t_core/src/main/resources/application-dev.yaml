@@ -18,10 +18,10 @@ spring:
 
   # Redis 配置。Redisson 默认的配置足够使用，一般不需要进行调优
   redis:
-    host: 10.0.99.191 # 地址
+    host: r-wz9kw6hg6ywundrvz3pd-zdv6qphc.redis.rds.aliyuncs.com
     port: 6379 # 端口
-    database: 8 # 数据库索引
-    password: '6b22a2119f824bffdcfda3280d931dba'
+    database: 6 # 数据库索引
+    password: 'wz9kw6hg6ywundrvz3_test:AtOJXypofvti7EY7'
     timeout: 30     #连接超时时间
     lettuce:
       pool:

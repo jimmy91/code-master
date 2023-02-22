@@ -10,6 +10,7 @@ import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 
 /**
  * @author Jimmy
+ * 监听
  */
 @Configuration
 public class RedisSubListenerConfig {
