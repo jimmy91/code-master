@@ -6,15 +6,14 @@ import app.project.entity.seckill.SuccessKilledEntity;
 import app.project.mapper.seckill.SeckillMapper;
 import app.project.mapper.seckill.SuccessKilledMapper;
 import app.project.service.ISeckillService;
+import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import utils.generator.common.dao.vo.CommonResult;
 import utils.tools.mybatis.LambdaQueryWrapperX;
-
 import javax.annotation.Resource;
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -72,7 +71,7 @@ public class SeckillServiceImpl extends ServiceImpl<SeckillMapper, SeckillEntity
 			killed.setSeckillId(seckillId);
 			killed.setUserId(userId);
 			killed.setState((short)0);
-			killed.setCreateTime(new Timestamp(System.currentTimeMillis()));
+			killed.setCreateTime(DateUtil.date());
 			successKilledMapper.insert(killed);
 			//支付
 			return CommonResult.success(true);
@@ -101,7 +100,7 @@ public class SeckillServiceImpl extends ServiceImpl<SeckillMapper, SeckillEntity
 				 killed.setSeckillId(seckillId);
 				 killed.setUserId(userId);
 				 killed.setState((short)0);
-				 killed.setCreateTime(new Timestamp(System.currentTimeMillis()));
+				 killed.setCreateTime(DateUtil.date());
 				 successKilledMapper.insert(killed);
 				 //支付
 				 return CommonResult.success(true);
@@ -132,7 +131,7 @@ public class SeckillServiceImpl extends ServiceImpl<SeckillMapper, SeckillEntity
 			killed.setSeckillId(seckillId);
 			killed.setUserId(userId);
 			killed.setState((short)0);
-			killed.setCreateTime(new Timestamp(System.currentTimeMillis()));
+			killed.setCreateTime(DateUtil.date());
 			successKilledMapper.insert(killed);
 			//支付
 			return CommonResult.success(true);
@@ -156,7 +155,7 @@ public class SeckillServiceImpl extends ServiceImpl<SeckillMapper, SeckillEntity
 			killed.setSeckillId(seckillId);
 			killed.setUserId(userId);
 			killed.setState((short)0);
-			killed.setCreateTime(new Timestamp(System.currentTimeMillis()));
+			killed.setCreateTime(DateUtil.date());
 			successKilledMapper.insert(killed);
 			//支付
 			return CommonResult.success(true);
@@ -177,7 +176,7 @@ public class SeckillServiceImpl extends ServiceImpl<SeckillMapper, SeckillEntity
 			killed.setSeckillId(seckillId);
 			killed.setUserId(userId);
 			killed.setState((short)0);
-			killed.setCreateTime(new Timestamp(System.currentTimeMillis()));
+			killed.setCreateTime(DateUtil.date());
 			successKilledMapper.insert(killed);
 			//支付
 			return CommonResult.success(true);
@@ -201,7 +200,7 @@ public class SeckillServiceImpl extends ServiceImpl<SeckillMapper, SeckillEntity
 				killed.setSeckillId(seckillId);
 				killed.setUserId(userId);
 				killed.setState((short)0);
-				killed.setCreateTime(new Timestamp(System.currentTimeMillis()));
+				killed.setCreateTime(DateUtil.date());
 				successKilledMapper.insert(killed);
 				//支付
 				return CommonResult.success(true);

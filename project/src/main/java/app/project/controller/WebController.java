@@ -6,13 +6,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import utils.redisson.RedissLockUtil;
 
 /**
- * @author
- * @date 2020-01-13-20:15
+ * @author Jimmy
  */
-@Api(tags = "VIEW模块")
+@Api(tags = "web模块")
 @Controller
 @RequestMapping("view")
 @Slf4j

@@ -4,7 +4,7 @@ import app.netty.MessageDto;
 import app.project.service.ImPushService;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.UUID;
-import code.queue.redis.RedisSender;
+import code.queue.redis.RedisProducer;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author
- * @date 2020-01-13-20:15
+ * @author Jimmy
  */
 @Api(tags = "IM模块")
 @RestController
@@ -27,16 +26,6 @@ public class ImPushController {
 
     @Autowired
     private ImPushService pushService;
-
-    @Autowired
-    private RedisSender redisSender;
-
-    @ApiOperation(value = "redis发送消息", notes="发送即消费")
-    @PostMapping("/sendMsg/{topic}/{message}")
-    public CommonResult<Boolean> saveRedis(@PathVariable("topic") String topic, @PathVariable("message") String message) {
-        redisSender.sendChannelMess(topic, message);
-        return CommonResult.success(true);
-    }
 
     /**
      * 推送给所有

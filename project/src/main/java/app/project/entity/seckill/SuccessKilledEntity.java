@@ -2,9 +2,7 @@ package app.project.entity.seckill;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import utils.generator.common.entity.BaseDO;
-
-import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * @description: <秒杀成功明细表实体>
@@ -33,6 +31,6 @@ public class SuccessKilledEntity {
      */
     private Short state;
 
-    private Timestamp createTime;
+    private Date createTime;
 
 }

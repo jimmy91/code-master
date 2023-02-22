@@ -3,12 +3,13 @@ package code.queue.redis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+ 
 /**
  * 生产者
- * @author 科帮网 By https://blog.52itstyle.com
+ * @author Jimmy
  */
 @Service
-public class RedisSender {
+public class RedisProducer {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;

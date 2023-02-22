@@ -24,7 +24,6 @@ import utils.tools.mybatis.LambdaQueryWrapperX;
 import utils.tools.random.RandomUtil;
 
 import javax.annotation.Resource;
-import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,9 +46,6 @@ public class TrxServiceImpl extends ServiceImpl<TrxEmpMapper, TrxEmpEntity> {
 
     @Autowired
     private DataSourceTransactionManager txManager;
-
-    @Autowired
-    private List<DataSource> dataSources;
 
     @Autowired
     private TrxAService aService;

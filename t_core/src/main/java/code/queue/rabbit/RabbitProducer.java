@@ -13,7 +13,7 @@ import java.util.concurrent.TimeoutException;
  * @author Jimmy
  * @version 1.0
  **/
-public class Producer {
+public class RabbitProducer {
 
     //队列
     private static final String QUEUE = "helloworld";
@@ -25,7 +25,8 @@ public class Producer {
         connectionFactory.setPort(5672);
         connectionFactory.setUsername("admin");
         connectionFactory.setPassword("admin");
-        //设置虚拟机，一个mq服务可以设置多个虚拟机，每个虚拟机就相当于一个独立的mq
+        // 设置虚拟机，一个mq服务可以设置多个虚拟机，每个虚拟机就相当于一个独立的mq
+        // 用户虚拟机授权： rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
         connectionFactory.setVirtualHost("/");
 
         Connection connection = null;
@@ -45,7 +46,7 @@ public class Producer {
              * 4、autoDelete 自动删除，队列不再使用时是否自动删除此队列，如果将此参数和exclusive参数设置为true就可以实现临时队列（队列不用了就自动删除）
              * 5、arguments 参数，可以设置一个队列的扩展参数，比如：可设置存活时间
              */
-            channel.queueDeclare(QUEUE,true,false,false,null);
+            channel.queueDeclare(QUEUE, true, false, false, null);
             //发送消息
             //参数：String exchange, String routingKey, BasicProperties props, byte[] body
             /**
@@ -57,8 +58,8 @@ public class Producer {
              */
             //消息内容
             String message = "hello world 我是消息内容";
-            channel.basicPublish("",QUEUE,null,message.getBytes());
-            System.out.println("send to mq "+message);
+            channel.basicPublish("", QUEUE, null, message.getBytes());
+            System.out.println("send to mq " + message);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

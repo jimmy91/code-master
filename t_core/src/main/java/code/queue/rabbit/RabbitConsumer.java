@@ -1,4 +1,4 @@
-package utils.mq.rabbit;
+package code.queue.rabbit;
 
 import com.rabbitmq.client.*;
 
@@ -11,7 +11,7 @@ import java.util.concurrent.TimeoutException;
  * @author Jimmy
  * @version 1.0
  **/
-public class Consumer {
+public class RabbitConsumer {
 
     //队列
     private static final String QUEUE = "helloworld";

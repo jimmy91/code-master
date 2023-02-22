@@ -14,8 +14,7 @@ import utils.generator.common.dao.vo.CommonResult;
 import java.util.Arrays;
 
 /**
- * @author
- * @date 2020-01-13-20:15
+ * @author Jimmy
  */
 @Api(tags = "文件服务")
 @RestController

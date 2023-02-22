@@ -11,8 +11,7 @@ import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 /**
  * 缓存工具类
- * 创建者 科帮网
- * 创建时间	2018年4月8日
+ * @author Jimmy
  */
 @Component
 public class RedisUtil {
@@ -49,7 +48,6 @@ public class RedisUtil {
     }
     /**
      * 缓存value操作
-     * @Author  科帮网
      * @param k
      * @param v
      * @param time

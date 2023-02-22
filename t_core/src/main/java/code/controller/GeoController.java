@@ -14,8 +14,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import utils.generator.common.dao.vo.CommonResult;
 
-import java.util.List;
-
 /**
  * @author Jimmy
  */

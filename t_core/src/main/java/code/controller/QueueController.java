@@ -1,7 +1,6 @@
 package code.controller;
 
-import code.queue.redis.RedisSender;
-import code.queue.redis.RedisUtil;
+import code.queue.redis.RedisProducer;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +18,15 @@ import utils.generator.common.dao.vo.CommonResult;
 @RestController
 @RequestMapping("/message")
 @Validated
-public class MessageController {
+public class QueueController {
 
     @Autowired
-    private RedisSender redisSender;
+    private RedisProducer redisProducer;
 
     @ApiOperation(value = "发送redis消息", notes="发送即消费")
     @PostMapping("/sendMsg/{topic}/{message}")
     public CommonResult<Boolean> saveRedis(@PathVariable("topic") String topic, @PathVariable("message") String message) {
-        redisSender.sendChannelMess(topic, message);
+        redisProducer.sendChannelMess(topic, message);
         return CommonResult.success(true);
     }
 
