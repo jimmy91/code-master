@@ -7,10 +7,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="tools" />
-        <module name="project" />
         <module name="t_core" />
+        <module name="project" />
+        <module name="core" />
+        <module name="tools" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="t_core" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
