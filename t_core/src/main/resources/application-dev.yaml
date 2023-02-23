@@ -30,6 +30,24 @@ spring:
         max-idle: 30    #连接池最大空闲连接数（使用负值表示没有限制）默认8
         min-idle: 1    #连接池最小空闲连接数（使用负值表示没有限制）默认0
 
+  # rabbitmq
+  rabbitmq:
+    host: 120.79.48.230
+    port: 5672 # tcp端口
+    username: admin # 用户名
+    password: admin # 用户密码
+    #这个配置是保证提供者确保消息推送到交换机中，不管成不成功，都会回调
+    publisher-confirm-type: correlated
+    #保证交换机能把消息推送到队列中
+    publisher-returns: true
+    virtual-host: / # 虚拟主机
+    #这个配置是保证消费者会消费消息，手动确认
+    listener:
+      simple:
+        acknowledge-mode: manual
+        missing-queues-fatal: false
+    template:
+      mandatory: tru
 
 # mybatis配置
 mybatis-plus:

@@ -1,84 +1,61 @@
 package code.queue.rabbit;
 
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.util.concurrent.TimeoutException;
+import javax.annotation.Resource;
 
 /**
- * rabbitmq的入门程序
- *
  * @author Jimmy
- * @version 1.0
- **/
+ * DLX + TTL 和 Delayed Message 插件这两种 RabbitMQ 延迟消息解决方案都有一定的局限性。
+ * 如果你的消息 TTL 是相同的，使用 DLX + TTL 的这种方式是没问题的，对于我来说目前还是优选。
+ * 如果你的消息 TTL 过期值是可变的，可以尝试下使用 Delayed Message 插件，对于某些应用而言它可能很好用，对于那些可能会达到高容量延迟消息应用而言，则不是很好。
+ */
+@Service
+@Slf4j
 public class RabbitProducer {
 
-    //队列
-    private static final String QUEUE = "helloworld";
-
-    public static void main(String[] args) {
-        //通过连接工厂创建新的连接和mq建立连接
-        ConnectionFactory connectionFactory = new ConnectionFactory();
-        connectionFactory.setHost("120.79.48.230");
-        connectionFactory.setPort(5672);
-        connectionFactory.setUsername("admin");
-        connectionFactory.setPassword("admin");
-        // 设置虚拟机，一个mq服务可以设置多个虚拟机，每个虚拟机就相当于一个独立的mq
-        // 用户虚拟机授权： rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
-        connectionFactory.setVirtualHost("/");
-
-        Connection connection = null;
-        Channel channel = null;
-        try {
-            //建立新连接
-            connection = connectionFactory.newConnection();
-            //创建会话通道,生产者和mq服务所有通信都在channel通道中完成
-            channel = connection.createChannel();
-            // 定义队列、声明队列，如果队列在mq 中没有则要创建
-            //参数：String queue, boolean durable, boolean exclusive, boolean autoDelete, Map<String, Object> arguments
-            /**
-             * 参数明细
-             * 1、queue 队列名称
-             * 2、durable 是否持久化，如果持久化，mq重启后队列还在
-             * 3、exclusive 是否独占连接，队列只允许在该连接中访问，如果connection连接关闭队列则自动删除,如果将此参数设置true可用于临时队列的创建
-             * 4、autoDelete 自动删除，队列不再使用时是否自动删除此队列，如果将此参数和exclusive参数设置为true就可以实现临时队列（队列不用了就自动删除）
-             * 5、arguments 参数，可以设置一个队列的扩展参数，比如：可设置存活时间
-             */
-            channel.queueDeclare(QUEUE, true, false, false, null);
-            //发送消息
-            //参数：String exchange, String routingKey, BasicProperties props, byte[] body
-            /**
-             * 参数明细：
-             * 1、exchange，交换机，如果不指定将使用mq的默认交换机（设置为""）
-             * 2、routingKey，路由key，交换机根据路由key来将消息转发到指定的队列，如果使用默认交换机，routingKey设置为队列的名称
-             * 3、props，消息的属性
-             * 4、body，消息内容
-             */
-            //消息内容
-            String message = "hello world 我是消息内容";
-            channel.basicPublish("", QUEUE, null, message.getBytes());
-            System.out.println("send to mq " + message);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            //关闭连接
-            //先关闭通道
-            try {
-                channel.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (TimeoutException e) {
-                e.printStackTrace();
-            }
-            try {
-                connection.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    @Resource
+    private RabbitTemplate rabbitTemplate;
 
 
+    /**
+     * 发送延时消息
+     * 策略：消息过期->进行死信队列->消费死信队列
+     * @param message
+     * @return
+     */
+    public boolean sendTTLMess(Object message){
+        log.info("rabbit 发送消息");
+        rabbitTemplate.convertAndSend(RabbitTTLMessage.MQ_DELAY_QUEUE, message, correlationData -> {
+            // 设置过期时间8秒
+            // TODO 自定义过期时间，可能会出现时序问题。同一队列中，先到的数据必须后过期，会影响队列数据删除（空间换时间），等消息要投递给消费者时再判断删除。
+            correlationData.getMessageProperties().setExpiration("8000");
+            // 消息持久化
+            // correlationData.getMessageProperties().setDeliveryMode(MessageDeliveryMode.PERSISTENT);
+            correlationData.getMessageProperties().setHeader("user-id", "loginUserId");
+            return correlationData;
+        });
+
+        return true;
     }
+
+    /**
+     * 我们可以声明 x-delayed-message 类型的 Exchange，消息发送时指定消息头 x-delay 以毫秒为单位将消息进行延迟投递。
+     * @param message
+     * @return
+     */
+    public boolean sendX_DelayMess(Object message){
+        log.info("rabbit 发送消息");
+        rabbitTemplate.convertAndSend(RabbitX_DelayedMessage.MQ_EXCHANGE, RabbitX_DelayedMessage.MQ_DELAY_QUEUE, message, correlationData -> {
+            //设置延迟时间
+            correlationData.getMessageProperties().setDelay(5 * 1000);
+            correlationData.getMessageProperties().setHeader("user-id", "loginUserId");
+            return correlationData;
+        });
+
+        return true;
+    }
+
 }

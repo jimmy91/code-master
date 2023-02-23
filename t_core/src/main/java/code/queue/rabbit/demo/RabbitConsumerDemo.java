@@ -1,4 +1,4 @@
-package code.queue.rabbit;
+package code.queue.rabbit.demo;
 
 import com.rabbitmq.client.*;
 
@@ -11,23 +11,17 @@ import java.util.concurrent.TimeoutException;
  * @author Jimmy
  * @version 1.0
  **/
-public class RabbitConsumer {
+public class RabbitConsumerDemo {
 
-    //队列
-    private static final String QUEUE = "helloworld";
+    /**
+     *    队列
+     */
+    private static final String QUEUE = "hello-world";
 
-    public static void main(String[] args) throws IOException, TimeoutException {
-        //通过连接工厂创建新的连接和mq建立连接
-        ConnectionFactory connectionFactory = new ConnectionFactory();
-        connectionFactory.setHost("120.79.48.230");
-        connectionFactory.setPort(5672);
-        connectionFactory.setUsername("admin");
-        connectionFactory.setPassword("admin");
-        //设置虚拟机，一个mq服务可以设置多个虚拟机，每个虚拟机就相当于一个独立的mq
-        connectionFactory.setVirtualHost("/");
+    public static void main(String[] args) throws Exception {
 
         //建立新连接
-        Connection connection = connectionFactory.newConnection();
+        Connection connection = ConnectionUtil.getConnection();
         //创建会话通道,生产者和mq服务所有通信都在channel通道中完成
         Channel channel = connection.createChannel();
 
@@ -43,7 +37,11 @@ public class RabbitConsumer {
          * 5、arguments 参数，可以设置一个队列的扩展参数，比如：可设置存活时间
          */
         channel.queueDeclare(QUEUE, true, false, false, null);
+        // 绑定队列到交换机，理解为：队列对来自此交换机的消息感兴趣
+        // channel.queueBind(QUEUE, EXCHANGE_NAME, "");
 
+        //指该消费者在接收到队列里的消息但没有返回确认结果之前,它不会将新的消息分发给它。
+        //channel.basicQos(1);
         //实现消费方法
         DefaultConsumer defaultConsumer = new DefaultConsumer(channel) {
 
@@ -63,7 +61,9 @@ public class RabbitConsumer {
                 long deliveryTag = envelope.getDeliveryTag();
                 //消息内容
                 String message = new String(body, "utf-8");
-                System.out.println("receive message:" + message);
+                System.out.println("【1】receive message:" + message);
+                // 消费者手动发送ack应答,需要将监听autoAck设计为false
+                // channel.basicAck(envelope.getDeliveryTag(), false);
             }
         };
 
@@ -72,7 +72,7 @@ public class RabbitConsumer {
         /**
          * 参数明细：
          * 1、queue 队列名称
-         * 2、autoAck 自动回复，当消费者接收到消息后要告诉mq消息已接收，如果将此参数设置为tru表示会自动回复mq，如果设置为false要通过编程实现回复
+         * 2、autoAck 自动回复，当消费者接收到消息后要告诉mq消息已接收，如果将此参数设置为true表示会自动回复mq，如果设置为false要通过编程实现回复
          * 3、callback，消费方法，当消费者接收到消息要执行的方法
          */
         channel.basicConsume(QUEUE, true, defaultConsumer);
