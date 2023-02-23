@@ -1,0 +1,69 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8 # 访问路径编码
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 8090 # 端口号
+  connection-timeout: 5000ms
+  servlet:
+    context-path: /core # 访问路径的起始
+
+# mysql访问配置
+spring:
+  datasource:
+    url: jdbc:mysql://10.0.99.191:3306/test?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: inno@2021
+
+  # Redis 配置。Redisson 默认的配置足够使用，一般不需要进行调优
+  redis:
+    host: 10.0.99.191 # 地址
+    port: 6379 # 端口
+    database: 8 # 数据库索引
+    password: '6b22a2119f824bffdcfda3280d931dba'
+    timeout: 30     #连接超时时间
+    lettuce:
+      pool:
+        max-active: 100 #连接池最大连接数（使用负数表示没有限制）默认8
+        max-wait: PT10S #连接池最大阻塞等待时间(使用负值表示没有限制)默认-1
+        max-idle: 30    #连接池最大空闲连接数（使用负值表示没有限制）默认8
+        min-idle: 1    #连接池最小空闲连接数（使用负值表示没有限制）默认0
+
+  # rabbitmq
+  rabbitmq:
+    host: 120.79.48.230
+    port: 5672 # tcp端口
+    username: admin # 用户名
+    password: admin # 用户密码
+    #这个配置是保证提供者确保消息推送到交换机中，不管成不成功，都会回调
+    publisher-confirm-type: correlated
+    #保证交换机能把消息推送到队列中
+    publisher-returns: true
+    virtual-host: / # 虚拟主机
+    #这个配置是保证消费者会消费消息，手动确认
+    listener:
+      simple:
+        acknowledge-mode: manual
+        missing-queues-fatal: false
+    template:
+      mandatory: tru
+
+# mybatis配置
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml,mapper/*/*.xml
+  configuration:
+    map-underscore-to-camel-case: true # 虽然默认为 true ，但是还是显示去指定下。
+    #log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl # 默认输出到日志文件
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 默认输出到控制台
+  global-config:
+    db-config:
+      id-type: AUTO # 自增 ID
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+  type-aliases-package: app.*.mapper.*
+
+
+
+
+

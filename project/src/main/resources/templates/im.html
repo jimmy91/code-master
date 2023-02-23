@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base th:href="@{/}">
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="../../static/css/index.css" th:href="@{/css/index.css}"/>
+    <title>使用WebSocket接收消息</title>
+</head>
+
+
+<body>
+<script>
+    var socket;
+    // 判断当前浏览器是否支持webSocket
+    if(window.WebSocket){
+        socket = new WebSocket("ws://127.0.0.1:8788/im");
+
+        //(监听)channel的read事件，ev 收到服务器回送的消息
+        socket.onmessage = function (ev) {
+            var rt = document.getElementById("textareaId");
+
+            var jsonObj = eval('(' + ev.data + ')');
+            if (null != jsonObj && undefined != jsonObj){
+                var typeId = jsonObj.typeId;
+                //该类型回发消息
+                if ('netty_web_20220204' == typeId){
+                    var textMsg = "<span style='color: cornflowerblue'>"+jsonObj.objectMap.name + ";" + jsonObj.msg + ";"+jsonObj.date +"</span>";
+
+                    rt.innerHTML = rt.innerHTML + "<p></p>" + textMsg;
+                    jsonObj.msg = "成功收到后台发送消息!";
+                    socket.send(
+                        JSON.stringify({
+                            //回传给服务端
+                            type:"netty_msg",
+                            typeId:jsonObj.typeId,
+                            data:jsonObj
+                         })
+                    );
+                }else{
+                    var textMsg = jsonObj.objectMap.name + ";" + jsonObj.msg + ";"+jsonObj.date ;
+                    rt.innerHTML = rt.innerHTML + "<p></p>" + textMsg;
+                }
+            }
+        }
+        // 连接开启
+        socket.onopen = function (ev) {
+            var rt = document.getElementById("textareaId");
+            rt.innerHTML = "<span style='color: red'>"+"webSocket连接开启了..."+"</span>";
+            socket.send(
+                JSON.stringify({
+                    // 连接成功将，类型回传给服务端
+                    typeId:"netty_msg_first"
+                })
+            );
+        }
+        // 连接关闭
+        socket.onclose = function (ev) {
+            var rt = document.getElementById("textareaId");
+            rt.innerHTML = rt.innerHTML + "<p></p>" + "<span style='color: red'>"+"webSocket连接关闭了..."+"</span>";
+        }
+
+
+    }else{
+        alert("当前浏览器不支持webSocket")
+    }
+
+</script>
+<form onsubmit="return false">
+    <span style="color: black">【netty-消息列表】</span>
+    <div id="textareaId" style="height: 300px; width: 400px; border:0px solid black;"></div>
+    <input type="button" value="重置" onclick="document.getElementById('textareaId').innerText=''">
+</form>
+</body>
+<!-- import Vue before Element -->
+<script src="../../static/js/vue-2.6.12.js" th:src="@{/js/vue-2.6.12.js}" type="text/javascript"></script>
+<!-- import JavaScript -->
+<script src="../../static/js/index.js" th:src="@{/js/index.js}" type="text/javascript"></script>
+<script src="../../static/js/jquery1.7.2.min.js" th:src="@{/js/jquery1.7.2.min.js}" type="text/javascript"></script>
+
+</html>

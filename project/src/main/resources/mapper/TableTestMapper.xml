@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="app.project.mapper.TableTestMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="app.project.entity.TableTestEntity">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="birthday" property="birthday"/>
+        <result column="sal" property="sal"/>
+        <result column="status" property="status"/>
+        <result column="success" property="success"/>
+        <result column="phone" property="phone"/>
+        <result column="email" property="email"/>
+        <result column="idcard" property="idcard"/>
+        <result column="address" property="address"/>
+        <result column="job" property="job"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, birthday, sal, status, success, phone, email, idcard, address, job
+    </sql>
+
+</mapper>

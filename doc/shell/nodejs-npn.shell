@@ -1,0 +1,25 @@
+# /bin/bash
+ 
+echo "---------nodejs npm自动化shell安装脚本----------------------"
+echo "Start the installation of node"
+echo "-------------------------------"
+ 
+if [ ! -d "/opt/server/node/" ]; then
+    mkdir /opt/server/node
+fi
+ 
+rm -rf /usr/local/node/
+mkdir /usr/local/node 
+wget https://nodejs.org/download/release/v16.15.0/node-v16.15.0-linux-x64.tar.xz
+tar -xf node-v16.15.0-linux-x64.tar.xz
+mv node-v16.15.0-linux-x64/* /usr/local/node/
+ln -sf /usr/local/node/bin/node /usr/bin/node
+ln -sf /usr/local/node/bin/npm /usr/bin/npm
+rm -rf node-v16.15.0-linux-x64.tar.xz
+rm -rf node-v16.15.0-linux-x64
+npm -v
+node -v
+ 
+echo "-------------------------------"
+echo "Node installation is complete"
+echo "-------------------------------"
