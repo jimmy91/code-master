@@ -4,18 +4,22 @@ import app.project.entity.geo.OkGeo;
 import app.project.mapper.geo.GeoMapper;
 import code.geo.GeoInfo;
 import code.geo.RedisGeoApi;
+import com.alibaba.nacos.api.config.annotation.NacosValue;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import utils.generator.common.dao.vo.CommonResult;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 
 /**
@@ -48,6 +52,15 @@ public class DataController {
             }
         });
         return CommonResult.success(redisGeoApi.saveGeo(infos));
+    }
+
+    @NacosValue(value = "${data:error}", autoRefreshed = true)
+    private String useLocalCache;
+
+    @RequestMapping(value = "/get", method = GET)
+    @ResponseBody
+    public String get() {
+        return useLocalCache;
     }
 
 

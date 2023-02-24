@@ -63,7 +63,7 @@ tools_project
 |   RabbitMQ安装    | https://blog.csdn.net/senir/article/details/122952669  <br> https://blog.csdn.net/Milogenius/article/details/125224527  <br> https://www.rabbitmq.com/community-plugins.html | RabbitMQ 安装及插件          |
   |   RabbitMQ练习场   | https://github.com/powerLeePlus/java-samples/tree/master/rabbitmq                                                                                                            |                         |
 |     23种设计模式     | https://github.com/powerLeePlus/java-samples/tree/master/design-patterns                                                                                                     |                         |
-|                 |                                                                                                                                                                              |                         |
+| Sentinel限流熔断降级  | https://www.cnblogs.com/buchizicai/p/17093746.html                                                                                                                           |                         |
 |                 |                                                                                                                                                                              |                         |
 
 

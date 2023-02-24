@@ -1,5 +1,7 @@
 package app;
 
+import com.alibaba.nacos.api.config.ConfigType;
+import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
 import io.jaegertracing.Configuration;
 import io.opentracing.Tracer;
 import io.opentracing.util.GlobalTracer;
@@ -8,7 +10,6 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
@@ -24,13 +25,16 @@ import org.springframework.context.annotation.ComponentScan;
 @MapperScan("app.**.mapper")
 // 告诉Spring从哪里找到bea ，定义哪些包需要被扫描。
 @ComponentScan({"code.**", "app.**"})
+// nacos做为配置中心时使用
+@NacosPropertySource(groupId = "app-service", dataId = "app-server", type = ConfigType.YAML, autoRefreshed = true)
+//启动类不能添加@EnableNacosDiscovery注解，否则服务注册失败
 public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
-    @Bean
+    // @Bean
     public Tracer initBean(){
         /**
          * 阿里云跟踪追踪
