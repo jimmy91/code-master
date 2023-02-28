@@ -22,7 +22,6 @@ public interface GlobalErrorCodeConstants {
     ErrorCode LOCKED = new ErrorCode(423, "请求失败，请稍后重试");
     ErrorCode TOO_MANY_REQUESTS = new ErrorCode(429, "请求过于频繁，请稍后重试");
 
-    ErrorCode ILLEGAL_OPT = new ErrorCode(444, "违规操作");
     ErrorCode BAD_PARAM = new ErrorCode(410, "参数错误:{}");
     ErrorCode BAD_OPT = new ErrorCode(411, "操作错误:{}");
     ErrorCode CUSTOM_TIPS = new ErrorCode(440, "{}");
@@ -42,6 +41,10 @@ public interface GlobalErrorCodeConstants {
     ErrorCode IS_WINDOWS = new ErrorCode(997, "windows");
 
     ErrorCode DATA_REPEATED = new ErrorCode(998, "数据重复");
+
+
+    ErrorCode SENTINEL_LIMIT = new ErrorCode(10020, "服务治理");
+
     static boolean isMatch(Integer code) {
         return code != null
                 && code >= SUCCESS.getCode() && code <= UNKNOWN.getCode();

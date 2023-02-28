@@ -1,14 +1,3 @@
-server:
-  tomcat:
-    uri-encoding: UTF-8 # 访问路径编码
-    max-threads: 1000
-    min-spare-threads: 30
-  port: 8089 # 端口号
-  connection-timeout: 5000ms
-  servlet:
-    context-path: /app # 访问路径的起始
-
-
 # mysql访问配置
 spring:
   datasource:
@@ -54,11 +43,11 @@ spring:
 
 # 注册中心
 nacos:
-  namespace: app-service
+  namespace: dev
   discovery:
     server-addr: 127.0.0.1:8848
     auto-register: true
-    namespace: app-service
+    namespace: dev
     register:
       enabled: true
       ephemeral: true
@@ -67,6 +56,19 @@ nacos:
       ip: 127.0.0.1
   config:
     server-addr: 127.0.0.1:8848
+
+# Sentinel 规则持久化
+sentinel:
+  datasource:
+    # 名称随意
+    dsl:
+      nacos:
+        server-addr: 127.0.0.1:8848
+        namespace: dev
+        dataId: sentinel-service.json
+        groupId: app-service
+        data-type: json
+        rule-type: flow
 
 
 # mybatis配置

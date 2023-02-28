@@ -1,13 +1,3 @@
-server:
-  tomcat:
-    uri-encoding: UTF-8 # 访问路径编码
-    max-threads: 1000
-    min-spare-threads: 30
-  port: 8090 # 端口号
-  connection-timeout: 5000ms
-  servlet:
-    context-path: /core # 访问路径的起始
-
 # mysql访问配置
 spring:
   datasource:
@@ -51,11 +41,11 @@ spring:
 
 # 注册中心
 nacos:
-  namespace: app-service
+  namespace: dev
   discovery:
     server-addr: 127.0.0.1:8848
     auto-register: true
-    namespace: app-service
+    namespace: dev
     register:
       enabled: true
       ephemeral: true
@@ -64,7 +54,6 @@ nacos:
       ip: 127.0.0.1
   config:
     server-addr: 127.0.0.1:8848
-
 
 # mybatis配置
 mybatis-plus:

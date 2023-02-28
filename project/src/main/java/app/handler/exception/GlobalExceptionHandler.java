@@ -1,5 +1,8 @@
 package app.handler.exception;
 
+import com.alibaba.csp.sentinel.slots.block.authority.AuthorityException;
+import com.alibaba.csp.sentinel.slots.block.degrade.DegradeException;
+import com.alibaba.csp.sentinel.slots.block.flow.FlowException;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -73,6 +76,16 @@ public class GlobalExceptionHandler {
         if (ex instanceof ServiceException) {
             return serviceExceptionHandler((ServiceException) ex);
         }
+
+        /*sentinel异步拦截*/
+        if (ex instanceof FlowException) {
+            return CommonResult.error(SENTINEL_LIMIT.getCode(), String.format("接口被限流了"));
+        } else if (ex instanceof DegradeException) {
+            return CommonResult.error(SENTINEL_LIMIT.getCode(), String.format("服务降级了"));
+        } else if (ex instanceof AuthorityException) {
+            return CommonResult.error(SENTINEL_LIMIT.getCode(), String.format("授权规则不通过"));
+        }
+
         return defaultExceptionHandler(request, ex);
     }
 
