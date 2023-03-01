@@ -1,15 +1,28 @@
 package app.feign;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import feign.Feign;
+import feign.Param;
+import feign.RequestLine;
+import feign.jackson.JacksonDecoder;
 import utils.generator.common.dao.vo.CommonResult;
 
 /**
  * @author Jimmy
  */
-//@FeignClient(name = "core-server")
 public interface DemoProviderFeign {
 
-    @GetMapping(path = "/message/redis/111/222")
-    CommonResult<Boolean> sendMessage();
+    DemoProviderFeign remote = Feign.builder().decoder(new JacksonDecoder())
+            .requestInterceptor(template -> template.header("appid", "appid"))
+            .target(DemoProviderFeign.class, "http://localhost:8090/core/");
+
+    @RequestLine("POST /message/redis/111?message={message}")
+    CommonResult<Boolean> sendMessage(@Param("message") String message);
+
+    @RequestLine("POST /message/rabbit/ttl")
+    CommonResult<Boolean> sendMqTTLMessage();
+
+    @RequestLine("POST /message/rabbit/x-delayed")
+    CommonResult<Boolean> sendMqXDMessage();
+
 }
 
