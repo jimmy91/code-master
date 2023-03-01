@@ -41,36 +41,6 @@ spring:
     template:
       mandatory: true
 
-# 注册中心
-nacos:
-  namespace: dev
-  discovery:
-    server-addr: 127.0.0.1:8848
-    auto-register: true
-    namespace: dev
-    register:
-      enabled: true
-      ephemeral: true
-      groupName: app-server
-      healthy: true
-      ip: 127.0.0.1
-  config:
-    server-addr: 127.0.0.1:8848
-
-# Sentinel 规则持久化
-sentinel:
-  datasource:
-    # 名称随意
-    dsl:
-      nacos:
-        server-addr: 127.0.0.1:8848
-        namespace: dev
-        dataId: sentinel-service.json
-        groupId: app-service
-        data-type: json
-        rule-type: flow
-
-
 # mybatis配置
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml,mapper/*/*.xml

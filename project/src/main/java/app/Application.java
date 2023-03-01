@@ -25,12 +25,6 @@ import org.springframework.context.annotation.ComponentScan;
 @MapperScan("app.**.mapper")
 // 告诉Spring从哪里找到bea ，定义哪些包需要被扫描。
 @ComponentScan({"code.**", "app.**"})
-// nacos做为配置中心时使用
-@NacosPropertySource(groupId = "app-service", dataId = "app-server.yaml", type = ConfigType.YAML, autoRefreshed = true)
-//启动类不能添加@EnableNacosDiscovery注解，否则服务注册失败
-
-// 用于开启 Feign，会自动扫描@FeignClient标注的 FeignClient 接口
-//@EnableFeignClients
 public class Application {
 
     public static void main(String[] args) {
