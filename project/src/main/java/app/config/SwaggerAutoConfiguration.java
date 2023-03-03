@@ -110,7 +110,7 @@ public class SwaggerAutoConfiguration {
                 .groupName("code模块")
                 // 设置扫描指定 package 包下的
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("code.controller"))
+                .apis(RequestHandlerSelectors.basePackage("code"))
                 .paths(PathSelectors.any())
                 .build()
                 .globalRequestParameters(globalRequestParameters())
