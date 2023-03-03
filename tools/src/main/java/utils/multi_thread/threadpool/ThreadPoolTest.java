@@ -65,7 +65,7 @@ public class ThreadPoolTest implements Runnable {
 		at java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2047)
 		at java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:823)
 		at java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1369)
-		at com.lwq.example.multithread.threadpool.ThreadPoolTest.main(ThreadPoolTest.java:27)
+		at com.jimmy.example.multithread.threadpool.ThreadPoolTest.main(ThreadPoolTest.java:27)
 		*/
 
 		/**

@@ -1,4 +1,4 @@
-package code.algorithm.bloomfilter;
+package utils.algorithm.bloomfilter;
 
 import java.math.BigDecimal;
 

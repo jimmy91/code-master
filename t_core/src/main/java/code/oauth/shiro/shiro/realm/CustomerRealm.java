@@ -26,7 +26,7 @@ public class CustomerRealm extends AuthorizingRealm {
 
 	/** 认证方法
 	 *
-	 * @Author: lwq
+	 * @Author: jimmy
 	 * @Date: 2020/7/9 0009 11:10
 	 * @Param: token
 	 * @Return: org.apache.shiro.authc.AuthenticationInfo
@@ -57,10 +57,10 @@ public class CustomerRealm extends AuthorizingRealm {
 
 		//授权角色信息和资源权限
 		SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
-		if ("xiaochen".equals(primaryPrincipal)) {
+		if ("jimmy".equals(primaryPrincipal)) {
 			simpleAuthorizationInfo.addRoles(Arrays.asList("admin", "user"));
 			simpleAuthorizationInfo.addStringPermissions(PERMS_LIST);
-		} else if ("lwq".equals(primaryPrincipal)) {
+		} else if ("jimmy01".equals(primaryPrincipal)) {
 			simpleAuthorizationInfo.addRole("user");
 			simpleAuthorizationInfo.addStringPermissions(PERMS_LIST.subList(0, PERMS_LIST.size() - 1));
 		}

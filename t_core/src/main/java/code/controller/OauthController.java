@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import utils.generator.common.dao.vo.CommonResult;
 
 /**
- * @author lwq
+ * @author jimmy
  * @date 2020/7/9 0009
  */
 @Api(tags = "Oauth模块")

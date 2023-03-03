@@ -1,4 +1,4 @@
-package code.jvm;
+package utils.jvm;
 
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;

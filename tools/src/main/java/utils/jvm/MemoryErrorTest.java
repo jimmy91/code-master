@@ -1,4 +1,4 @@
-package code.jvm;
+package utils.jvm;
 
 import java.io.File;
 import java.net.URL;
