@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>pattern.observer.ObserverPatternDemo</OriginalElement>
+  <nodes>
+    <node x="250.37499999999994" y="0.0">pattern.observer.Subject</node>
+    <node x="294.83653846153845" y="586.0">pattern.observer.ObserverPatternDemo</node>
+    <node x="158.28702010968925" y="419.19012797074953">pattern.observer.OctalObserver</node>
+    <node x="260.87499999999994" y="250.0">pattern.observer.Observer</node>
+    <node x="205.99999999999994" y="418.0">pattern.observer.HexObserver</node>
+    <node x="403.99999999999994" y="418.0">pattern.observer.BinaryObserver</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="pattern.observer.HexObserver" target="pattern.observer.Observer">
+      <point x="0.0" y="-49.0" />
+      <point x="294.99999999999994" y="398.0" />
+      <point x="317.12499999999994" y="398.0" />
+      <point x="-11.25" y="49.0" />
+    </edge>
+    <edge source="pattern.observer.BinaryObserver" target="pattern.observer.Observer">
+      <point x="0.0" y="-49.0" />
+      <point x="499.99999999999994" y="388.0" />
+      <point x="384.62499999999994" y="388.0" />
+      <point x="56.25" y="49.0" />
+    </edge>
+    <edge source="pattern.observer.OctalObserver" target="pattern.observer.Observer">
+      <point x="0.0" y="-49.0" />
+      <point x="93.0" y="378.0" />
+      <point x="272.12499999999994" y="378.0" />
+      <point x="-56.25" y="49.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8275340393343419" x="344.5" y="320.5" />
+  <SelectedNodes>
+    <node>pattern.observer.OctalObserver</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
