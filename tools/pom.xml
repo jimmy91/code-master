@@ -52,12 +52,6 @@
             <artifactId>sentinel-transport-simple-http</artifactId>
             <version>1.8.6</version>
         </dependency>
-        <!--配置持久化，不然服务启动会丢失数据-->
-        <dependency>
-            <groupId>com.alibaba.csp</groupId>
-            <artifactId>sentinel-datasource-nacos</artifactId>
-            <version>1.8.6</version>
-        </dependency>
         <!--限流-sentinel-->
 
         <!-- Redisson实现分布式锁 -->

@@ -18,17 +18,6 @@ import utils.generator.common.dao.vo.CommonResult;
 @RequestMapping("/data")
 public class DemoController {
 
-    @Value("${data:error}")
-    private String data;
-
-
-
-
-    @ApiOperation(value = "获取nacos配置值", notes="")
-    @GetMapping("/getNacosConfig")
-    public String getNacosConfig() {
-        return data;
-    }
 
     @ApiOperation(value = "Feign调用", notes="")
     @GetMapping("/feignDemo")

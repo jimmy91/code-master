@@ -17,6 +17,15 @@
 >> 内容
 >
 
+SpringCloud包含的组件很多，有很多功能是重复的。其中最常用组件包括：
+•注册中心组件：Eureka、Nacos等
+•负载均衡组件：Ribbon
+•远程调用组件：OpenFeign
+•网关组件：Zuul、Gateway
+•服务保护组件：Hystrix、Sentinel
+•服务配置管理组件：SpringCloudConfig、Nacos
+
+
 > ### Feign
 >> #### https://blog.csdn.net/BASK2311/article/details/128048199
 >> 关键词：**
