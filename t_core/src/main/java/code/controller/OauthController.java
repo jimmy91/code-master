@@ -33,8 +33,8 @@ public class OauthController {
 	@PostMapping("login")
 	@ApiOperation("用户登录")
 	@ApiImplicitParams({
-			@ApiImplicitParam(name = "用户名", value = "username", defaultValue = "jimmy"),
-			@ApiImplicitParam(name = "密码", value = "password", defaultValue = "123456")
+			@ApiImplicitParam(name = "username", value = "用户名", defaultValue = "jimmy"),
+			@ApiImplicitParam(name = "password", value = "密码", defaultValue = "123456")
 	})
 	public CommonResult<String> login(String username, String password){
 		//获取主体对象
