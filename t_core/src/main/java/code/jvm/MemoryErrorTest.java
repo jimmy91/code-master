@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 内存错误案例演示
- * @author lwq
+ * @author Jimmy
  * @date 2022/6/2 0002
  * @since
  */

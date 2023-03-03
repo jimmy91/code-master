@@ -2,7 +2,7 @@ package utils.design.abstract_factory.products2;
 
 /**
  * 生产颜色的工厂
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/24 0024
  */
 public class ColorFactory {

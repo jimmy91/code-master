@@ -2,7 +2,7 @@ package utils.design.abstract_factory.products1;
 
 /**
  * 产品类接口一
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/23 0023
  */
 public interface Shape {

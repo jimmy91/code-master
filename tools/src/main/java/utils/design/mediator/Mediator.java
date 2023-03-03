@@ -2,7 +2,7 @@ package utils.design.mediator;
 
 /**
  * 抽象中介者
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/26 0026
  * @since
  */

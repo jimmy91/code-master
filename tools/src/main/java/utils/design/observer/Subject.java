@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * 被观察者
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/23 0023
  */
 public class Subject {

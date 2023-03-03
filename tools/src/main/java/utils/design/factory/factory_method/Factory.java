@@ -5,7 +5,7 @@ import utils.design.factory.Shape;
 /**
  * 二、工厂模式(工厂方法)
  * 生产产品Shape的工厂
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/23 0023
  */
 public interface Factory {

@@ -1,7 +1,7 @@
 package code.multi_thread.wait_notify;
 
 /**
- * @author lwq
+ * @author Jimmy
  * @date 2020/11/26 0026
  */
 public class OutputThread implements Runnable {

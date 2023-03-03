@@ -2,7 +2,7 @@ package utils.design.adapater;
 
 /**
  * Adapter：适配者，为了适配而新增的
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/24 0024
  */
 public class MediaAdapater implements MediaPlayer {

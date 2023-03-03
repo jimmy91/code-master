@@ -1,7 +1,7 @@
 package utils.design.template;
 
 /**
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/26 0026
  */
 public class TemplatePatternDemo {

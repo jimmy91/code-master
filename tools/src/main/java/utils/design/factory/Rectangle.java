@@ -1,7 +1,7 @@
 package utils.design.factory;
 
 /** 产品一
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/23 0023
  */
 public class Rectangle implements Shape {

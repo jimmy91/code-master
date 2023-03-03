@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * 负责人：管理备忘录的创建与读取
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/27 0027
  * @since
  */

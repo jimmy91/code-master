@@ -6,7 +6,7 @@ import utils.design.decorator.impl.Rectangle;
 import utils.design.decorator.impl.RedSharpDecorator;
 
 /**
- * @author lwq
+ * @author Jimmy
  * @date 2020/5/9 0009
  */
 public class DecoratorPatternDemo {

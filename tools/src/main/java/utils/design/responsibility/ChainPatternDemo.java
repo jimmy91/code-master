@@ -1,7 +1,7 @@
 package utils.design.responsibility;
 
 /**
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/22 0022
  */
 public class ChainPatternDemo {

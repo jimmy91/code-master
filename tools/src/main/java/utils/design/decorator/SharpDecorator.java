@@ -2,7 +2,7 @@ package utils.design.decorator;
 
 
 /**
- * @author lwq
+ * @author Jimmy
  * @date 2020/5/9 0009
  */
 public abstract class SharpDecorator implements Sharp {

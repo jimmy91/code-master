@@ -1,7 +1,7 @@
 package utils.design.observer;
 
 /** 观察者实现一
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/23 0023
  */
 public class BinaryObserver extends Observer {

@@ -1,7 +1,7 @@
 package utils.design.adapater;
 
 /** Adapatee：被适配者，适配前已经存在
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/24 0024
  */
 public interface AdvancedMediaPlayer {

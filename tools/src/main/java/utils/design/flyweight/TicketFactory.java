@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * 享元工厂  12306
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/28 0028
  * @since
  */

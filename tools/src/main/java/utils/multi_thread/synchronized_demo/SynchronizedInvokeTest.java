@@ -3,7 +3,7 @@ package code.multi_thread.synchronized_demo;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * @author lwq
+ * @author Jimmy
  * @date 2022/6/17 0017
  * @since
  */

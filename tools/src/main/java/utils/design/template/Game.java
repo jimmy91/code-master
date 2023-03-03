@@ -2,7 +2,7 @@ package utils.design.template;
 
 /**
  * 公共抽象父类
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/26 0026
  */
 public abstract class Game {

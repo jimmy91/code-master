@@ -2,7 +2,7 @@ package utils.design.facade;
 
 /**
  * 子系统2-热水器
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/27 0027
  * @since
  */

@@ -3,7 +3,7 @@ package code.multi_thread.volatile_demo;
 import java.util.Random;
 
 /**
- * @author lwq
+ * @author Jimmy
  * @date 2022/6/15 0015
  * @since
  */

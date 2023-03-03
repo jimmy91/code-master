@@ -2,7 +2,7 @@ package utils.design.bridge;
 
 /**
  * 具体实现类 黑色
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/28 0028
  * @since
  */

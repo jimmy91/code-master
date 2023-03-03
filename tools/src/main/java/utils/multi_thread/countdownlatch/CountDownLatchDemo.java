@@ -5,7 +5,7 @@ import java.util.concurrent.CountDownLatch;
 /**
  * CountDownLatch示例
  * CountDownLatch 可以理解就是个计数器，只能减不能加，同时它还有个门闩的作用，当计数器不为0时，门闩是锁着的；当计数器减到0时，门闩就打开了。
- * @author lwq
+ * @author Jimmy
  * @date 2020/11/26 0026
  */
 public class CountDownLatchDemo {

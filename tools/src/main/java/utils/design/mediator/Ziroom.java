@@ -2,7 +2,7 @@ package utils.design.mediator;
 
 /**
  * 具体中介-自如
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/27 0027
  * @since
  */

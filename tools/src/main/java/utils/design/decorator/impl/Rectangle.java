@@ -4,7 +4,7 @@ package utils.design.decorator.impl;
 import utils.design.decorator.Sharp;
 
 /**
- * @author lwq
+ * @author Jimmy
  * @date 2020/5/9 0009
  */
 public class Rectangle implements Sharp {

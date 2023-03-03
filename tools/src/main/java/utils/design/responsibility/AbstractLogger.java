@@ -2,7 +2,7 @@ package utils.design.responsibility;
 
 /**
  * 责任链接口
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/22 0022
  */
 public abstract class AbstractLogger {

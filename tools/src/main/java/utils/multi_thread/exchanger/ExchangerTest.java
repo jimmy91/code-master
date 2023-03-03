@@ -5,7 +5,7 @@ import java.util.concurrent.Exchanger;
 
 /**
  * Exchanger用于线程协作，线程间进行数据交换
- * @author lwq
+ * @author Jimmy
  * @date 2022/6/21 0021
  * @since
  */

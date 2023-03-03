@@ -2,7 +2,7 @@ package utils.design.bridge;
 
 /**
  * 扩展抽象类 长方形
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/28 0028
  * @since
  */

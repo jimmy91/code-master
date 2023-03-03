@@ -8,7 +8,7 @@ import utils.design.factory.Square;
 /**
  * 一、简单工厂模式（不属于23种设计模式之一）
  * 生产产品Shape的工厂
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/23 0023
  */
 public class ShapeFactory {

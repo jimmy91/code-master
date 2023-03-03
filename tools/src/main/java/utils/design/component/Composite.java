@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * Composite组合节点对象
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/27 0027
  * @since
  */

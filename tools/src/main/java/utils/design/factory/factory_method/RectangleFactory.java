@@ -5,7 +5,7 @@ import utils.design.factory.Shape;
 
 /**
  * 工厂接口实现一：生产Rectangle
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/24 0024
  */
 public class RectangleFactory implements Factory{

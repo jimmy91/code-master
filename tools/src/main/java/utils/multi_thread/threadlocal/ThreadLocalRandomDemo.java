@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  * 说明：Random 实例包括 java.util.Random 的实例或者 Math.random()的方式。
  * 正例：在 JDK7 之后，可以直接使用 API ThreadLocalRandom，而在 JDK7 之前，需要编码保证每个线程持有一个单独的 Random 实例。
  *
- * @author lwq
+ * @author Jimmy
  * @date 2020/12/28 0028
  */
 public class ThreadLocalRandomDemo {

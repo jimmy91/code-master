@@ -4,7 +4,7 @@ import utils.design.decorator.Sharp;
 import utils.design.decorator.SharpDecorator;
 
 /**
- * @author lwq
+ * @author Jimmy
  * @date 2020/5/9 0009
  */
 public class RedSharpDecorator extends SharpDecorator {

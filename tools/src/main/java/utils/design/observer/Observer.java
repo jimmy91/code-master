@@ -2,7 +2,7 @@ package utils.design.observer;
 
 /**
  * 观察者抽象类
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/23 0023
  */
 public abstract class Observer {

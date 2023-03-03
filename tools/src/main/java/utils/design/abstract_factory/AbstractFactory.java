@@ -7,7 +7,7 @@ import utils.design.abstract_factory.products2.ColorFactory;
 
 /**
  * 抽象工厂。用于创建Shape和Color产品的工厂
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/24 0024
  */
 public abstract class AbstractFactory {

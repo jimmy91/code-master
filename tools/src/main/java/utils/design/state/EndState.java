@@ -2,7 +2,7 @@ package utils.design.state;
 
 /**
  * 状态-具体 结束状态
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/28 0028
  * @since
  */

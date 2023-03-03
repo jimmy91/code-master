@@ -13,7 +13,7 @@ import java.util.concurrent.Executors;
  *
  * CyclicBarrier初始时还可带一个Runnable的参数，此Runnable任务在CyclicBarrier的数目达到后，所有其它线程被唤醒前被执行。
  *
- * @author lwq
+ * @author Jimmy
  * @date 2020/12/1 0001
  */
 public class CyclicBarrierDemo {

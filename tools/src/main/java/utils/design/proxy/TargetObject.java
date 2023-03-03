@@ -2,7 +2,7 @@ package utils.design.proxy;
 
 /**
  * 被代理接口（目标接口）
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/25 0025
  * @since
  */

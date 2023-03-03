@@ -3,7 +3,7 @@ package code.multi_thread;
 import java.util.concurrent.SynchronousQueue;
 
 /**
- * @author lwq
+ * @author Jimmy
  * @date 2022/3/4 0004
  * @since
  */

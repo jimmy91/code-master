@@ -4,7 +4,7 @@ import java.util.Map;
 
 /**
  * 表达式 抽象表达式
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/28 0028
  * @since
  */

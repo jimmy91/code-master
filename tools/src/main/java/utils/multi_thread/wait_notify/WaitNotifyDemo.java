@@ -14,14 +14,14 @@ import java.util.Scanner;
  *** 2. 一个对象的固有锁和它的固有条件队列是相关的，为了调用对象X内条件队列的方法，你必须获得对象X的锁。这是因为等待状态条件的机制和保证状态连续性的机制是紧密的结合在一起的。
  * 根据上述两点，在调用wait(), notify()或notifyAll()的时候，必须先获得锁，且状态变量须由该锁保护，而固有锁对象与固有条件队列对象又是同一个对象。也就是说，要在某个对象上执行wait，notify，先必须锁定该对象，而对应的状态变量也是由该对象锁保护的。
  *
- * @author lwq
+ * @author Jimmy
  * @date 2020/11/26 0026
  */
 public class WaitNotifyDemo {
 
 	/**
 	 * 探索1：执行wait, notify时，不获得锁会如何？
-	 * @author lwq
+	 * @author Jimmy
 	 * @date 2020/11/26 0026
 	 */
 	public static void test1() throws InterruptedException {
@@ -32,7 +32,7 @@ public class WaitNotifyDemo {
 
 	/**
 	 * 探索2：执行wait, notify时，不获得该对象的锁会如何？
-	 * @author lwq
+	 * @author Jimmy
 	 * @date 2020/11/26 0026
 	 */
 	public static void test2() throws InterruptedException {
@@ -57,7 +57,7 @@ public class WaitNotifyDemo {
 
 	/**
 	 * 案例1：利用wait，notify实现的一个生产者、一个消费者和一个单位的缓存的简单模型：
-	 * @author lwq
+	 * @author Jimmy
 	 * @date 2020/11/26 0026
 	 */
 	public static void demo1() {
@@ -78,7 +78,7 @@ public class WaitNotifyDemo {
 
 	/**
 	 * 案例2：写一个多线程程序，交替输出1,2,1,2,1,2......
-	 * @author lwq
+	 * @author Jimmy
 	 * @date 2020/11/26 0026
 	 */
 	public static void demo2() throws InterruptedException {

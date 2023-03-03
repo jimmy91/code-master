@@ -5,7 +5,7 @@ import utils.design.proxy.TargetObjectImpl;
 
 /**
  * 静态代理
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/25 0025
  * @since
  */

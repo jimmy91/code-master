@@ -3,7 +3,7 @@ package utils.design.commond;
 /**
  * 具体命令
  * 打开电视
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/27 0027
  * @since
  */

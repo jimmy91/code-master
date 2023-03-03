@@ -2,7 +2,7 @@ package utils.design.adapater;
 
 /**
  * Adapatee具体实现一：mp4播放器
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/24 0024
  */
 public class VlcPlayer implements AdvancedMediaPlayer {

@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  * 如果信号量内部计数器大于0，信号量减1，然后允许共享这个资源；否则，如果信号量的计数器等于0，信号量将会把线程置入休眠直至计数器大于0.
  * 当信号量使用完时，必须释放。
  *
- * @author lwq
+ * @author Jimmy
  * @date 2020/12/1 0001
  */
 public class SemaphoreDemo {

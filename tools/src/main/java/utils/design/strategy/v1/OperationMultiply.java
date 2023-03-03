@@ -2,7 +2,7 @@ package utils.design.strategy.v1;
 
 /**
  * 策略三
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/23 0023
  */
 public class OperationMultiply implements Strategy{

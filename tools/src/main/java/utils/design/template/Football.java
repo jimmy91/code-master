@@ -2,7 +2,7 @@ package utils.design.template;
 
 /**
  * 具体实现类二
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/26 0026
  */
 public class Football extends Game {

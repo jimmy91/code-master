@@ -1,7 +1,7 @@
 package utils.design.proxy;
 
 /**
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/25 0025
  * @since
  */

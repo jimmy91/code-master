@@ -5,7 +5,7 @@ import utils.design.abstract_factory.products2.Color;
 
 /**
  * 生产多个产品的工厂1
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/24 0024
  */
 public class Factory1 extends AbstractFactory {

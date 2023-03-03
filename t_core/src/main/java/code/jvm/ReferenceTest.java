@@ -5,7 +5,7 @@ import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 
 /**
- * @author lwq
+ * @author Jimmy
  * @date 2022/6/7 0007
  * @since
  */

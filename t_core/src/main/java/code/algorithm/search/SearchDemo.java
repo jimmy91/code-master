@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * 查找相关算法
- * @author lwq
+ * @author Jimmy
  * @date 2021/12/15 0015
  * @since
  */

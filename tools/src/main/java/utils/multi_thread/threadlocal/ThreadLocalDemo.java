@@ -8,7 +8,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author lwq
+ * @author Jimmy
  * @date 2020/7/13 0013
  */
 public class ThreadLocalDemo {

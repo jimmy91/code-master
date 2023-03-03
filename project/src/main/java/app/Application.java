@@ -1,7 +1,5 @@
 package app;
 
-import com.alibaba.nacos.api.config.ConfigType;
-import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
 import io.jaegertracing.Configuration;
 import io.opentracing.Tracer;
 import io.opentracing.util.GlobalTracer;

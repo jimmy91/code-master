@@ -2,7 +2,7 @@ package utils.design.memento;
 
 /**
  * 原发器：需要保存历史版本数据的对象
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/27 0027
  * @since
  */
@@ -30,7 +30,7 @@ public class Originator {
 
 	/**
 	 * 备忘录：保存历史版本数据
-	 * @author lwq
+	 * @author Jimmy
 	 * @date 2022/10/27 0027
 	 * @since
 	 */

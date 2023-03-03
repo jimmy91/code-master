@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.LongAdder;
  * java.util.concurrent.atomic包下Atomic开头的类可以保证原子性
  * java.util.concurrent.atomic包下Adder结尾的类可以保证原子性，性能较Atomic开头的类更好（减少乐观锁的重试次数）
  *
- * @author lwq
+ * @author Jimmy
  * @date 2020/12/28 0028
  */
 public class AtomicDemo {

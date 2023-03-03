@@ -1,16 +1,16 @@
 package utils.design.proxy.dynamic;
 
-import utils.design.proxy.TargetObjectImpl;
-import io.lettuce.core.dynamic.intercept.MethodInterceptor;
-import io.lettuce.core.dynamic.intercept.MethodInvocation;
+import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.cglib.proxy.Enhancer;
+import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
+import utils.design.proxy.TargetObjectImpl;
 
 import java.lang.reflect.Method;
 
 /**
  * CGLIB动态代理
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/26 0026
  * @since
  */
@@ -46,7 +46,6 @@ public class CglibProxy implements MethodInterceptor {
 		System.out.println(method);
 	}
 
-	@Override
 	public Object invoke(MethodInvocation invocation) throws Throwable {
 		return null;
 	}

@@ -9,7 +9,7 @@ import utils.design.adapater.sample2.targetinterface.SDCard;
 import utils.design.adapater.sample2.targetinterface.SDCardImpl;
 
 /**
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/25 0025
  * @since
  */

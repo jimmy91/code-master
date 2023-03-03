@@ -2,7 +2,7 @@ package utils.design.adapater;
 
 /**
  * Target实现：适配前已经存在
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/24 0024
  */
 public class AudioPlayer implements MediaPlayer {

@@ -3,7 +3,7 @@ package utils.design.commond;
 /**
  * 命令调用者
  * 电视遥控器
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/27 0027
  * @since
  */

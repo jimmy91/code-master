@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * @author lwq
+ * @author Jimmy
  * @date 2020/6/19 0019
  */
 public class HelloGC {

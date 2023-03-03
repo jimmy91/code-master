@@ -3,7 +3,7 @@ package utils.design.singleton;
 import java.util.concurrent.*;
 
 /**
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/24 0024
  * @since
  */

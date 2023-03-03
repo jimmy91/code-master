@@ -5,7 +5,7 @@ import utils.design.factory.Square;
 
 /**
  * 工厂接口实现二：生产Square
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/24 0024
  */
 public class SquareFactory implements Factory{

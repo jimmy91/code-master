@@ -4,7 +4,7 @@ import java.util.Random;
 
 /**
  * 具体享元角色 火车票
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/28 0028
  * @since
  */

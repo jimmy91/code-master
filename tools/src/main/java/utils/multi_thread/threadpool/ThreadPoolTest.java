@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * JUC ThreadPoolExecutor测试
- * @author lwq
+ * @author Jimmy
  * @date 2022/6/13 0013
  * @since
  */

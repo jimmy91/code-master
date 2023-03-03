@@ -11,7 +11,7 @@ package code.multi_thread.aqs;
  ** - 共享式：只需要实现tryAcquireShared(int)和 tryReleaseShared(int)，并在其中完成对state的加和减
  *
  *
- * @author lwq
+ * @author Jimmy
  * @date 2022/6/27 0027
  * @since
  */

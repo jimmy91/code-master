@@ -2,7 +2,7 @@ package utils.design.adapater;
 
 /**
  * Targer接口：客户访问的目标
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/24 0024
  */
 public interface MediaPlayer {

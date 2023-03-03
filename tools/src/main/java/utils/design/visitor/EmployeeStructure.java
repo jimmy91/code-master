@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * 结构对象 维护被访问者集合 员工集合
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/28 0028
  * @since
  */

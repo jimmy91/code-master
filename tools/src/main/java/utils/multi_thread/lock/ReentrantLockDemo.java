@@ -19,7 +19,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * - Condition.await()：阻塞等待在条件队列中，此时会自动释放ReentrantLock锁
  *
  *
- * @author lwq
+ * @author Jimmy
  * @date 2020/12/7 0007
  */
 public class ReentrantLockDemo {

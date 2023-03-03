@@ -2,7 +2,7 @@ package code.multi_thread.synchronized_demo;
 
 /**
  * synchronized对象锁和类锁
- * @author lwq
+ * @author Jimmy
  * @date 2022/6/17 0017
  * @since
  */

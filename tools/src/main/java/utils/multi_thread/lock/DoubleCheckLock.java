@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 双重检查锁
  *
- * @author lwq
+ * @author Jimmy
  * @date 2020/12/28 0028
  */
 public class DoubleCheckLock {

@@ -2,7 +2,7 @@ package utils.design.iterator;
 
 /**
  * 被迭代对象-具体实现对象
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/27 0027
  * @since
  */
@@ -16,7 +16,7 @@ public class NameReporitory implements Container {
 
 	/**
 	 * 迭代器-具体实现
-	 * @author lwq
+	 * @author Jimmy
 	 * @date 2022/10/27 0027
 	 * @since
 	 */

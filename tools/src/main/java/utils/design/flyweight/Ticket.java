@@ -2,7 +2,7 @@ package utils.design.flyweight;
 
 /**
  * 抽象享元 - 票
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/28 0028
  * @since
  */

@@ -2,7 +2,7 @@ package utils.design.visitor;
 
 /**
  * 抽象访问者 访问者 CEO
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/27 0027
  * @since
  */

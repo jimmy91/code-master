@@ -3,7 +3,7 @@ package code.multi_thread.join;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author lwq
+ * @author Jimmy
  * @date 2022/6/20 0020
  * @since
  */

@@ -2,7 +2,7 @@ package utils.design.responsibility;
 
 /**
  *  责任链其二
- * @author lwq
+ * @author Jimmy
  * @date 2021/3/22 0022
  */
 public class FileLogger extends AbstractLogger {

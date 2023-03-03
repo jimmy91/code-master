@@ -4,7 +4,7 @@ import java.util.Map;
 
 /**
  * 运算符解析器 非终结符表达式
- * @author lwq
+ * @author Jimmy
  * @date 2022/10/28 0028
  * @since
  */
