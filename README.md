@@ -69,7 +69,7 @@ tools_project
 | spring-cloud-alibaba中文文档 | https://github.com/alibaba/spring-cloud-alibaba/tree/2021.x/spring-cloud-alibaba-docs/src/main/asciidoc-zh   <br> https://blog.csdn.net/qq_42082701/article/details/100983913/ |                               |
 |      springcloud学习       | https://www.macrozheng.com/cloud/cloud_catalog.html <br> https://github.com/macrozheng/springcloud-learning                                                                    |                               |
 |          canal           | https://github.com/alibaba/canal/wiki/ClientExample                                                                                                                            | canal Mysql Binlog 的增量订阅和消费组件 |
-|                          |                                                                                                                                                                                |                               |
+|  X Spring File Storage   | https://spring-file-storage.xuyanwu.cn/#/                                                                                                                                      | 一行代码实现文件上传 20个平台              |
 |                          |                                                                                                                                                                                |                               |
 
 

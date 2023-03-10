@@ -1,0 +1,35 @@
+package code.controller;
+
+import code.screw.ScrewSeviceImpl;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import utils.generator.common.dao.vo.CommonResult;
+
+/**
+ * @author Jimmy
+ */
+@Api(tags = "调用入口")
+@RestController
+@RequestMapping("/invoke")
+@Validated
+public class EnterController {
+
+    @Autowired
+    private ScrewSeviceImpl screwSevice;
+
+    @ApiOperation(value = "一键生成数据库文档")
+    @PostMapping("/screw")
+    public CommonResult<Boolean> screw() {
+        screwSevice.contextLoads();
+       return CommonResult.success(true) ;
+    }
+
+
+
+
+}

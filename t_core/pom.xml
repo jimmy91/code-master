@@ -82,6 +82,12 @@
             <version>3.2.3</version>
         </dependency>
 
+        <!-- screw核心,数据库表文档生成 -->
+        <dependency>
+            <groupId>cn.smallbun.screw</groupId>
+            <artifactId>screw-core</artifactId>
+            <version>1.0.3</version>
+        </dependency>
 
     </dependencies>
 
