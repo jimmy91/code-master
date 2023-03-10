@@ -68,6 +68,14 @@
             <version>2.5.12</version>
         </dependency>
 
+        <!--rocketmq-->
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-client</artifactId>
+            <version>4.9.1</version>
+        </dependency>
+
+
        <!-- TTL多线程参数传递-->
         <dependency>
             <groupId>com.alibaba</groupId>

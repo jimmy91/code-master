@@ -16,6 +16,10 @@ public class RedissLockUtil {
     	redissonClient = locker;
     }
 
+    public static RedissonClient getRedissonClient() {
+        return redissonClient;
+    }
+
     /**
      * 加锁
      * @param lockKey

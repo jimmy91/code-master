@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import utils.generator.common.dao.vo.CommonResult;
+import utils.redisson.RedissonExpirationListener;
 
 
 /**
@@ -15,7 +16,7 @@ import utils.generator.common.dao.vo.CommonResult;
  */
 @Api(tags = "demo测试")
 @RestController
-@RequestMapping("/data")
+@RequestMapping("/demo")
 public class DemoController {
 
 
@@ -25,5 +26,15 @@ public class DemoController {
         DemoProviderFeign.remote.sendMessage("发送消息内容");
         DemoProviderFeign.remote.sendMqTTLMessage();
         return DemoProviderFeign.remote.sendMqXDMessage();
+
     }
+
+    @ApiOperation(value = "redisson过期监听", notes="")
+    @GetMapping("/redisson")
+    public CommonResult<Boolean> redisson() throws Exception {
+
+        RedissonExpirationListener.demoTest();
+        return CommonResult.success(true);
+    }
+
 }

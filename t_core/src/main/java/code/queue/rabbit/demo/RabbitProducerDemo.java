@@ -31,6 +31,8 @@ public class RabbitProducerDemo {
             connection =  ConnectionUtil.getConnection();
             //创建会话通道,生产者和mq服务所有通信都在channel通道中完成
             channel = connection.createChannel();
+            // 开启事务模式
+            // channel.txSelect();
             // 定义队列、声明队列，如果队列在mq 中没有则要创建
             //参数：String queue, boolean durable, boolean exclusive, boolean autoDelete, Map<String, Object> arguments
             /**
