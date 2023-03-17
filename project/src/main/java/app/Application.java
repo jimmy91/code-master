@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.retry.annotation.EnableRetry;
 
 /**
  * @author Jimmy
@@ -17,6 +18,8 @@ import org.springframework.context.annotation.ComponentScan;
 
 // 开启基于注解的缓存 @Cacheable
 @EnableCaching
+// 表示支持重试功能
+@EnableRetry
 
 @SpringBootApplication
 // 可以指定要扫描的dao接口类的路径，可以在启动类中添加此注解，可替代@Mapper注解（此模块内dao接口类不用都添加@Mapper注解），两个 * 代表任意个包

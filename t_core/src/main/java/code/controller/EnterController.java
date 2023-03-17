@@ -30,6 +30,13 @@ public class EnterController {
     }
 
 
+    @ApiOperation(value = "自动重试")
+    @PostMapping("/retry")
+    public CommonResult<String> retry() throws Exception {
+        return CommonResult.success(screwSevice.retryTest("重试了没有")) ;
+    }
+
+
 
 
 }
