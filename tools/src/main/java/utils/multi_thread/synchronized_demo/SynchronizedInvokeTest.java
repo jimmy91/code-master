@@ -1,4 +1,4 @@
-package code.multi_thread.synchronized_demo;
+package utils.multi_thread.synchronized_demo;
 
 import java.util.concurrent.CountDownLatch;
 

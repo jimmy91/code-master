@@ -1,4 +1,4 @@
-package code.multi_thread.atomic;
+package utils.multi_thread.atomic;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -25,6 +25,12 @@ public class AtomicDemo {
 
 	// private static int num;
 
+	/**
+	 *  LongAdder的思想是化整为零，如果在没有线程竞争的情况下进行自增，那么与AtomicInteger和AtomicLong没有什么区别，直接累加即可。
+	 *  如果在高并发的环境中，LongAdder会创建一个cell数组，给每个线程分配一个桶位，一个线程对应一个cell，
+	 *  让每个线程在各自的桶位进行累加，最后把cell数组中的所有值加起来就是最终结果。
+     *
+	 */
 	private static LongAdder longAdder = new LongAdder();
 
 	public static void testAtomicInteger() {

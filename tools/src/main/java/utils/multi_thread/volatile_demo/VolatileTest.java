@@ -1,4 +1,4 @@
-package code.multi_thread.volatile_demo;
+package utils.multi_thread.volatile_demo;
 
 import java.util.Random;
 

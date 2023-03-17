@@ -1,4 +1,4 @@
-package code.multi_thread.lock;
+package utils.multi_thread.lock;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -58,32 +58,6 @@ public class ReentrantLockDemo {
 		private Condition condition = lock.newCondition();
 
 		@Override
-		// public void run(){
-		// 	try {
-		// 		countDownLatch.await();
-		// 	} catch (InterruptedException e) {
-		// 		e.printStackTrace();
-		// 	}
-		// 	while(number<100){
-		// 		System.out.println(Thread.currentThread().getName() + "---准备拿锁");
-		//
-		// 		lock.lock();
-		// 		number++;
-		// 		System.out.println(Thread.currentThread().getName() + "---打印：" + number);
-		// 		condition.signal();
-		// 		try{
-		// 			if(number<100)
-		// 				condition.await();
-		// 		}catch (InterruptedException e) {
-		// 			e.printStackTrace();
-		// 		}finally{
-		// 			lock.unlock();
-		// 		}
-		// 		System.out.println(Thread.currentThread().getName() + "---锁释放后处理...");
-		//
-		// 	}
-		// }
-
 		public void run() {
 			try {
 				countDownLatch.await();

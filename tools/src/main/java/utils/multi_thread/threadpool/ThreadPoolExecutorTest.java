@@ -1,4 +1,6 @@
-package code.multi_thread.threadpool;
+package utils.multi_thread.threadpool;
+
+import cn.hutool.core.thread.ThreadUtil;
 
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -43,7 +45,7 @@ public class ThreadPoolExecutorTest {
 			threadPoolExecutorTest.mExecutor.execute(() -> {
 				try {
 					Thread.sleep(100);
-					System.out.println("I‘m no." + finalI);
+					System.out.println(Thread.currentThread().getName() + " I‘m no." + finalI);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

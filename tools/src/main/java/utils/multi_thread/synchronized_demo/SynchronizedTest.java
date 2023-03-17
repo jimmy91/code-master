@@ -1,4 +1,4 @@
-package code.multi_thread.synchronized_demo;
+package utils.multi_thread.synchronized_demo;
 
 /**
  * synchronized对象锁和类锁

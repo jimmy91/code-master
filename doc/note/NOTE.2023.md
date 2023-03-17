@@ -1,5 +1,7 @@
 ## Java
 
+https://www.cnblogs.com/chengxy-nds/p/12893407.html
+
 > ### 笔记点
 >> #### 参考文档地址
 >> 关键词：**
@@ -7,16 +9,28 @@
 >> 内容
 >
 >
+ 
 
-多线程中future中get方法是怎么实现的
-
+> ### 锁及AQS原理
+>> #### https://tech.meituan.com/2019/12/05/aqs-theory-and-apply.html <br> https://www.cnblogs.com/tyux/articles/15886521.html
+>> 关键词：按位切割：一个值表示多个意
+>![img.png](../img/img_lock.png)
+>> 乐观锁：CAS无锁算法-ABA问题（AtomicStampedReference类来解决ABA问题）、 J.U.C 原子类、并发容器、GIT PUSH
+> 自旋锁：避免切换线程的开销，因为阻塞或唤醒一个Java线程需要操作系统切换CPU状态来完成  
+> AQS，两个队列，一个同步(等待)队列[虚拟双向队列（FIFO）]，多个条件队列，await等待会让线程从同步队列转移到条件队列，signal唤醒会让线程由条件队列转移至同步队列  
+> 一个volatile状态state(表示锁状态、锁次数（可重入锁）、按位切割（高16位表示读锁状态（读锁个数），低16位表示写锁状态（写锁个数））
+> 同步队列的作用是：当线程获取资源失败之后，就进入同步队列的尾部保持自旋等待，不断判断自己是否是链表的头节点，如果是头节点，就不断参试获取资源，获取成功后则退出同步队列。
+条件队列是为Lock实现的一个基础同步器，并且一个线程可能会有多个条件队列，只有在使用了Condition才会存在条件队列 
+> ![img.png](../img/img_AQS.png)
+ 
 > ### 分布式事务
 >> #### https://www.cnblogs.com/chengxy-nds/p/14046856.html  https://blog.51cto.com/u_14299052/3152345  http://www.hunt007.com/wiki/97874.html
 >> 关键词：**
 >
->> 分布式事务之TCC  
+>> 分布式事务之TCC (事务补偿) 
 > 分布式事务之最大努力通知型事务  
 > 柔性事务解决方案：消息一致性事务方案
+> 消息事务
 > 总结
 可靠消息最终一致性方案是目前业务主流的分布式事务落地方案，其优缺点主要如下：
 优点： 消息数据独立存储，降低业务系统与消息系统间的耦合。

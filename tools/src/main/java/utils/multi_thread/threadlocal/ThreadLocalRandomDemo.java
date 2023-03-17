@@ -1,4 +1,4 @@
-package code.multi_thread.threadlocal;
+package utils.multi_thread.threadlocal;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;

@@ -1,4 +1,4 @@
-package code.multi_thread.lock;
+package utils.multi_thread.lock;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;

@@ -1,4 +1,4 @@
-package code.multi_thread.join;
+package utils.multi_thread.join;
 
 import java.util.concurrent.TimeUnit;
 

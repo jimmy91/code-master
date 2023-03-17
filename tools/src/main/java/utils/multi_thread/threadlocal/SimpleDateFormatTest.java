@@ -1,4 +1,4 @@
-package code.multi_thread.threadlocal;
+package utils.multi_thread.threadlocal;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * SimpleDateFormat线程安全测试
  * 线程不安全
+ * @author Jimmy
  */
 public class SimpleDateFormatTest {
 	private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -40,7 +41,7 @@ public class SimpleDateFormatTest {
 	}
 
 	public static void main(String[] args) {
-		// new SimpleDateFormatTest().test0();
+		  new SimpleDateFormatTest().test0();
 		// 执行结果，会有false出现，说明线程不安全。
 
 		/** 如何保证线程安全呢
@@ -52,7 +53,7 @@ public class SimpleDateFormatTest {
 
 		// new SimpleDateFormatTest().test1();
 		// new SimpleDateFormatTest().test2();
-		new SimpleDateFormatTest().test3();
+		// new SimpleDateFormatTest().test3();
 
 
 	}

@@ -1,4 +1,4 @@
-package code.multi_thread;
+package utils.multi_thread;
 
 import java.util.concurrent.SynchronousQueue;
 

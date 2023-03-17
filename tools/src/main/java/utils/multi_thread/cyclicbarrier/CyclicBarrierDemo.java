@@ -1,4 +1,4 @@
-package code.multi_thread.cyclicbarrier;
+package utils.multi_thread.cyclicbarrier;
 
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutorService;

@@ -1,4 +1,6 @@
-package code.multi_thread.threadpool;
+package utils.multi_thread.threadpool;
+
+import cn.hutool.core.thread.ThreadUtil;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -23,10 +25,19 @@ public class ThreadPoolTest implements Runnable {
 	public static void main(String[] args) {
 		LinkedBlockingQueue<Runnable> queue = new LinkedBlockingQueue<>(5);
 		// RejectedExecutionHandler handler = new ThreadPoolExecutor.DiscardPolicy();
-		ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 10, 60, TimeUnit.SECONDS, queue);
+		ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 10, 10, TimeUnit.SECONDS, queue);
 		// ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 10, 60, TimeUnit.SECONDS, queue, handler);
 		// threadPoolExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
-		for (int i = 0; i < 16; i++) {
+		for (int i = 0; i < 15; i++) {
+			threadPoolExecutor.execute(new Thread(new ThreadPoolTest(), "Thread".concat(i + "")));
+			System.out.println("线程池中活跃的线程数：" + threadPoolExecutor.getPoolSize());
+			if (queue.size() > 0) {
+				System.out.println("-----------------------队列中阻塞的线程数：" + queue.size());
+			}
+		}
+		ThreadUtil.sleep(1000 * 11);
+		System.out.println("---------------------");
+		for (int i = 0; i < 20; i++) {
 			threadPoolExecutor.execute(new Thread(new ThreadPoolTest(), "Thread".concat(i + "")));
 			System.out.println("线程池中活跃的线程数：" + threadPoolExecutor.getPoolSize());
 			if (queue.size() > 0) {

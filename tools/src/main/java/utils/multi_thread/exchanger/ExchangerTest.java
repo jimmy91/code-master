@@ -1,4 +1,6 @@
-package code.multi_thread.exchanger;
+package utils.multi_thread.exchanger;
+
+import cn.hutool.core.thread.ThreadUtil;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Exchanger;
@@ -57,7 +59,9 @@ public class ExchangerTest {
 	}
 
 	public static void main(String[] args) throws InterruptedException {
-		// test();
+		test();
+		ThreadUtil.sleep(1000L);
+		System.out.println("========================");
 		test2();
 	}
 }

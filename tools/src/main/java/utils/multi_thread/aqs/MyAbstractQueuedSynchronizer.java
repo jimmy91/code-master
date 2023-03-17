@@ -1,4 +1,4 @@
-package code.multi_thread.aqs;
+package utils.multi_thread.aqs;
 
 /**
  * AQS
