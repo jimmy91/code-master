@@ -24,9 +24,8 @@ public class EnterController {
 
     @ApiOperation(value = "一键生成数据库文档")
     @PostMapping("/screw")
-    public CommonResult<Boolean> screw() {
-        screwSevice.contextLoads();
-       return CommonResult.success(true) ;
+    public CommonResult<String> screw() {
+       return CommonResult.success( screwSevice.doDownloadFile()) ;
     }
 
 

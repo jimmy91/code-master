@@ -24,16 +24,20 @@ tools_project
 │   ├── annotation              // 注释类
 │   ├── aop                     // 切面类
 │   ├── config                  // 应用服务配置
-│   ├── exception               // 异常处理类
+│   ├── contanst                // 常量
+│   ├── feign                   // Feign
 │   ├── generator               // 自动生成API
 │   ├── handler                 // 应用框架处理类
+│   ├── netty                   // Netty webIM
 │   ├── project                 // （通用）应用服务API
 │   ├── Application             // 应用服务启动类
-├── t_code                      // 业务代码设计
-│   ├── code                    // 应用服务启动类
+├── t_code                      // 框架应用服务&业务代码
+│   ├── code                    // 框架应用服务启动类
+│   │   ├── geo.*               // redis GEO
 │   │   ├── netty.*             // netty websocket 
-│   │   ├── oauth.*             // 鉴权
+│   │   ├── oauth.*             // 鉴权 shiro
 │   │   ├── queue               // 消息队列
+│   │   ├── screw               // 数据库文档生成工具
 │   │   ├── reusability.*       // 可复用（模仿）业务代码
 ├── tools.utils                 // 工具包
 │   ├── algorithm               // 算法-布隆过滤器、排序算法 
@@ -42,6 +46,7 @@ tools_project
 │   ├── jvm                     // JVM
 │   ├── multi_thread            // 多线程
 │   ├── ratelimter              // 限流工具类
+│   ├── redisson                // Redisson
 │   ├── tools.*                 // 工具类
 ├── readme.md                   // 说明文档
 
@@ -70,8 +75,10 @@ tools_project
 |      springcloud学习       | https://www.macrozheng.com/cloud/cloud_catalog.html <br> https://github.com/macrozheng/springcloud-learning                                                                    |                               |
 |          canal           | https://github.com/alibaba/canal/wiki/ClientExample                                                                                                                            | canal Mysql Binlog 的增量订阅和消费组件 |
 |  X Spring File Storage   | https://spring-file-storage.xuyanwu.cn/#/                                                                                                                                      | 一行代码实现文件上传 20个平台              |
-|      美团leaf分布式ID生成       |  https://tech.meituan.com/2017/04/21/mt-leaf.html                                                                                           |                               |
-
+|      美团leaf分布式ID生成       | https://tech.meituan.com/2017/04/21/mt-leaf.html                                                                                                                               |                               |
+|                          |                                                                                                                                                                                |                               |
+|                          |                                                                                                                                                                                |                               |
+|                          |                                                                                                                                                                                |                               |
 
 ###  4.内置功能
  
@@ -79,6 +86,12 @@ tools_project
 * 限流工具类
 * swagger接口文档
 * 幂等防重复请求
-* IM WEB聊天
+* 基于Netty实现IM WEB聊天
 * 阿里云链路追踪+SkyWalking
+* screw 数据库文档一键生成
+* spring retry 重试机制
+* spring 文件处理
  
+
+
+
