@@ -1,7 +1,7 @@
 package code.controller;
 
-import code.geo.GeoInfo;
-import code.geo.RedisGeoApi;
+import code.framework.geo.GeoInfo;
+import code.framework.geo.RedisGeoApi;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

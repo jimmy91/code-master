@@ -1,4 +1,4 @@
-package code.geo;
+package code.framework.geo;
 
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;

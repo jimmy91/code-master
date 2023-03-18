@@ -1,4 +1,4 @@
-package code.geo;
+package code.framework.geo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;

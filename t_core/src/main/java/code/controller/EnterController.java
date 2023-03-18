@@ -1,6 +1,7 @@
 package code.controller;
 
-import code.screw.ScrewSeviceImpl;
+import code.framework.retry.RetryServiceImpl;
+import code.framework.screw.ScrewServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,19 +21,22 @@ import utils.generator.common.dao.vo.CommonResult;
 public class EnterController {
 
     @Autowired
-    private ScrewSeviceImpl screwSevice;
+    private ScrewServiceImpl screwService;
+
+    @Autowired
+    private RetryServiceImpl retryService;
 
     @ApiOperation(value = "一键生成数据库文档")
     @PostMapping("/screw")
     public CommonResult<String> screw() {
-       return CommonResult.success( screwSevice.doDownloadFile()) ;
+       return CommonResult.success(screwService.doDownloadFile()) ;
     }
 
 
     @ApiOperation(value = "自动重试")
     @PostMapping("/retry")
     public CommonResult<String> retry() throws Exception {
-        return CommonResult.success(screwSevice.retryTest("重试了没有")) ;
+        return CommonResult.success(retryService.retryTest("重试了没有")) ;
     }
 
 

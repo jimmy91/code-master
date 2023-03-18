@@ -33,11 +33,13 @@ tools_project
 │   ├── Application             // 应用服务启动类
 ├── t_code                      // 框架应用服务&业务代码
 │   ├── code                    // 框架应用服务启动类
-│   │   ├── geo.*               // redis GEO
+│   │   ├── framework.*         // 第三方服务，拿来即用
+│   │   │   ├── geo.*           // redis GEO
+│   │   │   ├── retry.*         // 重试
+│   │   │   ├── screw.*         // 数据库文档生成工具
 │   │   ├── netty.*             // netty websocket 
 │   │   ├── oauth.*             // 鉴权 shiro
 │   │   ├── queue               // 消息队列
-│   │   ├── screw               // 数据库文档生成工具
 │   │   ├── reusability.*       // 可复用（模仿）业务代码
 ├── tools.utils                 // 工具包
 │   ├── algorithm               // 算法-布隆过滤器、排序算法 

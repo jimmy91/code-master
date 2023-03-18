@@ -1,6 +1,7 @@
-package code.screw;
+package code.framework.screw;
 
-import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.date.DatePattern;
+import cn.hutool.core.date.DateUtil;
 import cn.smallbun.screw.core.Configuration;
 import cn.smallbun.screw.core.engine.EngineConfig;
 import cn.smallbun.screw.core.engine.EngineFileType;
@@ -32,7 +33,7 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class ScrewSeviceImpl {
+public class ScrewServiceImpl {
 
 
     private static final String FILE_OUTPUT_DIR = System.getProperty("java.io.tmpdir") + "db-doc";
@@ -55,7 +56,7 @@ public class ScrewSeviceImpl {
         //该方式数据源下无法获取表说明
         //DataSource dataSourceMysql = applicationContext.getBean(DataSource.class);
         try {
-            String fileName = "数据库文档_"+ IdUtil.fastSimpleUUID();
+            String fileName = "数据库文档_"+ DateUtil.format(DateUtil.date(), DatePattern.NORM_DATETIME_MINUTE_PATTERN);
             EngineFileType fileType = EngineFileType.HTML;
             // 生成文件配置
             EngineConfig engineConfig = EngineConfig.builder()
@@ -115,9 +116,6 @@ public class ScrewSeviceImpl {
                 throw new RuntimeException(e);
             }
         }
-
-
-
     }
 
     @NotNull
@@ -133,24 +131,6 @@ public class ScrewSeviceImpl {
         hikariConfig.setMaximumPoolSize(5);
         DataSource dataSourceMysql = new HikariDataSource(hikariConfig);
         return dataSourceMysql;
-    }
-
-
-    /**
-     * maxAttempts：最大重试次数(包括第一次失败)，默认为3次
-     * backoff：重试等待策略，默认使用@Backoff，@Backoff的value默认为1000L，我们设置为2000L；
-     * multiplier（指定延迟倍数）默认为0，表示固定暂停1秒后进行重试，如果把multiplier设置为1.5，则第一次重试为2秒，第二次重试为上次间隔时间的1.5倍
-     */
-    @Retryable(value = Exception.class, maxAttempts = 2, backoff = @Backoff(delay = 2000, multiplier = 1.5))
-    public String retryTest(String text) throws Exception {
-        System.out.println(text);
-        throw new Exception("手动异常");
-    }
-
-    @Recover
-    public String recover(Exception e, String text){
-        System.out.println("重试失败，回调方法执行！！！！ " +  e.getMessage());
-        return text+"，重试成功了。";
     }
 
 }
