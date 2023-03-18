@@ -8,9 +8,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.subject.Subject;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,9 +16,8 @@ import utils.generator.common.dao.vo.CommonResult;
 
 /**
  * @author jimmy
- * @date 2020/7/9 0009
  */
-@Api(tags = "Oauth模块")
+@Api(tags = "Shiro模块")
 @RestController
 @RequestMapping("oauth/shiro")
 public class OauthController {

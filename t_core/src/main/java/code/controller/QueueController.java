@@ -1,6 +1,5 @@
 package code.controller;
 
-import cn.hutool.core.map.MapUtil;
 import code.queue.rabbit.RabbitProducer;
 import code.queue.redis.RedisProducer;
 import io.swagger.annotations.Api;
@@ -9,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import utils.generator.common.dao.vo.CommonResult;
-
-import java.util.Map;
 
 /**
  * @author Jimmy

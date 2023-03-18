@@ -1,5 +1,7 @@
 package app.handler.exception;
 
+import cn.dev33.satoken.exception.NotLoginException;
+import cn.dev33.satoken.exception.NotPermissionException;
 import com.alibaba.csp.sentinel.slots.block.authority.AuthorityException;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeException;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowException;
@@ -29,6 +31,7 @@ import static utils.generator.common.exception.GlobalErrorCodeConstants.*;
 
 /**
  * 全局异常处理器，将 Exception 翻译成 CommonResult + 对应的异常编号
+ *
  * @author Jimmy
  */
 @RestControllerAdvice
@@ -73,8 +76,17 @@ public class GlobalExceptionHandler {
         if (ex instanceof IllegalArgumentException) {
             return InvalidFormatExceptionHandler((IllegalArgumentException) ex);
         }
+
+        /*业务异常*/
         if (ex instanceof ServiceException) {
             return serviceExceptionHandler((ServiceException) ex);
+        }
+        /*saToken异常*/
+        if (ex instanceof NotLoginException) {
+            return notLoginExceptionHandler((NotLoginException) ex);
+        }
+        if (ex instanceof NotPermissionException) {
+            return notPermissionExceptionHandler((NotPermissionException) ex);
         }
 
         /*sentinel异步拦截*/
@@ -95,7 +107,7 @@ public class GlobalExceptionHandler {
         try {
             MismatchedInputException cause = (MismatchedInputException) ex.getCause();
             return CommonResult.error(BAD_REQUEST.getCode(), String.format("请求参数错误【参数：%s】类型应为:%s", cause.getPath().get(0).getFieldName(), cause.getTargetType()));
-        }catch (Exception e){
+        } catch (Exception e) {
             return CommonResult.error(BAD_REQUEST.getCode(), String.format("请检查请求参数类型"));
         }
     }
@@ -105,6 +117,7 @@ public class GlobalExceptionHandler {
         log.warn("[InvalidFormatExceptionHandler]", ex);
         return CommonResult.error(INTERNAL_SERVER_ERROR.getCode(), ex.getMessage());
     }
+
     /**
      * 处理 SpringMVC 请求参数缺失
      * <p>
@@ -202,6 +215,19 @@ public class GlobalExceptionHandler {
         log.info("[serviceExceptionHandler]", ex);
         return CommonResult.error(ex.getCode(), ex.getMessage());
     }
+
+    @ExceptionHandler(value = NotLoginException.class)
+    public CommonResult<?> notLoginExceptionHandler(NotLoginException ex) {
+        log.info("[notLoginExceptionHandler]", ex);
+        return CommonResult.error(ex.getCode(), String.format("登陆失败:%s", ex.getMessage()));
+    }
+
+    @ExceptionHandler(value = NotPermissionException.class)
+    public CommonResult<?> notPermissionExceptionHandler(NotPermissionException ex) {
+        log.info("[notPermissionExceptionHandler]", ex);
+        return CommonResult.error(ex.getCode(), ex.getMessage());
+    }
+
 
     /**
      * 处理系统异常，兜底处理所有的一切
