@@ -34,8 +34,17 @@ import static utils.generator.generatorTemplate.constant.TemplateConstant.*;
 public class MyBatisPlusTemplateGenerator {
 
     public static String[] TABLES = {
-            "system_dict_data"
+            "file_detail"
     };
+
+
+    /**
+     * 数据库
+     */
+    public static String username = "root" ;
+    public static String password = "inno@2021" ;
+    public static String url = "jdbc:mysql://10.0.99.191:3306/test" ;
+    public static String driverClassName = "com.mysql.jdbc.Driver" ;
 
 
     public static void main(String[] args) {
@@ -77,16 +86,11 @@ public class MyBatisPlusTemplateGenerator {
         DataSourceConfig dsConfig = new DataSourceConfig();
         // 设置数据库类型
         dsConfig.setDbType(DbType.MYSQL)
-                // 数据库类型
-                .setDbType(BasicConstant.DB_TYPE)
-                // 连接驱动
-                .setDriverName(BasicConstant.driverClassName)
-                // 地址
-                .setUrl(BasicConstant.url)
-                // 用户名
-                .setUsername(BasicConstant.username)
-                // 密码
-                .setPassword(BasicConstant.password)
+                .setDriverName(driverClassName)
+                .setUrl(url)
+                .setUsername(username)
+                .setPassword(password)
+
                 .setTypeConvert(new MySqlTypeConvert(){
                     // 数据库字段类型与java类型映射关系
                     public DbColumnType processTypeConvert(GlobalConfig globalConfig, String fieldType){
@@ -196,7 +200,7 @@ public class MyBatisPlusTemplateGenerator {
                         map.put(tableName + "path", sb.toString());
                         continue;
                     }
-                    sb.append(SLASH + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, BasicConstant.url));
+                    sb.append(SLASH + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, url));
                     map.put(tableName + "path", sb.toString());
                 }
                 this.setMap(map);

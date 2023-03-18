@@ -1,5 +1,6 @@
 package app;
 
+import cn.xuyanwu.spring.file.storage.EnableFileStorage;
 import io.jaegertracing.Configuration;
 import io.opentracing.Tracer;
 import io.opentracing.util.GlobalTracer;
@@ -20,6 +21,8 @@ import org.springframework.retry.annotation.EnableRetry;
 @EnableCaching
 // 表示支持重试功能
 @EnableRetry
+// 启用 X Spring File Storage
+@EnableFileStorage
 
 @SpringBootApplication
 // 可以指定要扫描的dao接口类的路径，可以在启动类中添加此注解，可替代@Mapper注解（此模块内dao接口类不用都添加@Mapper注解），两个 * 代表任意个包

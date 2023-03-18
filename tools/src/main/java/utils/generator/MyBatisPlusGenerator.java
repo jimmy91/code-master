@@ -31,8 +31,16 @@ import static com.baomidou.mybatisplus.core.toolkit.StringPool.UNDERSCORE;
 public class MyBatisPlusGenerator {
 
     public static String[] TABLES = {
-            "trx_emp", "trx_dept", "trx_batch"
+            "file_detail"
     };
+
+    /**
+     * 数据库
+     */
+    public static String username = "root" ;
+    public static String password = "inno@2021" ;
+    public static String url = "jdbc:mysql://10.0.99.191:3306/test" ;
+    public static String driverClassName = "com.mysql.jdbc.Driver" ;
 
     public static void main(String[] args) {
         //1. 全局配置
@@ -66,10 +74,10 @@ public class MyBatisPlusGenerator {
         DataSourceConfig dsConfig = new DataSourceConfig();
         // TODO 设置数据库类型
         dsConfig.setDbType(DbType.MYSQL)
-                .setDriverName("com.mysql.jdbc.Driver")
-                .setUrl("jdbc:mysql://10.0.99.191:3306/test?useSSL=false")
-                .setUsername("root")
-                .setPassword("inno@2021");
+                .setDriverName(driverClassName)
+                .setUrl(url)
+                .setUsername(username)
+                .setPassword(password);
 
         //3. 策略配置globalConfiguration中
         StrategyConfig stConfig = new StrategyConfig();
@@ -144,7 +152,7 @@ public class MyBatisPlusGenerator {
                         map.put(tableName + "path", sb.toString());
                         continue;
                     }
-                    sb.append(SLASH + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, BasicConstant.url));
+                    sb.append(SLASH + CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, url));
                     map.put(tableName + "path", sb.toString());
                 }
                 this.setMap(map);

@@ -41,6 +41,20 @@ spring:
     template:
       mandatory: true
 
+  file-storage: #文件存储配置
+    default-platform: aliyun-oss-1 #默认使用的存储平台
+    thumbnail-suffix: ".min.jpg" #缩略图后缀，例如【.min.jpg】【.png】
+    aliyun-oss: # 阿里云 OSS ，不使用的情况下可以不写
+      - platform: aliyun-oss-1 # 存储平台标识
+        enable-storage: true  # 启用存储
+        access-key: LTAI5tKvBN7aTs3JxSwLVaYD
+        secret-key: qTDl4WgOz**********YZxJGIWB
+        end-point: oss-cn-shenzhen.aliyuncs.com
+        bucket-name: app-jimmy
+        domain: https://app-jimmy.oss-cn-shenzhen.aliyuncs.com/ # 访问域名，注意“/”结尾，例如：https://abc.oss-cn-shanghai.aliyuncs.com/
+        base-path: file/ # 基础路径
+
+
 # mybatis配置
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml,mapper/*/*.xml
@@ -55,13 +69,6 @@ mybatis-plus:
       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
   type-aliases-package: app.*.mapper.*
 
-app:
-  oss:
-    region-id: cn-shenzhen
-    access-key-id: LTAI5tKvBN7aTs3JxSwLVaYD
-    secret: qTDl4**************GIWB
-    endpoint: oss-cn-shenzhen.aliyuncs.com
-    bucket-name: app-jimmy
 
 
 

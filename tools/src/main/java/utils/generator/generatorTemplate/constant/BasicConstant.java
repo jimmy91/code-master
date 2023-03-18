@@ -35,12 +35,5 @@ public final class BasicConstant {
             "creator","create_time","updater","update_time","deleted","tenant_id"
     };
 
-    /**
-     * 数据库
-     */
-    public static String username = "root" ;
-    public static String password = "inno@2021" ;
-    public static String url = "jdbc:mysql://10.0.99.191:3306/pala-planet?useSSL=false&allowMultiQueries=true&characterEncoding=utf8&useUnicode=true&useSSL=false&serverTimezone=Asia/Shanghai&autoReconnect=true&failOverReadOnly=false&maxReconnects=10" ;
-    public static DbType DB_TYPE = DbType.MYSQL;
-    public static String driverClassName = "com.mysql.jdbc.Driver" ;
+
 }
