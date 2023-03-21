@@ -9,10 +9,29 @@ https://www.cnblogs.com/chengxy-nds/p/12893407.html
 >> 内容
 >
 >
- 
+
+> ### mybatis一二级缓存
+>> #### https://tech.meituan.com/2018/01/19/mybatis-cache.html
+>> 关键词：**
+>
+>> 一级缓存因为只能在同一个SqlSession中共享，所以会存在一个问题，在分布式或者多线程的环境下，
+不同会话之间对于相同的数据可能会产生不同的结果，因为跨会话修改了数据是不能互相感知的，所以就有可能存在脏数据的问题，
+正因为一级缓存存在这种不足，所以我们需要一种作用域更大的缓存，这就是二级缓存。 
+>Cache使用时的注意事项/避免使用二级缓存  
+    注意事项：  
+    只能在【只有单表操作】的表上使用缓存，不只是要保证这个表在整个系统中只有单表操作，而且和该表有关的全部操作必须全部在一个namespace下。
+    在可以保证查询远远大于insert,update,delete操作的情况下使用缓存这一点不需要多说，所有人都应该清楚(读多写少)。记住，这一点需要保证在1的前提下才可以！
+    避免使用二级缓存：
+    可能会有很多人不理解这里，二级缓存带来的好处远远比不上他所隐藏的危害。
+    缓存是以namespace为单位的，不同namespace下的操作互不影响。
+    insert,update,delete操作会清空所在namespace下的全部缓存。
+    通常使用MyBatis Generator生成的代码中，都是各个表独立的，每个表都有自己的namespace。
+>
+>
+
 
 > ### 锁及AQS原理
->> #### https://tech.meituan.com/2019/12/05/aqs-theory-and-apply.html <br> https://www.cnblogs.com/tyux/articles/15886521.html
+>> #### https://tech.meituan.com/2019/12/05/aqs-theory-and-apply.html <br> https://tech.meituan.com/2018/11/15/java-lock.html  <br> https://www.cnblogs.com/tyux/articles/15886521.html
 >> 关键词：按位切割：一个值表示多个意
 >![img.png](../img/img_lock.png)
 >> 乐观锁：CAS无锁算法-ABA问题（AtomicStampedReference类来解决ABA问题）、 J.U.C 原子类、并发容器、GIT PUSH

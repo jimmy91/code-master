@@ -22,4 +22,9 @@ public class SystemApiServiceImpl extends ServiceImpl<SystemApiMapper, SystemDic
     public Map<Long, SystemDictDataEntity> listMapByIds(List<Long> ids) {
         return this.getBaseMapper().listMapByIds(ids);
     }
+
+    @Override
+    public SystemDictDataEntity getTwoLevelCache(Long id) {
+        return this.getBaseMapper().getTwoLevelCache(id);
+    }
 }

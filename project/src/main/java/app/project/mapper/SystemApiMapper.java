@@ -4,6 +4,7 @@ import app.contanst.CacheSpaceConstant;
 import app.project.entity.SystemDictDataEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.cache.annotation.Cacheable;
 import utils.tools.coll.CollectionUtils;
 
@@ -30,4 +31,5 @@ public interface SystemApiMapper extends BaseMapper<SystemDictDataEntity> {
         return CollectionUtils.convertMap(selectBatchIds(ids), SystemDictDataEntity::getId);
     }
 
+    SystemDictDataEntity getTwoLevelCache(@Param("id") Long id);
 }

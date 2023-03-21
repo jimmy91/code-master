@@ -36,6 +36,7 @@ public class ServiceLockAspect {
     @Around("lockAspect()")
     public  Object around(ProceedingJoinPoint joinPoint) {
 		Object obj = null;
+		// 此外可将lock更换为分布锁进行升级
     	lock.lock();
 		try {
 			obj = joinPoint.proceed();

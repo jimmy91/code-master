@@ -16,4 +16,5 @@ public interface SystemApiService extends IService<SystemDictDataEntity> {
 
     Map<Long, SystemDictDataEntity> listMapByIds(List<Long> ids);
 
+    SystemDictDataEntity getTwoLevelCache(Long id);
 }

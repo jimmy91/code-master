@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Caching;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import utils.generator.common.dao.req.QueryBO;
@@ -21,14 +22,14 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @description: <字典数据表前端控制器>
+ * @description:
  * @author: Jimmy
  * @date: 2022-12-30
  * @remark:
  */
-@Api(tags = "API模块")
+@Api(tags = "缓存API")
 @RestController
-@RequestMapping(value = "/system/api")
+@RequestMapping(value = "/cache")
 @Validated
 public class SystemApiController {
 
@@ -37,27 +38,22 @@ public class SystemApiController {
 
     @PostMapping("list")
     @ApiOperation(value = "分页查询", notes = "字典数据表")
-    @Idempotent
     public CommonResult<PageResult<SystemDictDataEntity>> listSystemDictDataServiceByPage(@Valid @RequestBody QueryBO<SystemDictDataEntity> query) {
         return CommonResult.success(PageResult.getResult(iSystemDictDataService.page(query.getPage(), query.initQueryWrapper())));
     }
 
-    @GetMapping("{id}")
-    @ApiOperation(value = "获取详情", notes = "")
-    @ApiImplicitParam(name = "id", value = "业务主键ID", required = true, dataTypeClass = Long.class)
-    public CommonResult<SystemDictDataEntity> getSystemDictDataServiceDetails(@PathVariable Long id) {
-        return CommonResult.success(iSystemDictDataService.getById(id));
-    }
-
     @PostMapping("save")
-    @ApiOperation(value = "新增数据", notes = "")
+    @ApiOperation(value = "防止重复提交", notes = "防止重复提交")
+    @Idempotent
     public CommonResult<Long> saveSystemDictDataService(@Valid @RequestBody SystemDictDataEntity req) {
         iSystemDictDataService.save(req);
         return CommonResult.success(req.getId());
     }
 
+    // ------------------ @Cache本地缓存 START-------------------
+
     @PostMapping("update/{id}")
-    @ApiOperation(value = "修改数据", notes = "")
+    @ApiOperation(value = "@Cache缓存更新", notes = "修改数据(@Cache缓存更新)")
     @ApiImplicitParam(name = "id", value = "业务主键ID", required = true, dataTypeClass = Long.class)
     @Caching(evict = {
             // 删除命名空间下的所有缓存数据，以:分隔为一个命名空间
@@ -68,22 +64,54 @@ public class SystemApiController {
         return CommonResult.success(iSystemDictDataService.updateById(req));
     }
 
-    @PostMapping("delete")
-    @ApiOperation(value = "批量删除", notes = "")
-    @ApiImplicitParam(name = "ids", value = "业务主键ID,多个用逗号分隔.请求参数组装在url后发送", required = true, dataTypeClass = String.class)
-    @Caching(evict = {
-            @CacheEvict(cacheNames = CacheSpaceConstant.CACHE_DICT, allEntries = true)
-    })
-    public CommonResult<Boolean> batchRemoveSystemDictDataService(@RequestParam(value = "ids") List<Long> ids) {
-        return CommonResult.success(iSystemDictDataService.removeByIds(ids));
-    }
 
     @PostMapping("batchQuery")
-    @ApiOperation(value = "批量查询(@Cacheable缓存)", notes = "")
+    @ApiOperation(value = "@Cache缓存查询", notes = "缓存设置固定失效时间")
     @ApiImplicitParam(name = "ids", value = "业务主键ID,多个用逗号分隔.请求参数组装在url后发送", required = true, dataTypeClass = String.class)
     public CommonResult<Map<Long, SystemDictDataEntity>> batchQuerySystemDictDataService(@RequestParam(value = "ids") List<Long> ids) {
         return CommonResult.success(iSystemDictDataService.listMapByIds(ids));
     }
 
+    // ------------------ @Cache本地缓存 END-------------------
+
+
+    @GetMapping("{id}")
+    @ApiOperation(value = "mybatis失效", notes = "每次查询创建一个SqlSession，一级缓存没有生效")
+    @ApiImplicitParam(name = "id", value = "业务主键ID", required = true, dataTypeClass = Long.class)
+    public CommonResult<SystemDictDataEntity> getSystemDictDataServiceDetails(@PathVariable Long id) {
+        SystemDictDataEntity dictDataEntity = null;
+        for (int i=0; i< 3; i++){
+            dictDataEntity = iSystemDictDataService.getById(id);
+        }
+        return CommonResult.success(dictDataEntity);
+    }
+
+
+    @GetMapping("{id}/1")
+    @ApiOperation(value = "mybatis一级缓存生效", notes = "同一个事务内使用同一个SqlSession，一级缓存生效;<br>" +
+            "弊端:因为同一个事务中spring使用的是同一个SqlSession，此时走的是SqlSession的缓存，并没有从数据中查询, 如果有其他线程修改了这条数据,数据不更新。\n" +
+            "解决方案\n" +
+            "在mybatis的mapper xml里配置清空缓存flushCache设置为true，即：flushCache=\"true\"")
+    @ApiImplicitParam(name = "id", value = "业务主键ID", required = true, dataTypeClass = Long.class)
+    @Transactional(rollbackFor = Exception.class)
+    public CommonResult<SystemDictDataEntity> getSystemDictDataServiceDetails01(@PathVariable Long id) {
+        SystemDictDataEntity dictDataEntity = null;
+        for (int i=0; i< 3; i++){
+            dictDataEntity = iSystemDictDataService.getById(id);
+        }
+        return CommonResult.success(dictDataEntity);
+    }
+
+
+    @GetMapping("{id}/2")
+    @ApiOperation(value = "mybatis二级缓存生效", notes = "mapper缓存")
+    @ApiImplicitParam(name = "id", value = "业务主键ID", required = true, dataTypeClass = Long.class)
+    public CommonResult<SystemDictDataEntity> getSystemDictDataServiceDetails02(@PathVariable Long id) {
+        SystemDictDataEntity dictDataEntity = null;
+        for (int i=0; i< 3; i++){
+            dictDataEntity = iSystemDictDataService.getTwoLevelCache(id);
+        }
+        return CommonResult.success(dictDataEntity);
+    }
 
 }
