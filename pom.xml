@@ -191,6 +191,16 @@
             <version>1.34.0</version>
         </dependency>
 
+        <!--java 几何图形库，解析mysql相关类型
+        https://blog.csdn.net/u010945668/article/details/119910970
+        -->
+        <dependency>
+            <groupId>com.vividsolutions</groupId>
+            <artifactId>jts</artifactId>
+            <version>1.13</version>
+        </dependency>
+
+
     </dependencies>
 
 

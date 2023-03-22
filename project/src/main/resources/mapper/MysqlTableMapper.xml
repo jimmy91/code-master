@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="app.project.mapper.MysqlTableMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="app.project.entity.MysqlTableEntity">
+        <id column="id" property="id"/>
+        <result column="tinyint_col" property="tinyintCol"/>
+        <result column="smallint_col" property="smallintCol"/>
+        <result column="mediumint_col" property="mediumintCol"/>
+        <result column="int_col" property="intCol"/>
+        <result column="bigint_col" property="bigintCol"/>
+        <result column="float_col" property="floatCol"/>
+        <result column="double_col" property="doubleCol"/>
+        <result column="decimal_col" property="decimalCol"/>
+        <result column="char_col" property="charCol"/>
+        <result column="varchar_col" property="varcharCol"/>
+        <result column="binary_col" property="binaryCol"/>
+        <result column="varbinary_col" property="varbinaryCol"/>
+        <result column="tinyblob_col" property="tinyblobCol"/>
+        <result column="tinytext_col" property="tinytextCol"/>
+        <result column="blob_col" property="blobCol"/>
+        <result column="text_col" property="textCol"/>
+        <result column="mediumblob_col" property="mediumblobCol"/>
+        <result column="mediumtext_col" property="mediumtextCol"/>
+        <result column="longblob_col" property="longblobCol"/>
+        <result column="longtext_col" property="longtextCol"/>
+        <result column="enum_col" property="enumCol"/>
+        <result column="set_col" property="setCol"/>
+        <result column="date_col" property="dateCol"/>
+        <result column="time_col" property="timeCol"/>
+        <result column="datetime_col" property="datetimeCol"/>
+        <result column="timestamp_col" property="timestampCol"/>
+        <result column="year_col" property="yearCol"/>
+        <result column="boolean_col" property="booleanCol"/>
+        <result column="bit_col" property="bitCol"/>
+        <result column="json_col" property="jsonCol"/>
+
+
+        <result column="geometry_col" property="geometryCol"/>
+        <result column="point_col" property="pointCol"/>
+        <result column="linestring_col" property="linestringCol"/>
+        <result column="polygon_col" property="polygonCol"/>
+        <result column="geometrycollection_col" property="geometrycollectionCol"/>
+        <result column="multipoint_col" property="multipointCol"/>
+        <result column="multilinestring_col" property="multilinestringCol"/>
+        <result column="multipolygon_col" property="multipolygonCol"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, tinyint_col, smallint_col, mediumint_col, int_col, bigint_col, float_col, double_col, decimal_col, char_col, varchar_col, binary_col, varbinary_col, tinyblob_col, tinytext_col, blob_col, text_col, mediumblob_col, mediumtext_col, longblob_col, longtext_col, enum_col, set_col, date_col, time_col, datetime_col, timestamp_col, year_col, boolean_col, bit_col, json_col,
+        ST_AsText(geometry_col) geometry_col,
+        ST_AsText(point_col) point_col,
+        ST_AsText(linestring_col) linestring_col,
+        ST_AsText(polygon_col) polygon_col,
+        ST_AsText(geometrycollection_col) geometrycollection_col,
+        ST_AsText(multipoint_col) multipoint_col,
+        ST_AsText(multilinestring_col) multilinestring_col,
+        ST_AsText(multipolygon_col) multipolygon_col
+    </sql>
+
+    <select id="getTableData" resultType="app.project.entity.MysqlTableEntity">
+        select
+        <include refid="Base_Column_List"></include>
+        from mysql_table
+        where id = #{id}
+    </select>
+
+</mapper>

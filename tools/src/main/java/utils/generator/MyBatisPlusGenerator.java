@@ -31,7 +31,7 @@ import static com.baomidou.mybatisplus.core.toolkit.StringPool.UNDERSCORE;
 public class MyBatisPlusGenerator {
 
     public static String[] TABLES = {
-            "file_detail"
+            "mysql_table"
     };
 
     /**
@@ -93,7 +93,7 @@ public class MyBatisPlusGenerator {
                 // 生成实体类字段注解
                 //.setEntityTableFieldAnnotationEnable(true)
                 // 逻辑删除、
-                .setLogicDeleteFieldName("deleted")
+                // .setLogicDeleteFieldName("deleted")
                 // TODO 你自己的父类实体
                 // .setSuperEntityClass("utils.generator.common.entity.BaseDO")
                 // TODO 生成类的时候排除的字符串(因为这些字段已经在父类中，子类无需再生成)
