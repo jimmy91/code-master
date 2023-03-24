@@ -1,4 +1,4 @@
-package code.saToken;
+package code.framework.saToken;
 
 import cn.dev33.satoken.context.SaHolder;
 import cn.dev33.satoken.interceptor.SaInterceptor;

@@ -1,13 +1,12 @@
 
 
-## 工具集成类项目
+## 项目描述
 
-记录不错的工具类及优秀的代码片段，提供便捷研发过程，简化重复工作流程 <br/>
-作者：杨 * 玉(Jimmy)
+项目记录了不错的工具类和优秀的第三方框架，并提供了简单易用的代码示例和集成指南。旨在为开发人员提供便利，加快开发进程，简化繁琐的重复工作流程。  
+目标是让Java开发变得更加简单、快捷、高效，并为您的开发工作提供更多的乐趣和成就感，助你早日成为编程专家。
+开 发 者：杨 * 玉(Jimmy)  
+代码仓库：https://github.com/jimmy91/code-master  
 
-### 代码库：
-https://gitee.com/core.jimmy/projects
-https://github.com/jimmy91
 
 ### 1.项目入口地址
 |     标题      | 入口地址                                     | 描述  |
@@ -37,11 +36,13 @@ tools_project
 │   │   ├── framework.*         // 第三方服务，拿来即用
 │   │   │   ├── geo.*           // redis GEO
 │   │   │   ├── retry.*         // 重试
+│   │   │   ├── asToken.*       // 鉴权验证工具
 │   │   │   ├── screw.*         // 数据库文档生成工具
 │   │   ├── netty.*             // netty websocket 
 │   │   ├── oauth.*             // 鉴权 shiro
 │   │   ├── queue               // 消息队列
 │   │   ├── reusability.*       // 可复用（模仿）业务代码
+│   │   ├── trace.*             // MDC链路追踪
 ├── tools.utils                 // 工具包
 │   ├── algorithm               // 算法-布隆过滤器、排序算法 
 │   ├── design                  // 设计模式
@@ -55,8 +56,8 @@ tools_project
 
 ```
 ###  3.好用的技术文档
-* 「Good Good Study. Day Day Up」
-    > 我们看过很多技术文章，却依然不知道架构代码该咋整。
+*  **「Good Good Study. Day Day Up.」**
+    > 我们看过很多技术文章，却依然不知道架构代码应该咋整。
   > 
 |            标题            | 参考文档地址                                                                                                                                                                         | 描述                            |
 |:------------------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------|
@@ -94,10 +95,8 @@ tools_project
 * screw 数据库文档一键生成
 * spring retry 重试机制
 * spring 文件处理
+* MDC链路追踪
 
-###  .VPN
-https://console.bywa.art/clientarea.php
-Win客户端：https://github.com/Fndroid/clash_for_windows_pkg/releases -->  Clash.for.Windows-0.20.18-win.7z
-Android客户端：https://github.com/Kr328/ClashForAndroid
+
 
 
