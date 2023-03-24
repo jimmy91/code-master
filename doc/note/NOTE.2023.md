@@ -10,6 +10,26 @@ https://www.cnblogs.com/chengxy-nds/p/12893407.html
 >
 >
 
+> ### :Linux 物理CPU及逻辑CPU
+>> #### https://blog.csdn.net/LuMaman/article/details/124933884 <br> https://www.cnblogs.com/dw3306/p/12551327.html
+>> 关键词：内核、物理CPU、超线程技术、逻辑CPU、线程数
+>
+>> 单内核多处理器，每个处理器对应一个逻辑CPU,即对应一个线程数
+> 所谓的4核8线程，4核指的是物理核心。通过超线程技术，用一个物理核模拟两个虚拟核，每个核两个线程，总数为8线程。  
+>【逻辑CPU数量和型号】  
+cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c  
+【物理CPU数量】  
+cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l   
+【物理CPU内核的个数】（1个物理CPU里面有几个物理内核）  
+cat /proc/cpuinfo | grep "cpu cores" | uniq  
+【查看所有逻辑CPU的个数】  
+cat /proc/cpuinfo | grep "processor" | wc -l  
+【物理CPU中逻辑CPU的个数】（如果不使用超线程技术，则此值和物理CPU内核数量一致；不一致则为整倍数）  
+cat /proc/cpuinfo | grep 'siblings' | uniq  
+【超线程】（分别输出cpu cores和siblings数量，使用超线程则后者翻倍）  
+cat /proc/cpuinfo | grep -e "cpu cores" -e "siblings" | sort | uniq  
+>
+
 > ### mybatis一二级缓存
 >> #### https://tech.meituan.com/2018/01/19/mybatis-cache.html
 >> 关键词：**
@@ -90,7 +110,7 @@ SpringCloud包含的组件很多，有很多功能是重复的。其中最常用
 >> - TheadLocal单个线程生命周期强绑定，只能在某个线程的生命周期内对ThreadLocal进行存取，不能跨线程存取。
 >> - InheritableThreadLocal这种方案不建议使用，在线程池中使用会存在失败的问题，原因：InheritableThreadLocal 在父线程创建子线程的时候，会将父线程当前存在的本地线程变量拷贝到子线程的本地线程变量中，但是在web的容器中使用了线程池，线程会被创建回收重复的利用，不会被销毁重新创建，所以会存在失效的场景。  
 >> - TransmittableThreadLocal是阿里开源的工具，在线程提交的时候要进行上下文的复制,解决了InheritableThreadLocal不能进行线程池间传递数据的缺陷，在使用线程池等会池化复用线程的执行组件情况下，提供ThreadLocal值的传递功能，解决异步执行时上下文传递的问题。  
->> - TaskDecorator这是一个执行回调方法的装饰器，主要应用于传递上下文，或者提供任务的监控/统计信息。  
+>> - TaskDecorator线程池提供，这是一个执行回调方法的装饰器，主要应用于多线程间传递上下文，或者提供任务的监控/统计信息。  
 >> 示例：ThreadApp.java
 >
 

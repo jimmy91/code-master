@@ -1,14 +1,8 @@
 package app.project.entity;
 
-import app.project.service.impl.MysqlTableServiceImpl;
-import app.project.vo.JsonObj;
-import cn.hutool.json.JSON;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
-import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -16,7 +10,6 @@ import java.math.BigDecimal;
 import java.sql.Time;
 import java.time.Year;
 import java.util.Date;
-import java.util.Map;
 
 /**
  * @description: <这是一个测试表，用于演示不同类型的列实体>
@@ -28,6 +21,8 @@ import java.util.Map;
  * 　　2、blob、text最大存储65K
  * 　　3、mediumblob、mediumtext最大存储16M
  * 　　4、longblob、longtext最大存储4G
+ * mysql 8.0 新特性之 - 窗口函数
+ * https://blog.csdn.net/weixin_42201180/article/details/127354649
  */
 @Data
 @TableName("mysql_table")

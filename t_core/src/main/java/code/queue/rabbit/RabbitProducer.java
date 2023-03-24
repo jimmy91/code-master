@@ -1,6 +1,8 @@
 package code.queue.rabbit;
 
+import code.trace.TraceInterceptor;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +29,7 @@ public class RabbitProducer {
      * @return
      */
     public boolean sendTTLMess(Object message){
-        log.info("rabbit 发送消息");
+        log.info("rabbit 发送TTL消息");
         rabbitTemplate.convertAndSend(RabbitTTLMessage.MQ_DELAY_QUEUE, message, correlationData -> {
             // 设置过期时间8秒
             // TODO 自定义过期时间，可能会出现时序问题。同一队列中，先到的数据必须后过期，会影响队列数据删除（空间换时间），等消息要投递给消费者时再判断删除。
@@ -35,6 +37,8 @@ public class RabbitProducer {
             // 消息持久化
             // correlationData.getMessageProperties().setDeliveryMode(MessageDeliveryMode.PERSISTENT);
             correlationData.getMessageProperties().setHeader("user-id", "loginUserId");
+            // 链路追踪
+            correlationData.getMessageProperties().setHeader(TraceInterceptor.TRACE_ID, MDC.get(TraceInterceptor.TRACE_ID));
             return correlationData;
         });
 
@@ -47,11 +51,13 @@ public class RabbitProducer {
      * @return
      */
     public boolean sendX_DelayMess(Object message){
-        log.info("rabbit 发送消息");
+        log.info("rabbit 发送x-delayed消息");
         rabbitTemplate.convertAndSend(RabbitX_DelayedMessage.MQ_EXCHANGE, RabbitX_DelayedMessage.MQ_DELAY_QUEUE, message, correlationData -> {
             //设置延迟时间
             correlationData.getMessageProperties().setDelay(5 * 1000);
             correlationData.getMessageProperties().setHeader("user-id", "loginUserId");
+            // 链路追踪
+            correlationData.getMessageProperties().setHeader(TraceInterceptor.TRACE_ID, MDC.get(TraceInterceptor.TRACE_ID));
             return correlationData;
         });
 

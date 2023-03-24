@@ -1,5 +1,6 @@
 package utils.redisson;
 
+import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RMapCache;
 import org.redisson.api.RedissonClient;
 import org.redisson.api.map.event.EntryCreatedListener;
@@ -26,6 +27,7 @@ import java.util.concurrent.TimeUnit;
  * 需要注意的是，Redis 的过期键监听机制并不是实时的，而是通过定时器定期检查过期键，因此存在一定的时间误差。同时，在 Redis 中保存过期键并不会对内存使用造成影响，因为 Redis 内部使用了一种惰性删除机制，只有在键被访问时才会进行删除操作。
  * @author Jimmy
  */
+@Slf4j
 public class RedissonExpirationListener {
 
     public static void demoTest() throws Exception {
@@ -34,22 +36,22 @@ public class RedissonExpirationListener {
         // 创建 MapCache，设置过期时间和监听器
         RMapCache<String, String> mapCache = redisson.getMapCache("testMapCache");
         mapCache.put("key1", "value1", 5, TimeUnit.SECONDS);
+        mapCache.put("key2", "value2", 10, TimeUnit.SECONDS);
+        mapCache.put("key3", "value3", 15, TimeUnit.SECONDS);
         mapCache.addListener(new EntryCreatedListener() {
             public void  onCreated(EntryEvent event) {
-                System.out.println("创建：key=" + event.getKey() +
+                log.info("创建：key=" + event.getKey() +
                         ", value=" + event.getValue() +
                         ", event=" + event.getType().name());
             }
         });
-        mapCache.put("key2", "value2", 10, TimeUnit.SECONDS);
         mapCache.addListener(new EntryExpiredListener() {
             public void onExpired(EntryEvent event) {
-                System.out.println("失效：key=" + event.getKey() +
+                log.info("失效：key=" + event.getKey() +
                         ", value=" + event.getValue() +
                         ", event=" + event.getType().name());
             }
         });
-        mapCache.put("key3", "value3", 15, TimeUnit.SECONDS);
 
     }
 }

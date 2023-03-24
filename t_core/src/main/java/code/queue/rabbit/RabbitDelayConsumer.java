@@ -1,7 +1,9 @@
 package code.queue.rabbit;
 
+import code.trace.TraceInterceptor;
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
@@ -29,6 +31,8 @@ public class RabbitDelayConsumer {
     @Transactional(rollbackFor = Exception.class)
     public void receiveDelayedQueue(Message message, Channel channel) throws Exception {
         try {
+            // 链路追踪
+            MDC.put(TraceInterceptor.TRACE_ID, message.getMessageProperties().getHeader(TraceInterceptor.TRACE_ID).toString());
             String userId = message.getMessageProperties().getHeader("user-id").toString();
             log.info("rabbit 延时(x-delayed)消费获取：userId={} {}", userId, new String(message.getBody(), "utf-8"));
             //手动确认
@@ -56,6 +60,8 @@ public class RabbitDelayConsumer {
     @Transactional(rollbackFor = Exception.class)
     public void receiveDelayedDeadLetterQueue(Message message, Channel channel) throws Exception {
         try {
+            // 链路追踪
+            MDC.put(TraceInterceptor.TRACE_ID, message.getMessageProperties().getHeader(TraceInterceptor.TRACE_ID).toString());
             String userId = message.getMessageProperties().getHeader("user-id").toString();
             log.info("rabbit 延时(TTL)消费获取：userId={} {}", userId, new String(message.getBody(), "utf-8"));
             //手动确认
