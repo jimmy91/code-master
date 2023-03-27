@@ -1,5 +1,6 @@
 package app.config;
 
+import code.trace.MdcTaskDecorator;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -49,6 +50,7 @@ public class ThreadPoolConfiguration {
     /**
      * 核心线程池数，推荐：根据8020法则，80%时间下的程序每秒任务数(设：tasks=200)，单个线程任务执行时间(设：tasktime=0.1秒)，
      * 程序每秒需要处理任务数/单个线程每秒处理任务数 = (tasks/(1/tasktime)) = tasks*tasktime
+     * corePoolSize = Runtime.getRuntime().availableProcessors();
      */
     private final int corePoolSize = 20;
     /**
@@ -76,7 +78,7 @@ public class ThreadPoolConfiguration {
         // 非核心线程的存活时间
         executor.setKeepAliveSeconds(keepAliveSeconds);
         // 一个执行回调方法的装饰器，主要应用于传递上下文，传递主线程的信息到子线程
-        // executor.setTaskDecorator(new MdcTaskDecorator());
+        executor.setTaskDecorator(new MdcTaskDecorator());
         // 线程池对拒绝任务(无线程可用)的处理策略
         // - AbortPolicy
         //   用于被拒绝任务的处理程序，它将抛出RejectedExecutionException。- CallerRunsPolicy

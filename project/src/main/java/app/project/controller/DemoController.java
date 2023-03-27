@@ -1,11 +1,11 @@
 package app.project.controller;
 
 import app.feign.DemoProviderFeign;
-import code.trace.MdcThreadPoolTaskExecutor;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +23,7 @@ import utils.redisson.RedissonExpirationListener;
 public class DemoController {
 
     @Autowired
-    MdcThreadPoolTaskExecutor taskExecutor;
+    ThreadPoolTaskExecutor taskExecutor;
 
     @ApiOperation(value = "Feign调用", notes="")
     @GetMapping("/feignDemo")

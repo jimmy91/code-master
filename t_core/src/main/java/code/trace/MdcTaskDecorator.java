@@ -1,6 +1,7 @@
 package code.trace;
 
 import org.slf4j.MDC;
+import org.springframework.core.task.TaskDecorator;
 
 import java.util.Map;
 
@@ -12,14 +13,15 @@ import java.util.Map;
  * https://blog.csdn.net/qq_29569183/article/details/111311632
  * https://www.zhangshengrong.com/p/9MNlDOKvNJ/
  */
-public class MdcTaskDecorator {
+public class MdcTaskDecorator implements TaskDecorator {
 
     /**
      * @apiNote 使异步线程池获得主线程的上下文，解决多线程情况下，子线程中打印日志会丢失traceId.
      * @param runnable runnable
      * @return Runnable
      */
-    public static Runnable decorate(Runnable runnable) {
+    @Override
+    public Runnable decorate(Runnable runnable) {
         /**
          * 为了线程池中的线程在复用的时候也能获得父线程的MDC中的信息，
          * 子线程第一次初始化的时候没事，因为通过InheritableThreadLocal

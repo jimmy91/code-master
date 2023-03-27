@@ -9,6 +9,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,13 +31,11 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class SeckillController {
 
-    private static int corePoolSize = Runtime.getRuntime().availableProcessors();
     /**
      * 创建线程池  调整队列数 拒绝服务
      */
-    private static ThreadPoolExecutor executor = new ThreadPoolExecutor(corePoolSize, corePoolSize + 1, 10L, TimeUnit.SECONDS,
-            new LinkedBlockingQueue<Runnable>(1000));
-
+    @Autowired
+    private ThreadPoolTaskExecutor executor;
     /**
      * 最大并发数
      */
@@ -52,6 +51,7 @@ public class SeckillController {
 
     @Autowired
     private RedisProducer redisProducer;
+
 
     @ApiOperation(value = "秒杀一(最low实现)", nickname = "Jimmy")
     @PostMapping("/start")
