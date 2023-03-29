@@ -31,7 +31,7 @@ import static com.baomidou.mybatisplus.core.toolkit.StringPool.UNDERSCORE;
 public class MyBatisPlusGenerator {
 
     public static String[] TABLES = {
-            "mysql_table"
+            "bar_order_apply_record", "bar_content_like_go_record"
     };
 
     /**
@@ -39,7 +39,7 @@ public class MyBatisPlusGenerator {
      */
     public static String username = "root" ;
     public static String password = "inno@2021" ;
-    public static String url = "jdbc:mysql://10.0.99.191:3306/test" ;
+    public static String url = "jdbc:mysql://10.0.99.191:3306/pala-planet" ;
     public static String driverClassName = "com.mysql.jdbc.Driver" ;
 
     public static void main(String[] args) {
@@ -62,7 +62,7 @@ public class MyBatisPlusGenerator {
                 // 设置生成的service接口的名字的首字母是否为I，默认Service是以I开头的
                 .setServiceName("%sService")
                 //实体类结尾名称
-                .setEntityName("%sEntity")
+                .setEntityName("%sDO")
                 //生成基本的resultMap
                 .setBaseResultMap(true)
                 //不使用AR模式
