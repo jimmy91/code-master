@@ -88,6 +88,8 @@ public class ThreadPoolConfiguration {
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         // 自定义线程名称, 也可以直接定义 @Bean名称来进行修改
         executor.setThreadFactory(new ThreadFactoryBuilder().setNameFormat("app-pool-#%d").build());
+        // 线程名字前缀
+        // executor.setThreadNamePrefix("app-pool-#");
         return executor;
     }
 }

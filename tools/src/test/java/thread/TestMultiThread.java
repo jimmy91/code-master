@@ -18,12 +18,10 @@ public class TestMultiThread {
      */
     public static void testMultiThread() throws InterruptedException {
         final List<StringBuilder> strs = new ArrayList<StringBuilder>();
-
         strs.add(new StringBuilder("1"));
         strs.add(new StringBuilder("2"));
         strs.add(new StringBuilder("3"));
         strs.add(new StringBuilder("4"));
-
 
         final List<Callable<String>> tasks = new ArrayList<Callable<String>>();
         for (final StringBuilder str : strs) {
@@ -35,18 +33,23 @@ public class TestMultiThread {
             });
         }
 
-        // 此外对参数进行了修改
+        // ！！！ 在外对参数进行了修改
         for (int i = 0; i < strs.size(); i++) {
             strs.get(i).append("new");
         }
+
+        //添加插入条件
 
         for (StringBuilder str : strs) {
             System.out.println(str.hashCode());
         }
 
+        System.out.println("==============");
+
         final ExecutorService executorService = Executors.newFixedThreadPool(5);
         executorService.invokeAll(tasks);
     }
+
 
     public static void main(String[] args) throws InterruptedException {
         testMultiThread();
