@@ -9,6 +9,23 @@ https://www.cnblogs.com/chengxy-nds/p/12893407.html
 >> 内容
 >
 >
+>
+
+
+> ### Arthas(阿尔萨斯)
+>> #### https://arthas.aliyun.com/doc/commands.html
+>> 关键词： Arthas(阿尔萨斯)
+>
+>> dashboard 数据面板  
+> monitor -c 5 package.Class method : 获取统计周期(5秒)内方法method的调用情况(调用次数、成功失败数)  
+> stack package.Class method : 输出当前方法被调用的调用路径  
+> trace package.Class method : 方法内部调用路径，并输出方法路径上的每个节点上耗时  
+> watch package.Class method -x 2 : watch主要关注方法入参和出参。命令定义了 4 个观察事件点，即 -b 函数调用前，-e 函数异常后，-s 函数返回后，-f 函数结束后（默认）  
+> tt -t Class method /  tt -i INDEX ： 方法执行数据的时空隧道，记录下指定方法每次调用的入参和返回信息，并能对这些不同的时间下调用进行观测
+> getstatic package.Class field ： 获取类静态属性信息  
+> thread --all : 显示所有匹配的线程 / thread -b : 找出当前阻塞其他线程的线程  
+>
+
 
 > ### :Linux 物理CPU及逻辑CPU
 >> #### https://blog.csdn.net/LuMaman/article/details/124933884 <br> https://www.cnblogs.com/dw3306/p/12551327.html

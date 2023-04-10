@@ -9,8 +9,11 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import utils.arthas.MathGame;
 import utils.generator.common.dao.vo.CommonResult;
 import utils.redisson.RedissonExpirationListener;
+
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -24,6 +27,27 @@ public class DemoController {
 
     @Autowired
     ThreadPoolTaskExecutor taskExecutor;
+
+
+    public volatile Boolean isContinue = true;
+
+    @ApiOperation(value = "arthas测试", notes="")
+    @GetMapping("/arthas")
+    public CommonResult<Boolean> arthas() {
+        taskExecutor.execute(() -> {
+            MathGame game = new MathGame();
+            while (isContinue) {
+                try {
+                    game.run();
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        return CommonResult.success(isContinue);
+    }
+
 
     @ApiOperation(value = "Feign调用", notes="")
     @GetMapping("/feignDemo")

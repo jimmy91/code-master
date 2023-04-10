@@ -4,6 +4,7 @@ import java.util.*;
 
 /**
  * 排序相关算法
+ * @author Jimmy
  * @since
  */
 public class SortDemo {
@@ -306,6 +307,53 @@ public class SortDemo {
 
 	}
 
+	/**
+	 * 堆排序是一种基于比较的排序算法，其思想在于将待排序的序列构建成一个大根堆或小根堆，
+	 * 然后将堆顶元素与序列的最后一个元素交换，再对剩下的 n-1 个元素重新构建堆，重复进行这样的操作直到整个序列有序为止。
+	 * 其中，大根堆是一颗完全二叉树，满足父节点的值大于或等于其左右子节点的值；小根堆则满足父节点的值小于或等于其左右子节点的值。
+	 * 在堆排序算法中使用大根堆时，排序结果为升序；而使用小根堆时，排序结果为降序。该算法的时间复杂度为O(nlogn)。
+	 * @param arr
+	 */
+	public static void heapSort(int[] arr) {
+		int n = arr.length;
+		// Build heap (rearrange array)
+		for (int i = n / 2 - 1; i >= 0; i--) {
+			heapify(arr, n, i);
+		}
+		// One by one extract an element from heap
+		for (int i = n - 1; i > 0; i--) {
+			// Move current root to end
+			int temp = arr[0];
+			arr[0] = arr[i];
+			arr[i] = temp;
+			// call max heapify on the reduced heap
+			heapify(arr, i, 0);
+		}
+	}
+	// To heapify a subtree rooted with node i which is
+	// an index in arr[]. n is size of heap
+	static void heapify(int[] arr, int n, int i) {
+		int largest = i; // Initialize largest as root
+		int l = 2 * i + 1; // left = 2*i + 1
+		int r = 2 * i + 2; // right = 2*i + 2
+		// If left child is larger than root
+		if (l < n && arr[l] > arr[largest]){
+			largest = l;
+		}
+		// If right child is larger than largest so far
+		if (r < n && arr[r] > arr[largest]) {
+			largest = r;
+		}
+		// If largest is not root
+		if (largest != i) {
+			int swap = arr[i];
+			arr[i] = arr[largest];
+			arr[largest] = swap;
+			// Recursively heapify the affected sub-tree
+			heapify(arr, n, largest);
+		}
+	}
+
 	public static void main(String[] args) {
 		int[] arr = {2,1,5,3,4,9,7};
 		// bubbleSort(arr);
@@ -323,5 +371,9 @@ public class SortDemo {
 		// bucketSort(arr2);
 		radixSort(arr2);
 		System.out.println(Arrays.toString(arr2));
+
+		int[] arr3 = {12, 11, 13, 15, 5, 6, 7};
+		heapSort(arr3);
+		System.out.println(Arrays.toString(arr3));
 	}
 }
