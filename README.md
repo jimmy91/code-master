@@ -5,7 +5,7 @@
 项目记录了不错的工具类和优秀的第三方框架，并提供了简单易用的代码示例和集成指南。旨在为开发人员提供便利，加快开发进程，简化繁琐的重复工作流程。  
 目标是让Java开发变得更加**简单、快捷、高效**，并为您的开发工作提供更多的乐趣和成就感，助你早日成为编程专家。  
 开 发 者：杨 * 玉(Jimmy)  
-代码仓库：https://github.com/jimmy91/code-master  
+代码仓库：https://github.com/jimmy91/code-master
 
 
 ### 1.项目入口地址
@@ -19,7 +19,9 @@
 
 ### 2.目录结构描述
 ```
-tools_project
+code-master
+├── doc                         // 文件&笔记等
+│   ├──                         
 ├── project.app                 // 应用服务
 │   ├── annotation              // 注释类
 │   ├── aop                     // 切面类
@@ -33,7 +35,7 @@ tools_project
 │   ├── Application             // 应用服务启动类
 ├── t_code                      // 框架应用服务&业务代码
 │   ├── code                    // 框架应用服务启动类
-│   │   ├── framework.*         // 第三方服务，拿来即用
+│   │   ├── framework.*         // 第三方服务，拿来即用 
 │   │   │   ├── geo.*           // redis GEO
 │   │   │   ├── retry.*         // 重试
 │   │   │   ├── asToken.*       // 鉴权验证工具
@@ -49,6 +51,7 @@ tools_project
 │   ├── generator               // mybaits-plus自动生成工具
 │   ├── jvm                     // JVM
 │   ├── multi_thread            // 多线程
+│   ├── nowcoder                // 牛客.力扣网题目
 │   ├── ratelimter              // 限流工具类
 │   ├── redisson                // Redisson
 │   ├── tools.*                 // 工具类
@@ -57,8 +60,8 @@ tools_project
 ```
 ###  3.好用的技术文档
 *  **「Good Good Study. Day Day Up.」**
-    > 我们看过很多技术文章，却依然不知道架构代码应该咋整。
-  > 
+   > 我们看过很多技术文章，却依然不知道架构代码应该咋整。
+>
 |            标题            | 参考文档地址                                                                                                                                                                         | 描述                            |
 |:------------------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------|
 |      SpringBoot 多模块      | https://gitee.com/zhijiantianya/ruoyi-vue-pro <br/>   https://github.com/YunaiV/ruoyi-vue-pro                                                                                  | 芋道源码-最强的后台管理系统  -mini分支       |
@@ -81,11 +84,11 @@ tools_project
 |  X Spring File Storage   | https://spring-file-storage.xuyanwu.cn/#/                                                                                                                                      | 一行代码实现文件上传 20个平台              |
 |      美团leaf分布式ID生成       | https://tech.meituan.com/2017/04/21/mt-leaf.html                                                                                                                               |                               |
 |    arthas（阿尔萨斯）线上监控诊断    | https://arthas.aliyun.com/doc/quick-start.html                                                                                                                                 |                               |
-|                          |                                                                                                                                                                                |                               |
+|        京东零售(并发框架)        | https://gitee.com/jd-platform-opensource/asyncTool                                                                                                                             | 多线程并行、串行、阻塞、依赖、回调的并行框架        |
 |                          |                                                                                                                                                                                |                               |
 
 ###  4.内置功能
- 
+
 * mybaits-plus自动生成工具
 * 限流工具类
 * swagger接口文档

@@ -11,5 +11,6 @@
 5. [Mybatis Log ](https://plugins.jetbrains.com/plugin/17898-mybatis-log-free)  
 6. [Bito 机器人 (2433***@qq.com/Wj07)](https://plugins.jetbrains.com/plugin/18289-bito--chatgpt-to-write-code-explain-code-create-tests)  
 7. [Arthas(阿尔萨斯)线上监控 ](https://plugins.jetbrains.com/plugin/13581-arthas-idea)  
-8. 
+8. [ChatGPT](https://plugins.jetbrains.com/plugin/20603-chatgpt)
+9. 
 
