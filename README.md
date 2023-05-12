@@ -46,12 +46,11 @@ code-master
 │   │   ├── reusability.*       // 可复用（模仿）业务代码
 │   │   ├── trace.*             // MDC链路追踪
 ├── tools.utils                 // 工具包
-│   ├── algorithm               // 算法-布隆过滤器、排序算法 
+│   ├── algorithm               // 算法-布隆过滤器、排序、回溯、动态规划等
 │   ├── design                  // 设计模式
 │   ├── generator               // mybaits-plus自动生成工具
 │   ├── jvm                     // JVM
 │   ├── multi_thread            // 多线程
-│   ├── nowcoder                // 牛客.力扣网题目
 │   ├── ratelimter              // 限流工具类
 │   ├── redisson                // Redisson
 │   ├── tools.*                 // 工具类

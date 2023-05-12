@@ -4,6 +4,8 @@ import java.util.*;
 
 /**
  * 排序相关算法
+ * 动画演示： https://www.jianshu.com/p/e9cfc2cc869c
+ * https://www.cnblogs.com/xmanblue/p/16715830.html
  * @author Jimmy
  * @since
  */
@@ -71,10 +73,8 @@ public class SortDemo {
 	public static void fastSort(int[] arr, int low, int high) {
 		int i = partition(arr, low, high);
 		// 一分为二递归执行上述操作
-		if (low < i - 1) {
+		if (low < high) {
 			fastSort(arr, low, i - 1);
-		}
-		if (i < high - 1) {
 			fastSort(arr, i + 1, high);
 		}
 	}
@@ -82,34 +82,34 @@ public class SortDemo {
 	private static int partition(int[] arr, int low, int high) {
 		int benchmarkIndex = low;
 		int benchmarkValue = arr[benchmarkIndex]; // 基准存到临时变量
-		int i = low; // 左边的指针
-		int j = high; // 右边的指针
-		while (i < j) {
+		int left = low; // 左边的指针
+		int right = high; // 右边的指针
+		while (left < right) {
 			// 右边的
-			while (i < j && arr[j] >= benchmarkValue) {
-				j--;
+			while (left < right && arr[right] >= benchmarkValue) {
+				right--;
 			}
 			// 右边的大于基准值，继续找，直到找到小于基准值的数
-			if (arr[j] <= benchmarkValue) {
-				// 找到了
+			if (arr[right] <= benchmarkValue) {
+				// 找到了，将小值赋值给left
 				// int tmp = arr[i];
-				arr[i] = arr[j];
+				arr[left] = arr[right];
 				// arr[j] = tmp;
 			}
 			// 左边的
-			while (i < j && arr[i] <= benchmarkValue) {
-				i++;
+			while (left < right && arr[left] <= benchmarkValue) {
+				left++;
 			}
 			// 左边的小于基准值，继续找，直到找到大于基准值的数
-			if (arr[i] >= benchmarkValue) {
+			if (arr[left] >= benchmarkValue) {
 				// int tmp = arr[j];
-				arr[j] = arr[i];
+				arr[right] = arr[left];
 				// arr[i] = tmp;
 			}
 		}
 		// i是新的基准位置
-		arr[i] = benchmarkValue;
-		return i;
+		arr[left] = benchmarkValue;
+		return left;
 	}
 
 	/**

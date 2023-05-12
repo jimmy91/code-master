@@ -1,4 +1,4 @@
-package utils.nowcoder.find;
+package utils.algorithm.find;
 
 import java.util.Scanner;
 

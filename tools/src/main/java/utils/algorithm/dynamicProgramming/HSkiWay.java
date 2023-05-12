@@ -1,4 +1,4 @@
-package utils.nowcoder.dynamicProgramming;
+package utils.algorithm.dynamicProgramming;
 
 import java.util.Scanner;
 
