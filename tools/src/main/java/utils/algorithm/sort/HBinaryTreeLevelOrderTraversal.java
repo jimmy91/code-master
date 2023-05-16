@@ -10,7 +10,7 @@ import java.util.Queue;
  * 1. 首先将根节点入队；
  * 2. 在队列不为空的情况下，依次取出队列中的节点，并将其左右子节点入队；
  * 3. 重复步骤2，直到队列为空。
- * @author PLXQ
+ * @author Jimmy
  */
 public class HBinaryTreeLevelOrderTraversal {
 

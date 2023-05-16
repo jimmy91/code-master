@@ -8,7 +8,7 @@ import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.thread.ThreadUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.RandomUtils;
+import org.apache.commons.lang.math.RandomUtils;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -28,6 +28,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.*;
 
 /**
@@ -272,16 +273,17 @@ public class TrxServiceImpl extends ServiceImpl<TrxEmpMapper, TrxEmpEntity> {
 
     private List<TrxEmpEntity> provideEmps(String deptNo, int count) {
         List<TrxEmpEntity> emps = new ArrayList<>();
+        Random r = new Random();
         for (int i = 0; i < count; i++) {
             TrxEmpEntity emp = new TrxEmpEntity();
             emp.setDeptno(deptNo);
             emp.setEname(RandomUtil.username());
-            emp.setEmpno(RandomUtils.nextInt(10, 100000));
+            emp.setEmpno(RandomUtils.nextInt(r, 100000));
             emp.setJob(RandomUtil.job());
             emp.setHiredate(RandomUtil.date());
-            emp.setMgr(RandomUtils.nextInt(10, 1000));
-            emp.setSal(new BigDecimal(RandomUtils.nextDouble(1000, 100000)));
-            emp.setComm(new BigDecimal(RandomUtils.nextDouble(0, 1000)));
+            emp.setMgr(RandomUtils.nextInt(r, 1000));
+            emp.setSal(new BigDecimal(RandomUtils.nextDouble(r)));
+            emp.setComm(new BigDecimal(RandomUtils.nextDouble(r)));
             emps.add(emp);
         }
         return emps;

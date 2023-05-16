@@ -84,6 +84,9 @@ code-master
 |      美团leaf分布式ID生成       | https://tech.meituan.com/2017/04/21/mt-leaf.html                                                                                                                               |                               |
 |    arthas（阿尔萨斯）线上监控诊断    | https://arthas.aliyun.com/doc/quick-start.html                                                                                                                                 |                               |
 |        京东零售(并发框架)        | https://gitee.com/jd-platform-opensource/asyncTool                                                                                                                             | 多线程并行、串行、阻塞、依赖、回调的并行框架        |
+|        WebMagic爬虫        | http://webmagic.io/docs/zh/                                                                                                                                                    |                               |
+|                          |                                                                                                                                                                                |                               |
+|                          |                                                                                                                                                                                |                               |
 |                          |                                                                                                                                                                                |                               |
 
 ###  4.内置功能

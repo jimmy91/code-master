@@ -45,6 +45,9 @@
         </encoder>
     </appender>
 
+    <logger name="org.apache" level="WARN" />
+    <logger name="httpclient" level="WARN" />
+
     <!-- 默认日志输出级别 -->
     <root level="INFO">
         <appender-ref ref="STDOUT" />
