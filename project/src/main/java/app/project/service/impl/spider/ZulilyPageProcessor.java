@@ -12,6 +12,7 @@ import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,11 +24,12 @@ import java.util.Map;
 public class ZulilyPageProcessor implements PageProcessor {
 
     private Site site = Site.me().setRetryTimes(3).setSleepTime(100);
+    public static final String OWNER = "Ariza";
 
     @Override
     public void process(Page page) {
         Map<String, Object> pageParam = page.getRequest().getExtras();
-        String path = pageParam.get("path").toString();
+        String category = pageParam.get("path").toString();
         String categoryId = pageParam.get("categoryId").toString();
         // 获取当前页码
         int currentPage = Integer.parseInt(page.getUrl().regex("(.*page=(\\d+))", 2).get());
@@ -43,7 +45,7 @@ public class ZulilyPageProcessor implements PageProcessor {
         //List<String> oldPrices = html.xpath("//*/a/div[2]/div[2]/div[2]/text()").all();
         StringBuilder content = new StringBuilder();
         for (int i = 0; i < names.size(); i++) {
-            int count = FilePipeline.saveImg(path, imgs.get(i), pids.get(i), String.format("%02d-%d", currentPage, i));
+            int count = FilePipeline.saveImg(category, imgs.get(i), pids.get(i), String.format("%02d-%d", currentPage, i), names.get(i).contains(OWNER));
             content.append(StrUtil.join(",", eventIds.get(i), pids.get(i), count, names.get(i).replaceAll(",", "|"), prices.get(i), imgs.get(i), details.get(i)) + "\n");
         }
         if (pids.size() > 50) {
@@ -52,13 +54,13 @@ public class ZulilyPageProcessor implements PageProcessor {
                 // 构造下一页URL
                 String nextPageUrl = String.format(CATEGORY_SPIDER_URL, categoryId, currentPage) + URL_PARAM;
                 // 添加下一页URL到待爬取队列中
-                log.info("添加下一页数据 page={}", currentPage);
+                log.info("添加下一页数据 category={} page={}", category, currentPage);
                 Request req = page.getRequest();
                 req.setUrl(nextPageUrl);
                 page.addTargetRequest(req);
             }
         }
-        FilePipeline.saveToLocalFile(path, content.toString());
+        FilePipeline.saveToLocalFile(category, content.toString());
         //log.info(content.toString());
     }
 
@@ -80,15 +82,20 @@ public class ZulilyPageProcessor implements PageProcessor {
         // 24   - Cleaning & Laundry - 清洁
         // 29   - Tools & Home Improvement  - 家居工具
         Map<Integer, String> spiderMap = MapUtil.builder(new HashMap<Integer,String>(16))
-                //.put(143, "厨房工具和用具")
-                //.put(157, "收藏品和小雕像")
+                .put(143, "厨房工具和用具")
+                .put(157, "收藏品和小雕像")
                 .put(159, "节日装饰")
-                //.put(166, "室外装饰")
-                //.put(22, "存储和收纳")
-                //.put(24, "清洁")
+                .put(166, "室外装饰")
+                .put(22, "存储和收纳")
+                .put(24, "清洁")
                 .put(29, "家居工具")
                 .build();
         long start = System.currentTimeMillis();
+
+        File ownerFile = new File(FilePipeline.ROOT_PATH + ZulilyPageProcessor.OWNER);
+        if(!ownerFile.exists()){
+            ownerFile.mkdir();
+        }
 
         spiderMap.forEach((k, v) -> {
             // 清理数据 删除已存在的csv文件

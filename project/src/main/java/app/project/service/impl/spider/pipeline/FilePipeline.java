@@ -1,5 +1,6 @@
 package app.project.service.impl.spider.pipeline;
 
+import app.project.service.impl.spider.ZulilyPageProcessor;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.thread.ThreadUtil;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class FilePipeline {
 
-	private static final String ROOT_PATH = "E://zulily//";
+	public static final String ROOT_PATH = "E://zulily//";
 
 	/**
 	 * @param path
@@ -69,15 +70,15 @@ public class FilePipeline {
 
 	/**
 	 *
-	 * @param path  保存目录
+	 * @param category  保存目录
 	 * @param url  图片url
 	 * @param pid 图片商品ID
 	 * @param index 图片展示位置排名
 	 * @return
 	 */
-	public static Integer saveImg(String path, String url, String pid, String index){
+	public static Integer saveImg(String category, String url, String pid, String index, Boolean owner){
 
-		path = ROOT_PATH + path + "//imgs//";
+		String path = ROOT_PATH + category + "//imgs//";
 		try {
 			File pathFile = new File(path);;
 			if(!pathFile.exists()){
@@ -92,13 +93,22 @@ public class FilePipeline {
 			if(findName.isPresent()){
 				//log.info(findName.get());
 				int count = Integer.valueOf(findName.get().split("-")[0]);
+				++count;
 				String oldFileName = path + findName.get();
-				String newFileName = path +  String.format("%03d-%s-%s.jpg", ++count, pid, index);
+				String newFileName = path + String.format("%03d-%s-%s.jpg", count, pid, index);
+				if(owner){
+					String ownerFileName = ROOT_PATH + ZulilyPageProcessor.OWNER + "//" +  String.format("%s-%03d-%s-%s-%s.jpg", DateUtil.format(DateUtil.date(), "MMdd"), count, pid, index, category);
+					FileUtil.copyFile(oldFileName, ownerFileName);
+				}
 				FileUtil.rename(new File(oldFileName), newFileName, false, true);
 				return count;
 			}else{
 				path = path +  String.format("%03d-%s-%s.jpg", 1, pid, index);
 				HttpUtil.downloadFile(url, path);
+				if(owner){
+					String ownerFileName = ROOT_PATH + ZulilyPageProcessor.OWNER + "//" +  String.format("%s-%03d-%s-%s-%s.jpg", DateUtil.format(DateUtil.date(), "MMdd"), 1, pid, index, category);
+					FileUtil.copyFile(path, ownerFileName);
+				}
 				return 1;
 			}
 		} catch (Exception e) {

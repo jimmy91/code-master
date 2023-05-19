@@ -191,6 +191,7 @@ public class MysqlTableEntity implements Serializable{
      * JSON类型列
      * https://www.cnblogs.com/liuyiyuan/p/16388360.html
      */
+    //@TableField(typeHandler = JacksonTypeHandler.class)
     private String jsonCol;
 
 
