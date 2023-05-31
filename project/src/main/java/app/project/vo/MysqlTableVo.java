@@ -1,5 +1,7 @@
 package app.project.vo;
 
+import app.annotation.Desensitization;
+import app.handler.desensitization.DesensitizationTypeEnum;
 import app.project.entity.MysqlTableEntity;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.json.JSONUtil;
@@ -69,16 +71,20 @@ public class MysqlTableVo implements Serializable{
     /**
      * CHAR类型列
      */
+    //@JsonSerialize(using = JacksonSerializeHandler.class)
+    @Desensitization(type = DesensitizationTypeEnum.CHINESE_NAME)
     private String charCol;
 
     /**
      * VARCHAR类型列
      */
+    @Desensitization(type = DesensitizationTypeEnum.CUSTOMER, startInclude = 5, endExclude = 10)
     private String varcharCol;
 
     /**
      * BINARY类型列
      */
+    @Desensitization(type = DesensitizationTypeEnum.CHINESE_NAME)
     private String binaryCol;
 
     /**
