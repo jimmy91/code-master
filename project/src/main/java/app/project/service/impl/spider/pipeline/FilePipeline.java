@@ -145,7 +145,7 @@ public class FilePipeline {
 				return count;
 			}else{
 				path = path +  String.format("%03d-%s-%s-%s.jpg", 1, pid, price, index);
-				HttpUtil.downloadFile(url, path);
+				HttpUtil.downloadFile(url.replace("https", "http"), path);
 				if(owner){
 					String ownerFileName = Constants.ROOT_PATH + Constants.OWNER + "//" +  String.format("%s-%03d-%s-%s-%s.jpg", DateUtil.format(DateUtil.date(), "MMdd"), 1, pid, index, category);
 					FileUtil.copyFile(path, ownerFileName);

@@ -48,6 +48,7 @@ public class TraceInterceptor implements HandlerInterceptor {
         return String.format("%s#%s", serviceName, RandomUtil.randomInt(1000, 9999));
     }
 
+    @Override
     public boolean preHandle(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Object handler) {
         try {
             // 如果有上层调用就用上层的ID
@@ -66,9 +67,11 @@ public class TraceInterceptor implements HandlerInterceptor {
         return true;
     }
 
+    @Override
     public void postHandle(@NotNull HttpServletRequest httpServletRequest, @NotNull HttpServletResponse httpServletResponse, @NotNull Object o, ModelAndView modelAndView) {
     }
 
+    @Override
     public void afterCompletion(@NotNull HttpServletRequest httpServletRequest, @NotNull HttpServletResponse httpServletResponse, @NotNull Object o, Exception e) {
         //调用结束后删除
         MDC.clear();

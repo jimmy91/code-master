@@ -1,0 +1,10 @@
+
+
+获取股票列表：pn-起始数   rn-每页数
+https://finance.pae.baidu.com/selfselect/getmarketrank?sort_type=1&sort_key=14&from_mid=1&pn=0&rn=200&group=ranklist&type=ab&finClientType=pc
+
+获取股票当日趋势：
+https://finance.pae.baidu.com/selfselect/getstockquotation?all=1&code=605011&isIndex=false&isBk=false&isBlock=false&isFutures=false&isStock=true&newFormat=1&is_kc=0&group=quotation_minute_ab&finClientType=pc
+
+获取股票近五日趋势：
+https://finance.pae.baidu.com/selfselect/getstockquotation?all=1&code=301313&isIndex=false&isBk=false&isBlock=false&isFutures=false&isStock=true&newFormat=1&group=quotation_fiveday_ab&finClientType=pc
