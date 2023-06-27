@@ -14,11 +14,11 @@ import utils.generator.common.dao.vo.CommonResult;
 /**
  * @author Jimmy
  */
-@Api(tags = "调用入口")
+@Api(tags = "Framework")
 @RestController
-@RequestMapping("/invoke")
+@RequestMapping("/framework")
 @Validated
-public class EnterController {
+public class FrameworkController {
 
     @Autowired
     private ScrewServiceImpl screwService;
@@ -26,14 +26,14 @@ public class EnterController {
     @Autowired
     private RetryServiceImpl retryService;
 
-    @ApiOperation(value = "一键生成数据库文档")
+    @ApiOperation(value = "生成数据库文档", notes = "screw数据库文档")
     @PostMapping("/screw")
     public CommonResult<String> screw() {
        return CommonResult.success(screwService.doDownloadFile()) ;
     }
 
 
-    @ApiOperation(value = "自动重试")
+    @ApiOperation(value = "自动重试", notes = "spring @Retryable重试机制")
     @PostMapping("/retry")
     public CommonResult<String> retry() throws Exception {
         return CommonResult.success(retryService.retryTest("重试了没有")) ;

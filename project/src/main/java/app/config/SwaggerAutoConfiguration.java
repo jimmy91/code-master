@@ -90,7 +90,7 @@ public class SwaggerAutoConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 // 用来创建该 API 的基本信息，展示在文档的页面中（自定义展示的信息）
                 .apiInfo(apiInfo())
-                .groupName("app模块")
+                .groupName("Project模块")
                 // 设置扫描指定 package 包下的
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("app.project"))
@@ -107,11 +107,12 @@ public class SwaggerAutoConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 // 用来创建该 API 的基本信息，展示在文档的页面中（自定义展示的信息）
                 .apiInfo(apiInfo())
-                .groupName("code模块")
+                .groupName("Framework模块")
                 // 设置扫描指定 package 包下的
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("code.controller"))
                 .paths(PathSelectors.any())
+                //.paths(PathSelectors.regex("(?!/error.*).*"))
                 .build()
                 .globalRequestParameters(globalRequestParameters())
                 .securityContexts(securityContexts());
