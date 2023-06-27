@@ -14,8 +14,10 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="spider" target="11" />
-      <module name="t_core" target="11" />
+      <module name="core" target="11" />
+      <module name="project" target="11" />
+      <module name="tools" target="11" />
+      <module name="tools_project" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

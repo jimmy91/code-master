@@ -4,7 +4,6 @@ import app.annotation.Desensitization;
 import app.handler.desensitization.DesensitizationTypeEnum;
 import app.project.entity.MysqlTableEntity;
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.json.JSONUtil;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -180,9 +179,7 @@ public class MysqlTableVo implements Serializable{
     /**
      * JSON类型列
      */
-    private JsonObj jsonCol;
-
-
+    private MysqlJsonCol jsonCol;
 
     /**
      * GEOMETRY类型列
@@ -233,7 +230,7 @@ public class MysqlTableVo implements Serializable{
 
     public static MysqlTableVo covert(MysqlTableEntity tableData) {
         MysqlTableVo tableVo = new MysqlTableVo();
-        BeanUtil.copyProperties(tableData, tableVo, "jsonCol");
+        BeanUtil.copyProperties(tableData, tableVo);
         tableVo.setBinaryCol(new String(tableData.getBinaryCol()));
         tableVo.setVarbinaryCol(new String(tableData.getVarbinaryCol()));
         tableVo.setBlobCol(new String(tableData.getBlobCol()));
@@ -241,7 +238,7 @@ public class MysqlTableVo implements Serializable{
         tableVo.setTinyblobCol(new String(tableData.getTinyblobCol()));
         tableVo.setMediumblobCol(null);
 
-        tableVo.setJsonCol(JSONUtil.toBean(tableData.getJsonCol(), JsonObj.class));
+        //tableVo.setJsonCol(JSONUtil.toBean(tableData.getJsonCol(), JsonObj.class));
 
         return tableVo;
     }

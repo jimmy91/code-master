@@ -34,8 +34,9 @@
         <result column="year_col" property="yearCol"/>
         <result column="boolean_col" property="booleanCol"/>
         <result column="bit_col" property="bitCol"/>
-        <result column="json_col" property="jsonCol"/>
-
+        <!--结果需要以resultMap方便返回  Handler方可有效-->
+        <result column="json_col" property="jsonCol"
+                typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"/>
 
         <result column="geometry_col" property="geometryCol"/>
         <result column="point_col" property="pointCol"/>
@@ -60,7 +61,7 @@
         ST_AsText(multipolygon_col) multipolygon_col
     </sql>
 
-    <select id="getTableData" resultType="app.project.entity.MysqlTableEntity">
+    <select id="getTableData" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"></include>
         from mysql_table

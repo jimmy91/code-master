@@ -3,21 +3,18 @@ package app.project.service.impl;
 import app.project.entity.MysqlTableEntity;
 import app.project.mapper.MysqlTableMapper;
 import app.project.service.MysqlTableService;
-import app.project.vo.JsonObj;
+import app.project.vo.MysqlJsonCol;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
-import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import lombok.Data;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 import java.sql.Time;
 import java.time.LocalTime;
 import java.time.Year;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @description: <这是一个测试表，用于演示不同类型的列服务实现类>
@@ -33,7 +30,8 @@ public class MysqlTableServiceImpl extends ServiceImpl<MysqlTableMapper, MysqlTa
 
     @Override
     public MysqlTableEntity getTableData(Integer id) {
-        return tableMapper.getTableData(id);
+       // return tableMapper.getTableData(id);
+       return getBaseMapper().selectById(id);
     }
 
     @Override
@@ -52,7 +50,7 @@ public class MysqlTableServiceImpl extends ServiceImpl<MysqlTableMapper, MysqlTa
         table.setCharCol("不能超过十个汉字字母");
         table.setVarcharCol("this is varchar data");
         table.setBinaryCol("超短".getBytes());
-        table.setVarbinaryCol("这是一个byte[]数据格式-varbinary".getBytes());
+        table.setVarbinaryCol("这是一个byte[]数据格式-varbinary".getBytes(StandardCharsets.UTF_8));
         table.setTinyblobCol("这是一个byte[]数据格式-tinyblob".getBytes());
         table.setTinytextCol("this is tinytext data");
         table.setBlobCol("这是一个byte[]数据格式-blob".getBytes());
@@ -72,10 +70,10 @@ public class MysqlTableServiceImpl extends ServiceImpl<MysqlTableMapper, MysqlTa
         table.setBooleanCol(true);
         table.setBitCol(false);
 
-        JsonObj jsonObj = new JsonObj();
+        MysqlJsonCol jsonObj = new MysqlJsonCol();
         jsonObj.setName("姓名");
         jsonObj.setAge(18);
-        table.setJsonCol(JSONUtil.toJsonStr(jsonObj));
+        table.setJsonCol(jsonObj);
        /* table.setGeometryCol();
         table.setPointCol();
         table.setLinestringCol();

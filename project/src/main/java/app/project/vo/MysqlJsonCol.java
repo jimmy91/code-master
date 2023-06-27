@@ -6,7 +6,7 @@ import lombok.Data;
  * @author Jimmy
  */
 @Data
-public class JsonObj {
+public class MysqlJsonCol {
     private String name;
     private Integer age;
 }

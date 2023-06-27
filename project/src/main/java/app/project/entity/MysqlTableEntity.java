@@ -1,8 +1,11 @@
 package app.project.entity;
 
+import app.project.vo.MysqlJsonCol;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -25,7 +28,7 @@ import java.util.Date;
  * https://blog.csdn.net/weixin_42201180/article/details/127354649
  */
 @Data
-@TableName("mysql_table")
+@TableName(value = "mysql_table", autoResultMap = true)
 public class MysqlTableEntity implements Serializable{
 
     private static final long serialVersionUID = 7942459813558162887L;
@@ -190,10 +193,11 @@ public class MysqlTableEntity implements Serializable{
     /**
      * JSON类型列
      * https://www.cnblogs.com/liuyiyuan/p/16388360.html
+     * 方式1：自定义sql, 结果需要以resultMap方便返回  Handler方可有效
+     * 方式2：使用mybatis plus内置查询方法，并在对应的实体类上配置自动映射 autoResultMap = true
      */
-    //@TableField(typeHandler = JacksonTypeHandler.class)
-    private String jsonCol;
-
+    @TableField(typeHandler = JacksonTypeHandler.class)
+    private MysqlJsonCol jsonCol;
 
 
     /**
